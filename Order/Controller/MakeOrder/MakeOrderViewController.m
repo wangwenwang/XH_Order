@@ -650,6 +650,7 @@
                 break;
                 
             case 2: m.PRODUCT_NAME = @"雪花纯生8度500ml听1*12纸箱";
+                m.PRODUCT_URL = @"https://raw.githubusercontent.com/wangwenwang/XH_Order/master/500ml_gold.jpg";
                 break;
                 
             case 3: m.PRODUCT_NAME = @"雪花纯生8度330ml听1*24纸箱";
@@ -660,8 +661,8 @@
                 m.PRODUCT_URL = @"https://raw.githubusercontent.com/wangwenwang/XH_Order/master/330ml_gold.jpg";
                 break;
                 
-            case 5: m.PRODUCT_NAME = @"雪花勇闯天涯10度330ml白瓶1*12纸箱";
-                m.PRODUCT_URL = @"https://raw.githubusercontent.com/wangwenwang/XH_Order/master/330_hexo.jpg";
+            case 5: m.PRODUCT_NAME = @"雪花勇闯天涯10度500ml听1*12纸箱";
+                m.PRODUCT_URL = @"https://raw.githubusercontent.com/wangwenwang/XH_Order/master/500_hexo.jpg";
                 break;
             
             default:

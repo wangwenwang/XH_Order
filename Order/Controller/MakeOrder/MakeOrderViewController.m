@@ -642,6 +642,7 @@
         
         switch (i) {
             case 0: m.PRODUCT_NAME = @"雪花纯生8度330ml白瓶1*24纸箱含瓶";
+                m.PRODUCT_URL = @"https://raw.githubusercontent.com/wangwenwang/XH_Order/master/330ml_while.jpg";
                 break;
                 
             case 1: m.PRODUCT_NAME = @"雪花纯生8度330ml听6*4卡纸六连包纸箱";

@@ -386,6 +386,10 @@
 		3B0DC1421F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */; };
 		3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */; };
 		3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */; };
+		3B546C9C1FC4885C00F154E7 /* SupplierViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B546C9A1FC4885C00F154E7 /* SupplierViewController.m */; };
+		3B546C9D1FC4885C00F154E7 /* SupplierViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B546C9B1FC4885C00F154E7 /* SupplierViewController.xib */; };
+		3B546CA21FC48F5900F154E7 /* SupplierTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B546CA01FC48F5900F154E7 /* SupplierTableViewCell.m */; };
+		3B546CA31FC48F5900F154E7 /* SupplierTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B546CA11FC48F5900F154E7 /* SupplierTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1047,6 +1051,12 @@
 		3B0DC13E1F72CCCE00D1E6AA /* OutputReturnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputReturnViewController.h; sourceTree = "<group>"; };
 		3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputReturnViewController.m; sourceTree = "<group>"; };
 		3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnViewController.xib; sourceTree = "<group>"; };
+		3B546C991FC4885C00F154E7 /* SupplierViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SupplierViewController.h; sourceTree = "<group>"; };
+		3B546C9A1FC4885C00F154E7 /* SupplierViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SupplierViewController.m; sourceTree = "<group>"; };
+		3B546C9B1FC4885C00F154E7 /* SupplierViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupplierViewController.xib; sourceTree = "<group>"; };
+		3B546C9F1FC48F5900F154E7 /* SupplierTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SupplierTableViewCell.h; sourceTree = "<group>"; };
+		3B546CA01FC48F5900F154E7 /* SupplierTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SupplierTableViewCell.m; sourceTree = "<group>"; };
+		3B546CA11FC48F5900F154E7 /* SupplierTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupplierTableViewCell.xib; sourceTree = "<group>"; };
 		8632758C8A4785EDD0DF8722 /* Pods-Order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Order/Pods-Order.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C50C09B8AE2AB012816CA7 /* libPods-Order.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Order.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1148,6 +1158,9 @@
 				301CFDDC1FBC183100C8CB39 /* BottleViewController.h */,
 				301CFDDD1FBC183200C8CB39 /* BottleViewController.m */,
 				301CFDDE1FBC183300C8CB39 /* BottleViewController.xib */,
+				3B546C991FC4885C00F154E7 /* SupplierViewController.h */,
+				3B546C9A1FC4885C00F154E7 /* SupplierViewController.m */,
+				3B546C9B1FC4885C00F154E7 /* SupplierViewController.xib */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -1893,6 +1906,7 @@
 				30BE65001EE6BE5B00BD6978 /* ProductManListTableViewCell.h */,
 				30BE65011EE6BE5B00BD6978 /* ProductManListTableViewCell.m */,
 				30BE65021EE6BE5B00BD6978 /* ProductManListTableViewCell.xib */,
+				3B546C9E1FC48F4100F154E7 /* 空瓶回厂 */,
 				30BB2DFE1F4697A0002E51E7 /* 库存管理 */,
 				30BB2DB61F459375002E51E7 /* 库存登记 */,
 				30201F171F1083860055BA6A /* 客户费用 */,
@@ -2569,6 +2583,16 @@
 			path = "出库退货";
 			sourceTree = "<group>";
 		};
+		3B546C9E1FC48F4100F154E7 /* 空瓶回厂 */ = {
+			isa = PBXGroup;
+			children = (
+				3B546C9F1FC48F5900F154E7 /* SupplierTableViewCell.h */,
+				3B546CA01FC48F5900F154E7 /* SupplierTableViewCell.m */,
+				3B546CA11FC48F5900F154E7 /* SupplierTableViewCell.xib */,
+			);
+			path = "空瓶回厂";
+			sourceTree = "<group>";
+		};
 		A5516C1ACE2CD89545D8610B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2706,6 +2730,7 @@
 				30E5A0761D9DFB6300D94F77 /* SearchOrderPathViewController.xib in Resources */,
 				301AD3A41F6A1EBD00CD13D0 /* StockNoListViewController.xib in Resources */,
 				304A34191F0E071B0055D50C /* AreaCityViewController.xib in Resources */,
+				3B546CA31FC48F5900F154E7 /* SupplierTableViewCell.xib in Resources */,
 				304A7AC11DB85ED00039B0B2 /* CheckSignatureViewController.xib in Resources */,
 				30A3C3011D9A0E0F00BBE0DA /* MainViewController.xib in Resources */,
 				304A7ADA1DB8BAE20039B0B2 /* ChartViewController.xib in Resources */,
@@ -2726,6 +2751,7 @@
 				30BBF1391F17612400496518 /* AddressListViewController.xib in Resources */,
 				30F7B8E71DC036FB004CD128 /* ConfirmOrderGiftsTableViewCell.xib in Resources */,
 				301AD3BC1F6A2D1500CD13D0 /* StockNoListTableViewCell.xib in Resources */,
+				3B546C9D1FC4885C00F154E7 /* SupplierViewController.xib in Resources */,
 				30CDC65A1D9907CD0035602F /* CoreSDWebImage.bundle in Resources */,
 				3072AE8E1DA8CDA400359147 /* OrderDetailTableViewCell.xib in Resources */,
 				30E9C0A61DA8E15A00A09182 /* HotProductViewController.xib in Resources */,
@@ -2819,6 +2845,7 @@
 				30CDC63A1D9907CD0035602F /* PhotoModel.m in Sources */,
 				30CDC6431D9907CD0035602F /* PhotoBroswerVC.m in Sources */,
 				304A7AB61DB612180039B0B2 /* BrandTableViewCell.m in Sources */,
+				3B546C9C1FC4885C00F154E7 /* SupplierViewController.m in Sources */,
 				30BB2DCE1F459375002E51E7 /* GetStockListTableViewCell.m in Sources */,
 				3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */,
 				304A34161F0E071B0055D50C /* AreaProvinceViewController.m in Sources */,
@@ -3069,6 +3096,7 @@
 				304A7ACC1DB86F670039B0B2 /* SignatureAndPictureModel.m in Sources */,
 				30BB2DE81F4593AD002E51E7 /* AddStockModel.m in Sources */,
 				30B439D41F1DF48E0092A015 /* AddPartyModel.m in Sources */,
+				3B546CA21FC48F5900F154E7 /* SupplierTableViewCell.m in Sources */,
 				30201F061F1082220055BA6A /* AppBusinessFeeListModel.m in Sources */,
 				301CFDDF1FBC183300C8CB39 /* BottleViewController.m in Sources */,
 				301D7DE01F5A3E5800D83410 /* UITableView+NoDataPrompt.m in Sources */,

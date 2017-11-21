@@ -287,6 +287,12 @@
 #define API_GetOutProductType @"http://oms.kaidongyuan.com:12300/api/GetOutProductType"
 
 
+/// 空瓶回厂
+
+/// 获取地址信息
+#define API_GetReturnPartyList @"http://oms.kaidongyuan.com:12300/api/GetReturnPartyList"
+
+
 /*--------- 判断iOS版本 ---------*/
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue
 

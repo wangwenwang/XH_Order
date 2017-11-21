@@ -8,6 +8,7 @@
 
 #import "BottleViewController.h"
 #import "BottleAddressListModel.h"
+#import "SupplierViewController.h"
 
 @interface BottleViewController ()
 
@@ -38,10 +39,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *modifyFactoryBtn;
 
 // 承运信息
+@property (strong, nonatomic) BottleAddressListModel *carrier;
+@property (weak, nonatomic) IBOutlet UIView *carrierInfoView;
+@property (weak, nonatomic) IBOutlet UIView *carrierInfoAddView;
 
 @end
 
 @implementation BottleViewController
+
+#pragma mark - 生命周期
 
 - (void)viewDidLoad {
     
@@ -52,6 +58,29 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - 手势
+ 
+- (IBAction)customerOnclick {
+    
+}
+
+// 添加厂商信息
+- (IBAction)factoryOnclick {
+    [self addFactory];
+}
+
+// 添加承运信息
+- (IBAction)carrierOnclick {
+    
+}
+
+#pragma mark - 函数
+
+- (void)addFactory {
+    SupplierViewController *vc = [[SupplierViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 @end

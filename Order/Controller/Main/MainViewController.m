@@ -120,18 +120,15 @@
     
     NSArray *images = nil;
     
-    
     NSString *welcomeImageName = [[NSUserDefaults standardUserDefaults] objectForKey:kWelcomeImageName];
-    if([welcomeImageName isEqualToString:@"YIB"]) {
+    if([welcomeImageName isEqualToString:@"YIB"] || [welcomeImageName isEqualToString:@"QH"]) {
+        
         images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
-        
-    } else if([welcomeImageName isEqualToString:@"QH"]) {
-        images = [NSArray arrayWithObjects:@"ad_pic_10.jpg", @"ad_pic_11.jpg", @"ad_pic_12.jpg", @"ad_pic_13.jpg", nil];
-        
     } else if([welcomeImageName isEqualToString:@"DK"]) {
-        images = [NSArray arrayWithObjects:@"ad_pic_20", @"ad_pic_21", @"ad_pic_22", @"ad_pic_23", nil];
         
-    }  else {
+        images = [NSArray arrayWithObjects:@"ad_pic_20", @"ad_pic_21", @"ad_pic_22", @"ad_pic_23", nil];
+    } else {
+        
         images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
     }
     
@@ -140,22 +137,29 @@
     [self.view addSubview:_cycleScrollView1];
 }
 
+
 - (void)registerCell {
     [self.myCollectionView registerNib:[UINib nibWithNibName:@"MainCollectionViewCell"bundle:nil]forCellWithReuseIdentifier:_cellID];
 }
+
 
 - (void)getPlistData {
     
     NSString *dataPath = [[NSBundle mainBundle]pathForResource:@"MainCollection.plist" ofType:nil];
     _myCollectionDataArrM = [NSMutableArray arrayWithContentsOfFile:dataPath];
     
-    if([_app.business.BUSINESS_IDX intValue] == 7 || [_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0 || [_app.business.BUSINESS_NAME rangeOfString:@"怡宝"].length > 0) {
+    if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0) {
         
     } else {
         
         if(_myCollectionDataArrM.count >= 7) {
             
             [_myCollectionDataArrM removeObjectAtIndex:6];
+            
+            if(_myCollectionDataArrM.count >= 7) {
+                
+                [_myCollectionDataArrM removeObjectAtIndex:6];
+            }
         }
     }
 }
@@ -240,13 +244,13 @@
         GetFeeListViewController *vc = [[GetFeeListViewController alloc] init];
         vc.title = title;
         
-//        [self presentViewController:vc animated:YES completion:nil];
+        //        [self presentViewController:vc animated:YES completion:nil];
         [self.navigationController pushViewController:vc animated:YES];
         
-//        CustomerListViewController *vc = [[CustomerListViewController alloc] init];
-//        vc.title = title;
-//        vc.vcClass = NSStringFromClass([self class]);
-//        [self.navigationController pushViewController:vc animated:YES];
+        //        CustomerListViewController *vc = [[CustomerListViewController alloc] init];
+        //        vc.title = title;
+        //        vc.vcClass = NSStringFromClass([self class]);
+        //        [self.navigationController pushViewController:vc animated:YES];
     } else if([title isEqualToString:@"费用帐单"]) {
         
         CustomerListViewController *vc = [[CustomerListViewController alloc] init];
@@ -263,12 +267,12 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else if([title isEqualToString:@"空瓶回厂"]) {
         
-        BottleViewController *vc = [[BottleViewController alloc] init];
+        BottleViewController * vc = [[BottleViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
-//#pragma mark -- ChartServiceDelegate
+//#pragma mark - ChartServiceDelegate
 ////获取客户报表回调
 //- (void)successOfChartServiceWithCustomer:(NSMutableArray *)customerChart {
 //

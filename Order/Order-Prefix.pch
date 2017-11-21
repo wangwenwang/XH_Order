@@ -68,7 +68,7 @@
 
 /*--------- 全局变量 ---------*/
 
-//记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
+// 记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
 #define kWelcomeImageName @"ListTimeSelectProduct"
 
 //
@@ -115,143 +115,176 @@
 // StockOutViewController 接收地址
 #define kStockOutViewController_receiveMsg @"StockOutViewController_receiveMsg"
 
+// StockManViewController 刷新列表数据
+#define kStockManViewController_refreshList @"StockManViewController_refreshList"
 
 
 
 /*--------- API ---------*/
 
 /// 服务器地址
-#define API_ServerAddress @"http://oms.kaidongyuan.com:8088"
+#define API_ServerAddress @"http://oms.kaidongyuan.com:12300"
 
 /// 登陆接口
-#define API_LOGIN @"http://oms.kaidongyuan.com:8088/api/Login"
+#define API_LOGIN @"http://oms.kaidongyuan.com:12300/api/Login"
 
 /// 获取在途订单列表
-#define API_GET_ORDER_LIST @"http://oms.kaidongyuan.com:8088/api/GetOrderList"
+#define API_GET_ORDER_LIST @"http://oms.kaidongyuan.com:12300/api/GetOrderList"
 
 /// 获取用户业务类型
-#define API_GET_BUISNESS_LIST @"http://oms.kaidongyuan.com:8088/api/GetBuisnessList"
+#define API_GET_BUISNESS_LIST @"http://oms.kaidongyuan.com:12300/api/GetBuisnessList"
 
 /// 获取用户业务类型
-#define API_UPDATA_PASSWORD @"http://oms.kaidongyuan.com:8088/api/modifyPassword"
+#define API_UPDATA_PASSWORD @"http://oms.kaidongyuan.com:12300/api/modifyPassword"
 
 /// 获取订单详情
-#define API_GET_ORDER_DETAIL @"http://oms.kaidongyuan.com:8088/api/GetOrderDetail"
+#define API_GET_ORDER_DETAIL @"http://oms.kaidongyuan.com:12300/api/GetOrderDetail"
 
 /// 获取热销产品
-#define API_GET_HOT_SELL_PRODUCT @"http://oms.kaidongyuan.com:8088/api/GetProductList"
+#define API_GET_HOT_SELL_PRODUCT @"http://oms.kaidongyuan.com:12300/api/GetProductList"
 
 /// 获取订单物流信息
-#define API_GET_ORDER_TMSLIST @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsList"
+#define API_GET_ORDER_TMSLIST @"http://oms.kaidongyuan.com:12300/api/GetOrderTmsList"
 
 /// 获取物流信息详情  GetOrderTmsOrderNoInfo   GetOrderTmsInfo
-#define API_GET_ORDER_TMS_INFORMATION @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsOrderNoInfo"
+#define API_GET_ORDER_TMS_INFORMATION @"http://oms.kaidongyuan.com:12300/api/GetOrderTmsOrderNoInfo"
 
 /// 获取客户列表
-#define API_GET_PARTY_LIST @"http://oms.kaidongyuan.com:8088/api/GetPartyList"
+#define API_GET_PARTY_LIST @"http://oms.kaidongyuan.com:12300/api/GetPartyList"
 
 /// 获取地址列表
-#define API_GET_ADDRESS @"http://oms.kaidongyuan.com:8088/api/GetAddress"
+#define API_GET_ADDRESS @"http://oms.kaidongyuan.com:12300/api/GetAddress"
 
 /// 获取付款方式 post strLicense  过来就行了
-#define API_GET_PAYMENT_TYPE @"http://oms.kaidongyuan.com:8088/api/GetPaymentType"
+#define API_GET_PAYMENT_TYPE @"http://oms.kaidongyuan.com:12300/api/GetPaymentType"
 
 /// 获取产品品牌和分类列表
-#define API_GET_PRODUCT_TYPE @"http://oms.kaidongyuan.com:8088/api/GetProductType"
+#define API_GET_PRODUCT_TYPE @"http://oms.kaidongyuan.com:12300/api/GetProductType"
 
 /// 根据品牌分类信息获取产品列表
-#define API_GET_PRDUCT_LIST_TYPE @"http://oms.kaidongyuan.com:8088/api/GetProductListType"
+#define API_GET_PRDUCT_LIST_TYPE @"http://oms.kaidongyuan.com:12300/api/GetProductListType"
 
 /// 获取电子签名和交货现场图片
-#define API_GETAUTOGRAPH @"http://oms.kaidongyuan.com:8088/api/GetAutograph"
+#define API_GETAUTOGRAPH @"http://oms.kaidongyuan.com:12300/api/GetAutograph"
 
 /// 服务端存放电子签名的图片文件夹
-#define API_SERVER_AUTOGRAPH_AND_PICTURE_FILE @"http://oms.kaidongyuan.com:8088/Uploadfile"
+#define API_SERVER_AUTOGRAPH_AND_PICTURE_FILE @"http://oms.kaidongyuan.com:12300/Uploadfile"
 
 /// 获取订单位置信息
-#define API_GET_LOCATION @"http://oms.kaidongyuan.com:8088/api/GetLocaltion"
+#define API_GET_LOCATION @"http://oms.kaidongyuan.com:12300/api/GetLocaltion"
 
 /// 获取客户报表
-#define API_GET_CUSTOMER_CHART_DATA @"http://oms.kaidongyuan.com:8088/api/CustomerCount"
+#define API_GET_CUSTOMER_CHART_DATA @"http://oms.kaidongyuan.com:12300/api/CustomerCount"
 
 /// 获取产品报表
-#define API_GET_PRODUCT_CHART_DATA @"http://oms.kaidongyuan.com:8088/api/ProductCount"
+#define API_GET_PRODUCT_CHART_DATA @"http://oms.kaidongyuan.com:12300/api/ProductCount"
 
 /// 请求产品策略
-#define API_GET_SUBMIT_ORDER @"http://oms.kaidongyuan.com:8088/api/SubmitOrder1"
+#define API_GET_SUBMIT_ORDER @"http://oms.kaidongyuan.com:12300/api/SubmitOrder1"
 
 /// 获取赠品品类详细信息
-#define API_GET_COMMODITY_DATA @"http://oms.kaidongyuan.com:8088/api/GetProductListType"
+#define API_GET_COMMODITY_DATA @"http://oms.kaidongyuan.com:12300/api/GetProductListType"
 
 /// 最终提交订单
-#define API_CONFIRM_ORDER @"http://oms.kaidongyuan.com:8088/api/ConfirmOrder"
+#define API_CONFIRM_ORDER @"http://oms.kaidongyuan.com:12300/api/ConfirmOrder"
 
 /// 添加客户库存
-#define API_AddStock @"http://oms.kaidongyuan.com:8088/api/AddStock"
+#define API_AddStock @"http://oms.kaidongyuan.com:12300/api/AddStock"
 
 /// 展示客户库存登记表
-#define API_GetStockList @"http://oms.kaidongyuan.com:8088/api/GetStockList1"
+#define API_GetStockList @"http://oms.kaidongyuan.com:12300/api/GetStockList1"
 
 /// 展示客户库存详细登记
-#define API_GetAppStockList @"http://oms.kaidongyuan.com:8088/api/GetAppStockList"
+#define API_GetAppStockList @"http://oms.kaidongyuan.com:12300/api/GetAppStockList"
 
 /// 取消客户库存
-#define API_CancelStock @"http://oms.kaidongyuan.com:8088/api/CancelStock"
+#define API_CancelStock @"http://oms.kaidongyuan.com:12300/api/CancelStock"
 
 /// 展示客户费用
-#define API_GetFeeList @"http://oms.kaidongyuan.com:8088/api/GetFeeList"
+#define API_GetFeeList @"http://oms.kaidongyuan.com:12300/api/GetFeeList"
 
 /// 订单取消流程
-#define API_OrderCancel @"http://oms.kaidongyuan.com:8088/api/OrderCancel"
+#define API_OrderCancel @"http://oms.kaidongyuan.com:12300/api/OrderCancel"
 
 /// 账单列表
-#define API_GetAppBillFeeList @"http://oms.kaidongyuan.com:8088/api/GetAppBillFeeList"
+#define API_GetAppBillFeeList @"http://oms.kaidongyuan.com:12300/api/GetAppBillFeeList"
 
 /// 费用列表
-#define API_GetAppBusinessFeeList @"http://oms.kaidongyuan.com:8088/api/GetAppBusinessFeeList"
+#define API_GetAppBusinessFeeList @"http://oms.kaidongyuan.com:12300/api/GI also incredible, but this language is not optimisticetAppBusinessFeeList"
 
 /// 注册
-#define API_register @"http://oms.kaidongyuan.com:8088/api/register"
+#define API_register @"http://oms.kaidongyuan.com:12300/api/register"
 
 /// 加入客户资料
-#define API_AddParty @"http://oms.kaidongyuan.com:8088/api/AddParty"
+#define API_AddParty @"http://oms.kaidongyuan.com:12300/api/AddParty"
 
 /// 解绑客户资料
-#define API_DeleteAppUserParty @"http://oms.kaidongyuan.com:8088/api/DeleteAppUserParty"
+#define API_DeleteAppUserParty @"http://oms.kaidongyuan.com:12300/api/DeleteAppUserParty"
 
 /// 增加地址
-#define API_AddAddress @"http://oms.kaidongyuan.com:8088/api/AddAddress"
+#define API_AddAddress @"http://oms.kaidongyuan.com:12300/api/AddAddress"
 
 /// 修改地址
-#define API_UpdateAddress @"http://oms.kaidongyuan.com:8088/api/UpdateAddress"
+#define API_UpdateAddress @"http://oms.kaidongyuan.com:12300/api/UpdateAddress"
 
 /// 删除地址
-#define API_DeleteAddress @"http://oms.kaidongyuan.com:8088/api/DeleteAddress"
+#define API_DeleteAddress @"http://oms.kaidongyuan.com:12300/api/DeleteAddress"
 
 /// 获取地址省
-#define API_NormalAdressList @"http://oms.kaidongyuan.com:8088/api/NormalAdressList"
+#define API_NormalAdressList @"http://oms.kaidongyuan.com:12300/api/NormalAdressList"
 
+
+/*-------------------- 库存管理功能 --------------------*/
 /// 出库的收货人
-#define API_GetToAddressList @"http://oms.kaidongyuan.com:8088/api/GetToAddressList"
+#define API_GetToAddressList @"http://oms.kaidongyuan.com:12300/api/GetToAddressList"
 
-/// 获取产品列表
-#define API_GetOutProductList @"http://oms.kaidongyuan.com:8088/api/GetOutProductList"
+/// 获取出库产品列表（库存产品）
+#define API_GetOutProductList @"http://oms.kaidongyuan.com:12300/api/GetOutProductList"
+
+/// 获取出库产品列表（全部产品）
+#define API_GetInputProductListType @"http://oms.kaidongyuan.com:12300/api/GetInputProductListType"
 
 /// 保存出库单
-#define API_SaveOutput @"http://oms.kaidongyuan.com:8088/api/SaveOutput"
+#define API_SaveOutput @"http://oms.kaidongyuan.com:12300/api/SaveOutput"
 
 /// 确认出库单
-#define API_OutPutWorkflow @"http://oms.kaidongyuan.com:8088/api/OutPutWorkflow"
+#define API_OutPutWorkflow @"http://oms.kaidongyuan.com:12300/api/OutPutWorkflow"
 
 /// 取消出库单
-#define API_OutPutCancel @"http://oms.kaidongyuan.com:8088/api/OutPutCancel"
+#define API_OutPutCancel @"http://oms.kaidongyuan.com:12300/api/OutPutCancel"
 
 /// 获取出库列表
-#define API_GetOupputList @"http://oms.kaidongyuan.com:8088/api/GetOupputList"
+#define API_GetOupputList @"http://oms.kaidongyuan.com:12300/api/GetOupputList"
 
 /// 获取出库详情
-#define API_GetOupputInfo @"http://oms.kaidongyuan.com:8088/api/GetOupputInfo"
+#define API_GetOupputInfo @"http://oms.kaidongyuan.com:12300/api/GetOupputInfo"
 
+/// 获取库存列表数据
+#define API_GetPartyStockList @"http://oms.kaidongyuan.com:12300/api/GetPartyStockList"
+
+/// 获取库存批次，第一个（已废除）
+#define API_GetStockNoList @"http://oms.kaidongyuan.com:12300/api/GetStockNoList"
+
+/// 获取库存批次，第二个（由于服务端问题，每次加参数都要增加接口）
+#define API_GetNewStockNoList @"http://oms.kaidongyuan.com:12300/api/GetNewStockNoList"
+
+/// 入库确认
+#define API_InPutWorkflow @"http://oms.kaidongyuan.com:12300/api/InPutWorkflow"
+
+/// 入库列表
+#define API_GetInputList @"http://oms.kaidongyuan.com:12300/api/GetInputList"
+
+/// 入库详情
+#define API_GetInputInfo @"http://oms.kaidongyuan.com:12300/api/GetInputInfo"
+
+/// 上一级地址
+#define API_GetInputToPartySearch @"http://oms.kaidongyuan.com:12300/api/GetInputToPartySearch"
+
+/// 保存入库单
+#define API_SaveInput @"http://oms.kaidongyuan.com:12300/api/SaveInput"
+
+/// 获取出库时，产品分类列表
+#define API_GetOutProductType @"http://oms.kaidongyuan.com:12300/api/GetOutProductType"
 
 
 /*--------- 判断iOS版本 ---------*/
@@ -260,8 +293,6 @@
 /*--------- 屏幕尺寸 ---------*/
 #define ScreenHeight [UIScreen mainScreen] .bounds.size.height
 #define ScreenWidth [UIScreen mainScreen] .bounds.size.width
-
-
 
 
 

@@ -27,6 +27,7 @@
 #import "PromotionDetailModel.h"
 #import <Masonry.h>
 #import "LMBlurredView.h"
+#import "LM_alert.h"
 
 /*
  *
@@ -353,6 +354,32 @@ typedef enum : NSInteger {
     [self.view layoutIfNeeded];
     
     _otherMsg_top.constant = ScreenHeight / 2 - CGRectGetHeight(_otherMsgView.frame) / 2 - 64 - 20;
+    
+    // 缓存机制
+    // 保存已选的产品
+    NSDictionary *dict_brand = _dictProducts[@(_brandRow)];
+    for(int i = 0; i < dict_brand.count; i++) {
+        
+        NSArray *dict_section = dict_brand[@(i)];
+        for(int j = 0; j < dict_section.count; j++) {
+            
+            ProductModel *m = dict_section[j];
+            
+            // 已选
+            if([_selectedProducts indexOfObject:m] == NSNotFound && m.CHOICED_SIZE > 0) {
+                [_selectedProducts addObject:m];
+                
+                // 总价
+                _currentMakeOrderTotalPrice += m.CHOICED_SIZE * m.PRODUCT_PRICE;
+                _makeOrderTotalPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _currentMakeOrderTotalPrice];
+                
+                // 总量
+                _currentMakeOrderTotalCount += m.CHOICED_SIZE;
+                _makeOrderTotalNumber.text = [NSString stringWithFormat:@"%ld", _currentMakeOrderTotalCount];
+            }
+        }
+    }
+    [_shoppingCarTableView reloadData];
 }
 
 
@@ -387,6 +414,7 @@ typedef enum : NSInteger {
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
 }
 
 
@@ -770,8 +798,7 @@ typedef enum : NSInteger {
         cell.cellHeight = PolicyCellHeight;
         cell.selfHeight = m.cellHeight;
         
-//        NSString *imageURL = [NSString stringWithFormat:@"%@/%@", API_ServerAddress, m.PRODUCT_URL];
-        NSString *imageURL = m.PRODUCT_URL;
+        NSString *imageURL = [NSString stringWithFormat:@"%@/%@", API_ServerAddress, m.PRODUCT_URL];
         
         // 填充基本数据
         [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"ic_information_picture"] options:SDWebImageRefreshCached];
@@ -779,6 +806,8 @@ typedef enum : NSInteger {
         cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
+        cell.STOCK_QTY.text = @"";
+        cell.STOCK_QTY_Label.text = @"";
         
         // 促销信息的处理
         cell.policyPromptView.hidden = !m.PRODUCT_POLICY.count;
@@ -943,25 +972,23 @@ typedef enum : NSInteger {
         [_myTableView reloadData];
     } else if(tableView.tag == 1003) {
         
-        // 选择品类
+        // 选择类型
         [self selectProductType:indexPath.row andRefreshTableView:YES];
         
-    }  else if(tableView.tag == 1004) {
+    } else if(tableView.tag == 1004) {
         _brandRow = indexPath.row;
-        
-        // 选择品类
-        [self selectProductType:0 andRefreshTableView:NO];
-        [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
         // 选择品牌
         ProductTbModel *m = _brands[indexPath.row];
         _selectedBrand = [m.PRODUCT_CLASS isEqualToString:@"全部"] ? @"" : m.PRODUCT_CLASS;
         
-        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:_selectedBrand];
+        // 选择分类
+        [self selectProductType:0 andRefreshTableView:YES];
+        [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
-        //操作UI
+        // 操作UI
         _brandLabel.text = [NSString stringWithFormat:@"分类:%@", [_selectedBrand isEqualToString:@""] ? @"全部" : _selectedBrand];
-        //修改品牌Label的部分文字颜色
+        // 修改品牌Label的部分文字颜色
         [self NSForegroundColorAttributeName:_brandLabel.text andRange:NSMakeRange(3,_brandLabel.text.length - 3) andLabel:_brandLabel];
         
     } else if(tableView.tag == 1005) {
@@ -1154,9 +1181,16 @@ typedef enum : NSInteger {
     [UIView animateWithDuration:0.5 animations:^{
         
         _shoppingCarHeight.constant = _isShowSoppingCar ? 0 : _lastShoppingCarHeiht;
-        [_bottomView layoutIfNeeded];
-        [_shoppingCarView layoutIfNeeded];
-        _isShowSoppingCar ? nil : [_myTableView layoutIfNeeded];
+        
+        if(SystemVersion >= 10.0) {
+            
+            [self.view layoutIfNeeded];
+        } else {
+            
+            [_bottomView layoutIfNeeded];
+            [_shoppingCarView layoutIfNeeded];
+            _isShowSoppingCar ? nil : [_myTableView layoutIfNeeded];
+        }
     } completion:^(BOOL finished) {
         
         _isShowSoppingCar = _isShowSoppingCar ? NO : YES;
@@ -1329,11 +1363,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 50 - 6 - 40 - 105;
+        CGFloat contentWidth = ScreenWidth - (62 + 40 - 3 + 105);
         // Label 单行高度
-        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:999.9];
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:MAXFLOAT];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:14 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:[self getProductName:m.PRODUCT_NAME] fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             
@@ -1579,7 +1613,7 @@ typedef enum : NSInteger {
     vc.productsOfLocal = _selectedProducts;
     vc.promotionOrder = promotionOrder;
     vc.promotionDetailsOfServer = promotionDetailOfNR;
-    //    vc.promotionDetailGiftsOfServer = promotionDetailOfGF;
+    vc.promotionDetailGiftsOfServer = promotionDetailOfGF;
     vc.orderAddressCode = _address.ADDRESS_CODE;
     vc.orderAddressIdx = _address.IDX;
     vc.orderPayType = _currentPayType.Key;
@@ -1773,6 +1807,17 @@ typedef enum : NSInteger {
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     _keyboardHeight = 0;
+}
+
+
+- (BOOL)navigationShouldPopOnBackButton {
+    
+    [LM_alert showLMAlertViewWithTitle:@"" message:@"是否取消下单" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } cancelClickHandle:nil];
+    
+    return  NO;
 }
 
 @end

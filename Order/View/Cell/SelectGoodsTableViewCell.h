@@ -85,4 +85,10 @@
 // 产品规格距下
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *productFormatLabel_bottom;
 
+/// 库存数量
+@property (weak, nonatomic) IBOutlet UILabel *STOCK_QTY;
+
+/// 库存数量 提示
+@property (weak, nonatomic) IBOutlet UILabel *STOCK_QTY_Label;
+
 @end

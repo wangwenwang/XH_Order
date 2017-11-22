@@ -29,6 +29,6 @@
 
 @property (weak, nonatomic, nullable)id <GetReturnPartyListDelegate> delegate;
 
-- (void)GetReturnPartyList:(nullable NSString *)strUserId andstrType:(nullable NSString *)strType;
+- (void)GetReturnPartyList:(nullable NSString *)strBusinessId;
 
 @end

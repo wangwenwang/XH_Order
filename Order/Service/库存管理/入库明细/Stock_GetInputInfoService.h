@@ -12,13 +12,13 @@
 @protocol GetInputInfoServiceDelegate <NSObject>
 
 @optional
-- (void)successOfGetInputInfo:(InputInfoListModel *)inputInfoListM;
+- (void)successOfGetInputInfo:(InputInfoListModel *_Nullable)inputInfoListM;
 
 @optional
 - (void)successOfGetInputInfo_NoData;
 
 @optional
-- (void)failureOfGetInputInfo:(NSString *)msg;
+- (void)failureOfGetInputInfo:(NSString *_Nullable)msg;
 
 @end
 

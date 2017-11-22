@@ -9,7 +9,7 @@
 #import "BottleAddressListModel.h"
 
 
-NSString *const kBottleAddressListModelBottleAddressModel = @"BottleAddressModel";
+NSString *const kBottleAddressListModelBottleAddressModel = @"result";
 NSString *const kBottleAddressListModelMsg = @"msg";
 NSString *const kBottleAddressListModelType = @"type";
 

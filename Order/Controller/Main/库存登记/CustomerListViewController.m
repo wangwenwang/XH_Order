@@ -30,6 +30,11 @@
 // 地址管理
 #import "AddressListViewController.h"
 
+
+// 空瓶回厂
+#import "BottleListViewController.h"
+#import "AddBottleViewController.h"
+
 @interface CustomerListViewController ()<MakeOrderServiceDelegate, UISearchResultsUpdating, UISearchControllerDelegate, LMBlurredViewDelegate, UITableViewDataSource, UITableViewDelegate> {
     
     CustomerListSearchResultsViewController *searchResultsViewController;
@@ -220,11 +225,28 @@
 }
 
 
+- (void)pushAddBottleVC {
+    
+    AddBottleViewController *vc = [[AddBottleViewController alloc] init];
+    vc.partyM = _currentParty;
+    vc.addressM = _currentAddress;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _partysFilter.count;
+    if(tableView.tag == 1001) {
+        
+        return _partysFilter.count;
+    } else if(tableView.tag == 1002) {
+        
+        return _address.count;
+    } else {
+        return 0;
+    }
 }
 
 
@@ -301,6 +323,13 @@
             
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [_service getPartygetAddressInfo:m.IDX];
+        } else if([_vcClass isEqualToString:NSStringFromClass([BottleListViewController class])]) {
+            
+            PartyModel *m = _partysFilter[indexPath.row];
+            _currentParty = m;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service getPartygetAddressInfo:m.IDX];
         }
     }
     
@@ -309,10 +338,15 @@
         
         [_blurredView clear];
         [self LMBlurredViewClear];
-        
-        _currentParty = _partysFilter[indexPath.row];
         _currentAddress = _address[indexPath.row];
-        [self pushStockManVC];
+        
+        if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])]) {
+            
+            [self pushStockManVC];
+        } else if([_vcClass isEqualToString:NSStringFromClass([BottleListViewController class])]) {
+            
+            [self pushAddBottleVC];
+        }
     }
 }
 
@@ -338,7 +372,6 @@
         for (int i = 0; i < _partysFilter.count; i++) {
             
             PartyModel *m = _partysFilter[i];
-            
             
             // Label 容器宽度
             CGFloat contentWidth = ScreenWidth - 15 - 71.5 - 8;
@@ -489,7 +522,11 @@
     } else if(_address.count == 1) {
         
         _currentAddress = _address[0];
-        [self pushStockManVC];
+        if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])]) {
+            [self pushStockManVC];
+        } else if([_vcClass isEqualToString:NSStringFromClass([BottleListViewController class])]) {
+            [self pushAddBottleVC];
+        }
     } else {
         
         [Tools showAlert:self.view andTitle:@"没有可用地址"];

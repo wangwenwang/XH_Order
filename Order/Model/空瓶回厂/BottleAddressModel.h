@@ -10,22 +10,27 @@
 
 @interface BottleAddressModel : NSObject
 
-@property (nonatomic, strong) NSString * bUSINESSIDX;
+@property (nonatomic, strong) NSString * aDDRESSALIAS;
+@property (nonatomic, strong) NSString * aDDRESSCODE;
+@property (nonatomic, strong) NSString * aDDRESSINFO;
+@property (nonatomic, strong) NSString * aDDRESSREGION;
+@property (nonatomic, strong) NSString * aDDRESSREMARK;
+@property (nonatomic, strong) NSString * aDDRESSZIP;
+@property (nonatomic, strong) NSString * cONTACTFAX;
 @property (nonatomic, strong) NSString * cONTACTPERSON;
+@property (nonatomic, strong) NSString * cONTACTSMS;
 @property (nonatomic, strong) NSString * cONTACTTEL;
+@property (nonatomic, strong) NSString * cOORDINATE;
 @property (nonatomic, strong) NSString * iDX;
 @property (nonatomic, strong) NSString * pARTYCITY;
-@property (nonatomic, strong) NSString * pARTYCLASS;
 @property (nonatomic, strong) NSString * pARTYCODE;
-@property (nonatomic, strong) NSString * pARTYCOUNTRY;
 @property (nonatomic, strong) NSString * pARTYNAME;
-@property (nonatomic, strong) NSString * pARTYPROPERTY;
 @property (nonatomic, strong) NSString * pARTYPROVINCE;
-@property (nonatomic, strong) NSString * pARTYREMARK;
-@property (nonatomic, strong) NSString * pARTYTYPE;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 -(NSDictionary *)toDictionary;
+
+@property (assign, nonatomic) CGFloat cellHeight;
 
 @end

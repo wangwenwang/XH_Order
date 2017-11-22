@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarrierViewController">
+            <connections>
+                <outlet property="tableView" destination="2mZ-2H-27g" id="24o-BS-ozT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-pE-SlB" userLabel="搜索">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" placeholder="根据电话号码搜索" translatesAutoresizingMaskIntoConstraints="NO" id="PnL-Xq-J6e">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="p2b-W3-YWH"/>
+                            </connections>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="PnL-Xq-J6e" secondAttribute="trailing" id="Vr4-Aq-eKR"/>
+                        <constraint firstAttribute="bottom" secondItem="PnL-Xq-J6e" secondAttribute="bottom" id="X2G-Sp-X6C"/>
+                        <constraint firstItem="PnL-Xq-J6e" firstAttribute="leading" secondItem="FTL-pE-SlB" secondAttribute="leading" id="bXi-2K-pHN"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="cgS-XW-9er"/>
+                        <constraint firstItem="PnL-Xq-J6e" firstAttribute="top" secondItem="FTL-pE-SlB" secondAttribute="top" id="mL1-ce-4MU"/>
+                        <constraint firstAttribute="height" constant="44" id="qOE-8s-ygB"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2mZ-2H-27g">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="8cW-3t-zbJ"/>
+                        <outlet property="delegate" destination="-1" id="Stz-o6-Hwj"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2mZ-2H-27g" firstAttribute="top" secondItem="FTL-pE-SlB" secondAttribute="bottom" id="1Zg-mW-tRZ"/>
+                <constraint firstItem="2mZ-2H-27g" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="7Fz-42-uHg"/>
+                <constraint firstItem="FTL-pE-SlB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="POC-rU-JRx"/>
+                <constraint firstItem="FTL-pE-SlB" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Y7h-dX-6qr"/>
+                <constraint firstItem="2mZ-2H-27g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cOk-az-vaS"/>
+                <constraint firstItem="2mZ-2H-27g" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="mji-xe-WZp"/>
+                <constraint firstItem="FTL-pE-SlB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u15-sd-r12"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

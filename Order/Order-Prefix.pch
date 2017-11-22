@@ -118,6 +118,9 @@
 // StockManViewController 刷新列表数据
 #define kStockManViewController_refreshList @"StockManViewController_refreshList"
 
+// BottleViewController 选择承运商
+#define kBottleViewController_Notification @"BottleViewController_Notification"
+
 
 
 /*--------- API ---------*/
@@ -289,8 +292,17 @@
 
 /// 空瓶回厂
 
-/// 获取地址信息
-#define API_GetReturnPartyList @"http://oms.kaidongyuan.com:12300/api/GetReturnPartyList"
+/// 获取厂商地址
+#define API_GetReturnToAddress @"http://oms.kaidongyuan.com:12300/api/GetReturnToAddress"
+
+/// 获取承运信息
+#define API_GetShipmentList @"http://oms.kaidongyuan.com:12300/api/GetShipmentList"
+
+/// 获取瓶子信息
+#define API_GetReturnProductList @"http://oms.kaidongyuan.com:12300/api/GetReturnProductList"
+
+/// 下单回瓶
+#define API_ImportToOrderList @"http://oms.kaidongyuan.com:12300/api/ImportToOrderList"
 
 
 /*--------- 判断iOS版本 ---------*/

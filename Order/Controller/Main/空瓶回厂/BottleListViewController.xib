@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottleListViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="72h-SS-R68">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="400-1D-oel">
+                    <rect key="frame" x="127" y="610" width="120" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="eRV-As-AWo"/>
+                        <constraint firstAttribute="height" constant="37" id="hff-xP-qg6"/>
+                    </constraints>
+                    <state key="normal" title="添加回瓶单">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addBottleOnclick" destination="-1" eventType="touchUpInside" id="z3f-0e-fRN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="72h-SS-R68" secondAttribute="bottom" id="8G0-w8-b73"/>
+                <constraint firstItem="72h-SS-R68" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ef9-oY-a8o"/>
+                <constraint firstAttribute="bottom" secondItem="400-1D-oel" secondAttribute="bottom" constant="20" id="du3-uo-Ywa"/>
+                <constraint firstItem="400-1D-oel" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fxM-HL-ukU"/>
+                <constraint firstItem="72h-SS-R68" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nm0-l9-C32"/>
+                <constraint firstAttribute="trailing" secondItem="72h-SS-R68" secondAttribute="trailing" id="vJw-PA-rox"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

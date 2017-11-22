@@ -20,7 +20,7 @@
 #import "AppDelegate.h"
 #import "GetFeeListViewController.h"
 #import "CustomerListViewController.h"
-#import "BottleViewController.h"
+#import "BottleListViewController.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChartServiceDelegate>
 
@@ -151,16 +151,16 @@
     if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0) {
         
     } else {
-        
-        if(_myCollectionDataArrM.count >= 7) {
-            
-            [_myCollectionDataArrM removeObjectAtIndex:6];
-            
-            if(_myCollectionDataArrM.count >= 7) {
-                
-                [_myCollectionDataArrM removeObjectAtIndex:6];
-            }
-        }
+//        
+//        if(_myCollectionDataArrM.count >= 7) {
+//            
+//            [_myCollectionDataArrM removeObjectAtIndex:6];
+//            
+//            if(_myCollectionDataArrM.count >= 7) {
+//                
+//                [_myCollectionDataArrM removeObjectAtIndex:6];
+//            }
+//        }
     }
 }
 
@@ -267,7 +267,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else if([title isEqualToString:@"空瓶回厂"]) {
         
-        BottleViewController * vc = [[BottleViewController alloc] init];
+        BottleListViewController * vc = [[BottleListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

@@ -12,43 +12,36 @@
 @implementation GetReturnPartyListService
 
 
-- (void)GetReturnPartyList:(nullable NSString *)strUserId andstrType:(nullable NSString *)strType {
+- (void)GetReturnPartyList:(nullable NSString *)strBusinessId {
     
     NSDictionary *parameters = @{
-                                 @"strUserId" : strUserId,
-                                 @"strType" : strType,
-                                 @"strLicense" : @"",
+                                 @"strBusinessId" : strBusinessId,
+                                 @"strLicense" : @""
                                  };
     
     NSLog(@"获取厂商地址：%@", parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_GetReturnPartyList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:API_GetReturnToAddress parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"获取厂商地址失败---%@", responseObject);
-        int _type = [responseObject[@"type"] intValue];
-        NSString *msg = responseObject[@"msg"];
         
-        if(_type == 1) {
-            
-            NSLog(@"获取厂商地址成功---%@", responseObject);
-            BottleAddressListModel *bottleAddressListM = [[BottleAddressListModel alloc] initWithDictionary:responseObject];
+        NSLog(@"获取厂商地址成功---%@", responseObject);
+        BottleAddressListModel *bottleAddressListM = [[BottleAddressListModel alloc] initWithDictionary:responseObject];
+        
+        if([bottleAddressListM.type intValue] == 1) {
             
             if(bottleAddressListM.bottleAddressModel.count < 1) {
                 
                 [self successOfGetReturnPartyList_NoData];
             } else {
                 
-                if([_delegate respondsToSelector:@selector(successOfGetReturnPartyList:)]) {
-                    
-                    [_delegate successOfGetReturnPartyList:bottleAddressListM];
-                }
+                [self successOfGetReturnPartyList:bottleAddressListM];
             }
         } else {
             
-            [self failureOfGetReturnPartyList:msg];
+            [self failureOfGetReturnPartyList:bottleAddressListM.msg];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

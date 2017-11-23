@@ -157,12 +157,14 @@
             BottleInfoModel *m = _bottleInfoListM.bottleInfoModel[i];
             
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        m.iDX,@"PRODUCT_IDX",
+                                        @9008,@"ENT_IDX",
                                         m.pRODUCTNO,@"PRODUCT_NO",
                                         m.pRODUCTNAME,@"PRODUCT_NAME",
                                         m.pRODUCTDESC,@"PRODUCT_DESC",
                                         m.pRODUCTBARCODE,@"PRODUCT_BARCODE",
                                         m.pRODUCTSTATE,@"PRODUCT_STATE",
-                                        @1,@"LINE_NO",
+                                        @(i + 1),@"LINE_NO",
                                         nil];
             if([m.pRODUCTNAME isEqualToString:@"小瓶"]) {
                 [dic setValue:@(little) forKey:@"PO_QTY"];
@@ -173,13 +175,16 @@
             } else if([m.pRODUCTNAME isEqualToString:@"托盘"]) {
                 [dic setValue:@(tray) forKey:@"PO_QTY"];
             }
-            [OrderDetails addObject:dic];
+            CGFloat qty = [dic[@"PO_QTY"] floatValue];
+            if(qty) {
+                [OrderDetails addObject:dic];
+            }
         }
         
         if(_factory) {
             if(_carrierM) {
                 NSDictionary *json = @{
-                                       @"ORG_IDX":_factory.pARTYCODE,
+                                       @"ORG_IDX":_carrierM.ordOrgIdx,
                                        @"BUSINESS_IDX":_app.business.BUSINESS_IDX,
                                        @"FROM_IDX":_addressM.IDX,
                                        @"TO_IDX":_factory.iDX,
@@ -193,6 +198,7 @@
                                        @"TMS_DRIVER_IDX":_carrierM.tMSDRIVERIDX,
                                        @"TMS_DRIVER_NAME":_carrierM.tMSDRIVERNAME,
                                        @"TMS_DRIVER_TEL":_carrierM.tMSDRIVERTEL,
+                                       @"ENT_IDX":@9008,
                                        @"OrderDetails":OrderDetails
                                        };
                 

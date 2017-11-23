@@ -20,6 +20,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+//    CGFloat start = CFAbsoluteTimeGetCurrent();
+//    long long int sum = 0;
+//    for (int i = 0; i <= 10000000; i++) {
+//        sum += i;
+//    }
+//    NSLog(@"%lld", sum);
+//    NSLog(@"%f seconds", (CFAbsoluteTimeGetCurrent() - start));
+    
+    
+    
+    
+    
+    
+    
+    
+    
     _user = [[UserModel alloc] init];
     _business = [[BusinessModel alloc] init];
     

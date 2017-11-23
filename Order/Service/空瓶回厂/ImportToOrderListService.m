@@ -26,15 +26,16 @@
     [manager POST:API_ImportToOrderList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSLog(@"下单回瓶成功---%@", responseObject);
         int type = [responseObject[@"type"] intValue];
         NSString *msg = responseObject[@"msg"];
         
         if(type == 1) {
+            
+            NSLog(@"下单回瓶成功---%@", responseObject);
             [self successOfImportToOrderList:msg];
         } else {
             
+            NSLog(@"下单回瓶失败");
             [self failureOfImportToOrderList:msg];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

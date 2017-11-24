@@ -243,4 +243,58 @@
  */
 + (nullable NSString *)formatFloat:(float)f;
 
+
+/**
+ UIView转化成UIImage
+ 
+ @param v 视图
+ 
+ @return 传入视图 -> 生成图像
+ */
++ (nullable UIImage *)convertViewToImage:(nullable UIView *)v;
+
+
+/**
+ 图片转换base64字符串
+ 
+ @param image 图片
+ 
+ @return base64字符串
+ */
++ (nullable NSString *)convertImageToString:(nullable UIImage *)image;
+
+
+/**
+ 根据尺寸压缩图片
+ 
+ @param image             传入图片
+ @param maxLength         最大图片的Data.length
+ @param maxWidthAndHeight 最大的宽与高
+ 
+ @return 压缩后的图片Data
+ */
++ (nullable NSData *)compressImage:(nullable UIImage *)image andMaxLength:(int)maxLength andMaxWidthAndHeight:(CGFloat)maxWidthAndHeight;
+
+
+/**
+ 图片长和宽不能超过 某个长度
+ 
+ @param image       传入图片
+ @param imageLength 长和宽 不大于此值
+ 
+ @return 等比例缩小的尺寸
+ */
++ (CGSize)scaleImage:(nullable UIImage *)image andImageLength:(CGFloat)imageLength;
+
+
+/**
+ 压缩图片尺寸
+ 
+ @param image   传入图片
+ @param newSize 规定尺寸
+ 
+ @return 规定尺寸压缩后的图片
+ */
++ (nullable UIImage *)resizeImage:(nullable UIImage *)image andNewSize:(CGSize)newSize;
+
 @end

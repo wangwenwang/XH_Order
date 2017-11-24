@@ -673,4 +673,71 @@ typedef void (^Animation)(void);
     }
 }
 
+
++ (nullable UIImage *)convertViewToImage:(nullable UIView *)v {
+    UIGraphicsBeginImageContext(v.bounds.size);
+    [v.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+
++ (nullable NSString *)convertImageToString:(nullable UIImage *)image {
+    NSData *data = UIImagePNGRepresentation(image);
+    return [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+
+
++ (nullable NSData *)compressImage:(nullable UIImage *)image andMaxLength:(int)maxLength andMaxWidthAndHeight:(CGFloat)maxWidthAndHeight {
+    NSData *orgData = UIImageJPEGRepresentation(image, 1);
+    NSLog(@"orgData.lenth:%lu  orgImage:%@", (unsigned long)orgData.length, image);
+    CGSize newSize = [self scaleImage:image andImageLength:maxWidthAndHeight];
+    NSLog(@"newSize:%@", NSStringFromCGSize(newSize));
+    UIImage *newImage = [self resizeImage:image andNewSize:newSize];
+    NSData *cutData = UIImageJPEGRepresentation(newImage, 1.0);
+    NSLog(@"CutImageData.lenth%lu   image:%@", (unsigned long)cutData.length, newImage);
+    CGFloat compress = 0.9;
+    NSData *data = UIImageJPEGRepresentation(newImage, compress);
+    NSLog(@"--------1");
+    while (data.length > maxLength && compress > 0.01) {
+        
+        data = UIImageJPEGRepresentation(newImage, compress);
+        compress -= 0.02;
+    }
+    NSLog(@"--------1");
+    NSLog(@"NSDATA处理后:%lu", (unsigned long)data.length);
+    return data;
+}
+
+
++ (CGSize)scaleImage:(nullable UIImage *)image andImageLength:(CGFloat)imageLength {
+    CGFloat newWidth = image.size.width;
+    CGFloat newHeight = image.size.height;
+    CGFloat width = image.size.width;
+    CGFloat height = image.size.height;
+    if (width > imageLength || height > imageLength) {
+        if (width > height) {
+            newWidth = imageLength;
+            newHeight = newWidth * height / width;
+        } else if(height > width) {
+            newHeight = imageLength;
+            newWidth = newHeight * width / height;
+        } else {
+            newWidth = imageLength;
+            newHeight = imageLength;
+        }
+    }
+    return CGSizeMake(newWidth, newHeight);
+}
+
+
++ (nullable UIImage *)resizeImage:(nullable UIImage *)image andNewSize:(CGSize)newSize {
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 @end

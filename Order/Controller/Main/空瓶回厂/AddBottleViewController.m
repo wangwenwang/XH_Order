@@ -125,6 +125,8 @@
     _customer_PERSON.text = _addressM.CONTACT_PERSON;
     _customer_TEL.text = _addressM.CONTACT_TEL;
     
+    // 名称换行
+    
     // 地址换行
     CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
     CGFloat mulLine = [Tools getHeightOfString:_customer_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottleInfoViewController">
+            <connections>
+                <outlet property="cancenOrConfirmBtn" destination="tVr-j8-Z59" id="f5r-Ia-SPM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5j-a0-IVx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-j8-Z59">
+                    <rect key="frame" x="127.5" y="610" width="120" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="Oze-ZR-dR0"/>
+                        <constraint firstAttribute="height" constant="37" id="XqJ-uY-OrU"/>
+                    </constraints>
+                    <state key="normal" title="确认订单">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="commitOnclick" destination="-1" eventType="touchUpInside" id="Axk-Lz-0x1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="R5j-a0-IVx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9TW-9i-fbV"/>
+                <constraint firstAttribute="trailing" secondItem="R5j-a0-IVx" secondAttribute="trailing" id="A0n-Lu-fC0"/>
+                <constraint firstAttribute="bottom" secondItem="tVr-j8-Z59" secondAttribute="bottom" constant="20" id="Q0i-ay-r0a"/>
+                <constraint firstItem="tVr-j8-Z59" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Usn-g9-ohd"/>
+                <constraint firstAttribute="bottom" secondItem="R5j-a0-IVx" secondAttribute="bottom" id="b2i-W3-SVu"/>
+                <constraint firstItem="R5j-a0-IVx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cyQ-JB-eVU"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

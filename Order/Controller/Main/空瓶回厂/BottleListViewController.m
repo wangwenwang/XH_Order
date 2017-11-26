@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "BottleListTableViewCell.h"
 #import "BottleInfoViewController.h"
+#import "Tools.h"
 
 
 @interface BottleListViewController ()<GetReturnBottleListDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -89,7 +90,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kCellHeight;
+    BottleOrderModel *m = _bottleOrderListM.bottleOrderModel[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -125,6 +127,16 @@
 - (void)successOfGetReturnBottleList:(BottleOrderListModel *)bottleOrderListM {
     
     _bottleOrderListM = bottleOrderListM;
+    
+    for (int i = 0; i < _bottleOrderListM.bottleOrderModel.count; i++) {
+        
+        BottleOrderModel *m = _bottleOrderListM.bottleOrderModel[i];
+        // 收货地址换行
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+        CGFloat mulLine = [Tools getHeightOfString:m.oRDTOADDRESS fontSize:15 andWidth:(ScreenWidth - 8 - 69.5 - 3)];
+        m.cellHeight = kCellHeight + (mulLine - oneLine);
+    }
+    
     [_tableView reloadData];
 }
 

@@ -125,11 +125,27 @@
     _customer_PERSON.text = _addressM.CONTACT_PERSON;
     _customer_TEL.text = _addressM.CONTACT_TEL;
     
-    // 名称换行
-    
-    // 地址换行
+    // 客户名称换行
     CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
-    CGFloat mulLine = [Tools getHeightOfString:_customer_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
+    CGFloat mulLine = [Tools getHeightOfString:_customer_NAME.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
+    _customerViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    
+    // 客户地址换行
+    oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+    mulLine = [Tools getHeightOfString:_customer_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
+    _customerViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    
+    // 厂家名称换行
+    oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+    mulLine = [Tools getHeightOfString:_PARTY_NAME.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
+    _customerViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    
+    // 厂家地址换行
+    oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+    mulLine = [Tools getHeightOfString:_PARTY_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
     _customerViewHeight.constant += (mulLine - oneLine);
     _scrollContentViewHeight.constant += (mulLine - oneLine);
 }

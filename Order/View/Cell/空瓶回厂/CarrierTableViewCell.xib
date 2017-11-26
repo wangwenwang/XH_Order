@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xV-KY-LDH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="102.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车牌号　: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zea-rv-V9j">
                                 <rect key="frame" x="12" y="8" width="69.5" height="18"/>
@@ -94,10 +94,11 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="1xV-KY-LDH" secondAttribute="trailing" id="IRM-op-vBc"/>
                     <constraint firstItem="1xV-KY-LDH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SUC-fb-0Is"/>
-                    <constraint firstAttribute="bottom" secondItem="1xV-KY-LDH" secondAttribute="bottom" id="Wzd-Y2-8xa"/>
+                    <constraint firstAttribute="bottom" secondItem="1xV-KY-LDH" secondAttribute="bottom" constant="2" id="Wzd-Y2-8xa"/>
                     <constraint firstItem="1xV-KY-LDH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yAE-bP-5L7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
                 <outlet property="TMS_DRIVER_NAME" destination="sgK-4s-zEf" id="0Og-vZ-6br"/>
                 <outlet property="TMS_DRIVER_TEL" destination="Aes-hR-RD8" id="dLn-f6-tvR"/>

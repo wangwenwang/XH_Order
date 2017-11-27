@@ -39,13 +39,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实收: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFd-Kd-UHL">
+                                <rect key="frame" x="150" y="12" width="39" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LG3-gW-vnW">
+                                <rect key="frame" x="189" y="12" width="19" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5Sv-B1-aDc" firstAttribute="leading" secondItem="V1U-kk-jju" secondAttribute="trailing" id="5c1-Y0-VRD"/>
+                            <constraint firstItem="LG3-gW-vnW" firstAttribute="centerY" secondItem="jFd-Kd-UHL" secondAttribute="centerY" id="8tj-dw-BrS"/>
                             <constraint firstItem="5Sv-B1-aDc" firstAttribute="centerY" secondItem="V1U-kk-jju" secondAttribute="centerY" id="Cf1-cS-N8H"/>
+                            <constraint firstItem="jFd-Kd-UHL" firstAttribute="leading" secondItem="1KH-Ju-PHa" secondAttribute="leading" constant="150" id="LBK-cr-pgf"/>
                             <constraint firstItem="V1U-kk-jju" firstAttribute="centerY" secondItem="1KH-Ju-PHa" secondAttribute="centerY" id="Sqv-WE-eiH"/>
                             <constraint firstItem="nm1-eu-qu0" firstAttribute="leading" secondItem="5Sv-B1-aDc" secondAttribute="trailing" constant="2" id="XBU-Jh-RK2"/>
+                            <constraint firstItem="jFd-Kd-UHL" firstAttribute="centerY" secondItem="V1U-kk-jju" secondAttribute="centerY" id="ZgA-OO-PIn"/>
+                            <constraint firstItem="LG3-gW-vnW" firstAttribute="leading" secondItem="jFd-Kd-UHL" secondAttribute="trailing" id="e9J-eO-G87"/>
                             <constraint firstItem="V1U-kk-jju" firstAttribute="leading" secondItem="1KH-Ju-PHa" secondAttribute="leading" constant="8" id="he8-qe-ekS"/>
                             <constraint firstItem="nm1-eu-qu0" firstAttribute="centerY" secondItem="V1U-kk-jju" secondAttribute="centerY" id="uhp-1I-RfU"/>
                         </constraints>
@@ -58,9 +74,11 @@
                     <constraint firstAttribute="trailing" secondItem="1KH-Ju-PHa" secondAttribute="trailing" id="wxl-zN-zRe"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
+                <outlet property="ISSUE_QTY" destination="LG3-gW-vnW" id="Uxa-sf-Dg0"/>
+                <outlet property="ORDER_QTY" destination="nm1-eu-qu0" id="XEK-iv-nqQ"/>
                 <outlet property="PRODUCT_NAME" destination="V1U-kk-jju" id="uFd-sl-Lbx"/>
-                <outlet property="qtyLabel" destination="nm1-eu-qu0" id="XDB-ft-pzo"/>
             </connections>
         </tableViewCell>
     </objects>

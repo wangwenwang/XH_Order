@@ -1,24 +1,25 @@
 //
-//  GetReturnBottleListService.m
+//  GetReturnOrderListService.m
 //  Order
 //
 //  Created by 凯东源 on 2017/11/24.
 //  Copyright © 2017年 凯东源. All rights reserved.
 //
 
-#import "GetReturnBottleListService.h"
+#import "GetReturnOrderListService.h"
 #import <AFNetworking.h>
 
-@implementation GetReturnBottleListService
+@implementation GetReturnOrderListService
 
 
-- (void)GetReturnBottleList:(nullable NSString *)BUSINESS_IDX andORD_ORG_IDX:(nullable NSString *)ORD_ORG_IDX andTMS_DRIVER_IDX:(nullable NSString *)TMS_DRIVER_IDX andstrType:(nullable NSString *)strType andstrPage:(NSUInteger)strPage andstrPageCount:(NSUInteger)strPageCount {
+- (void)GetReturnOrderList:(nullable NSString *)strBusinessId andstrUserId:(nullable NSString *)strUserId andstrPartyType:(nullable NSString *)strPartyType andstrPartyId:(nullable NSString *)strPartyId andstrState:(nullable NSString *)strState andstrPage:(NSUInteger)strPage andstrPageCount:(NSUInteger)strPageCount {
     
     NSDictionary *parameters = @{
-                                 @"BUSINESS_IDX" : BUSINESS_IDX,
-                                 @"ORD_ORG_IDX" : ORD_ORG_IDX,
-                                 @"TMS_DRIVER_IDX" : TMS_DRIVER_IDX,
-                                 @"strType" : strType,
+                                 @"strBusinessId" : strBusinessId,
+                                 @"strUserId" : strUserId,
+                                 @"strPartyType" : strPartyType,
+                                 @"strPartyId" : strPartyId,
+                                 @"strState" : strState,
                                  @"strEndDate" : @"",
                                  @"strStartDate" : @"",
                                  @"strPage" : @(strPage),
@@ -30,7 +31,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_GetReturnBottleList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:API_GetReturnOrderList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -41,7 +42,7 @@
 
         if(_type == 1) {
             
-            BottleOrderListModel *bottleOrderListM = [[BottleOrderListModel alloc] initWithDictionary:responseObject[@"result"]];
+            BottleOrderListModel *bottleOrderListM = [[BottleOrderListModel alloc] initWithDictionary:responseObject];
             
             if(_type < 1) {
 

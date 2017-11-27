@@ -13,8 +13,11 @@
 // 种类
 @property (weak, nonatomic) IBOutlet UILabel *PRODUCT_NAME;
 
-// 数量
-@property (weak, nonatomic) IBOutlet UILabel *qtyLabel;
+// 下单数量
+@property (weak, nonatomic) IBOutlet UILabel *ORDER_QTY;
+
+// 实收数量
+@property (weak, nonatomic) IBOutlet UILabel *ISSUE_QTY;
 
 @end
 
@@ -35,7 +38,8 @@
 - (void)setBottleDetailItemM:(BottleDetailItemModel *)bottleDetailItemM {
     
     _PRODUCT_NAME.text = bottleDetailItemM.pRODUCTNAME;
-    _qtyLabel.text = bottleDetailItemM.pRODUCTNAME;
+    _ORDER_QTY.text = bottleDetailItemM.oRDERQTY;
+    _ISSUE_QTY.text = ([_ORD_WORKFLOW isEqualToString:@"已出库"] || [_ORD_WORKFLOW isEqualToString:@"已交付"]) ? bottleDetailItemM.iSSUEQTY : @"尚未收货";
 }
 
 @end

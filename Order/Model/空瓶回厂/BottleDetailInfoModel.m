@@ -10,6 +10,7 @@
 
 
 NSString *const kBottleDetailInfoModelIDX = @"IDX";
+NSString *const kBottleDetailInfoModelORDDATEADD = @"ORD_DATE_ADD";
 NSString *const kBottleDetailInfoModelORDENTIDX = @"ORD_ENT_IDX";
 NSString *const kBottleDetailInfoModelORDFROMADDRESS = @"ORD_FROM_ADDRESS";
 NSString *const kBottleDetailInfoModelORDFROMCITY = @"ORD_FROM_CITY";
@@ -48,8 +49,11 @@ NSString *const kBottleDetailInfoModelORDTOREGION = @"ORD_TO_REGION";
 NSString *const kBottleDetailInfoModelORDTOSITE = @"ORD_TO_SITE";
 NSString *const kBottleDetailInfoModelORDTOZIP = @"ORD_TO_ZIP";
 NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
+NSString *const kBottleDetailInfoModelOTSDELIVERYACTUAL = @"OTS_DELIVERY_ACTUAL";
+NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
 
-
+@interface BottleDetailInfoModel ()
+@end
 @implementation BottleDetailInfoModel
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
@@ -57,6 +61,9 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     self = [super init];
     if(![dictionary[kBottleDetailInfoModelIDX] isKindOfClass:[NSNull class]]){
         self.iDX = dictionary[kBottleDetailInfoModelIDX];
+    }
+    if(![dictionary[kBottleDetailInfoModelORDDATEADD] isKindOfClass:[NSNull class]]){
+        self.oRDDATEADD = dictionary[kBottleDetailInfoModelORDDATEADD];
     }
     if(![dictionary[kBottleDetailInfoModelORDENTIDX] isKindOfClass:[NSNull class]]){
         self.oRDENTIDX = dictionary[kBottleDetailInfoModelORDENTIDX];
@@ -172,6 +179,12 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     if(![dictionary[kBottleDetailInfoModelORDWORKFLOW] isKindOfClass:[NSNull class]]){
         self.oRDWORKFLOW = dictionary[kBottleDetailInfoModelORDWORKFLOW];
     }
+    if(![dictionary[kBottleDetailInfoModelOTSDELIVERYACTUAL] isKindOfClass:[NSNull class]]){
+        self.oTSDELIVERYACTUAL = dictionary[kBottleDetailInfoModelOTSDELIVERYACTUAL];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSDATECONFIRMED] isKindOfClass:[NSNull class]]){
+        self.tMSDATECONFIRMED = dictionary[kBottleDetailInfoModelTMSDATECONFIRMED];
+    }
     return self;
 }
 
@@ -184,6 +197,9 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
     if(self.iDX != nil){
         dictionary[kBottleDetailInfoModelIDX] = self.iDX;
+    }
+    if(self.oRDDATEADD != nil){
+        dictionary[kBottleDetailInfoModelORDDATEADD] = self.oRDDATEADD;
     }
     if(self.oRDENTIDX != nil){
         dictionary[kBottleDetailInfoModelORDENTIDX] = self.oRDENTIDX;
@@ -299,6 +315,12 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     if(self.oRDWORKFLOW != nil){
         dictionary[kBottleDetailInfoModelORDWORKFLOW] = self.oRDWORKFLOW;
     }
+    if(self.oTSDELIVERYACTUAL != nil){
+        dictionary[kBottleDetailInfoModelOTSDELIVERYACTUAL] = self.oTSDELIVERYACTUAL;
+    }
+    if(self.tMSDATECONFIRMED != nil){
+        dictionary[kBottleDetailInfoModelTMSDATECONFIRMED] = self.tMSDATECONFIRMED;
+    }
     return dictionary;
     
 }
@@ -313,6 +335,9 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
 {
     if(self.iDX != nil){
         [aCoder encodeObject:self.iDX forKey:kBottleDetailInfoModelIDX];
+    }
+    if(self.oRDDATEADD != nil){
+        [aCoder encodeObject:self.oRDDATEADD forKey:kBottleDetailInfoModelORDDATEADD];
     }
     if(self.oRDENTIDX != nil){
         [aCoder encodeObject:self.oRDENTIDX forKey:kBottleDetailInfoModelORDENTIDX];
@@ -428,6 +453,12 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     if(self.oRDWORKFLOW != nil){
         [aCoder encodeObject:self.oRDWORKFLOW forKey:kBottleDetailInfoModelORDWORKFLOW];
     }
+    if(self.oTSDELIVERYACTUAL != nil){
+        [aCoder encodeObject:self.oTSDELIVERYACTUAL forKey:kBottleDetailInfoModelOTSDELIVERYACTUAL];
+    }
+    if(self.tMSDATECONFIRMED != nil){
+        [aCoder encodeObject:self.tMSDATECONFIRMED forKey:kBottleDetailInfoModelTMSDATECONFIRMED];
+    }
     
 }
 
@@ -438,6 +469,7 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
 {
     self = [super init];
     self.iDX = [aDecoder decodeObjectForKey:kBottleDetailInfoModelIDX];
+    self.oRDDATEADD = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDDATEADD];
     self.oRDENTIDX = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDENTIDX];
     self.oRDFROMADDRESS = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDFROMADDRESS];
     self.oRDFROMCITY = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDFROMCITY];
@@ -476,6 +508,8 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     self.oRDTOSITE = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDTOSITE];
     self.oRDTOZIP = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDTOZIP];
     self.oRDWORKFLOW = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDWORKFLOW];
+    self.oTSDELIVERYACTUAL = [aDecoder decodeObjectForKey:kBottleDetailInfoModelOTSDELIVERYACTUAL];
+    self.tMSDATECONFIRMED = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSDATECONFIRMED];
     return self;
     
 }
@@ -488,6 +522,7 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     BottleDetailInfoModel *copy = [BottleDetailInfoModel new];
     
     copy.iDX = [self.iDX copy];
+    copy.oRDDATEADD = [self.oRDDATEADD copy];
     copy.oRDENTIDX = [self.oRDENTIDX copy];
     copy.oRDFROMADDRESS = [self.oRDFROMADDRESS copy];
     copy.oRDFROMCITY = [self.oRDFROMCITY copy];
@@ -526,6 +561,8 @@ NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
     copy.oRDTOSITE = [self.oRDTOSITE copy];
     copy.oRDTOZIP = [self.oRDTOZIP copy];
     copy.oRDWORKFLOW = [self.oRDWORKFLOW copy];
+    copy.oTSDELIVERYACTUAL = [self.oTSDELIVERYACTUAL copy];
+    copy.tMSDATECONFIRMED = [self.tMSDATECONFIRMED copy];
     
     return copy;
 }

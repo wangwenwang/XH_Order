@@ -213,7 +213,7 @@
 #define API_GetAppBillFeeList @"http://oms.kaidongyuan.com:12300/api/GetAppBillFeeList"
 
 /// 费用列表
-#define API_GetAppBusinessFeeList @"http://oms.kaidongyuan.com:12300/api/GI also incredible, but this language is not optimisticetAppBusinessFeeList"
+#define API_GetAppBusinessFeeList @"http://oms.kaidongyuan.com:12300/api/GetAppBusinessFeeList"
 
 /// 注册
 #define API_register @"http://oms.kaidongyuan.com:12300/api/register"
@@ -305,7 +305,7 @@
 #define API_ImportToOrderList @"http://oms.kaidongyuan.com:12300/api/ImportToOrderList"
 
 /// 获取回瓶列表
-#define API_GetReturnBottleList @"http://oms.kaidongyuan.com:12300/api/GetReturnBottleList"
+#define API_GetReturnOrderList @"http://oms.kaidongyuan.com:12300/api/GetReturnOrderList"
 
 /// 获取回瓶详情列表
 #define API_GetReturnBottleInfo @"http://oms.kaidongyuan.com:12300/api/GetReturnBottleInfo"

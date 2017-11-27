@@ -44,7 +44,7 @@
     _mapManager = [[BMKMapManager alloc] init];
     
     // 如果要关注网络及授权验证事件，请设定generalDelegate参数
-    BOOL ret = [_mapManager start:@"dpekkrgejAC0vIdyFZG6ZIMpPwrGgHtW"  generalDelegate:self];
+    BOOL ret = [_mapManager start:@"SfDQUvATmAuetcZVbCq6aOe9lM11zNVc"  generalDelegate:self];
     if (!ret) {
         NSLog(@"百度地图加载失败！");
     }else {

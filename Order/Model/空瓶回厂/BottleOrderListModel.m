@@ -9,7 +9,9 @@
 #import "BottleOrderListModel.h"
 
 
-NSString *const kBottleOrderListModelBottleOrderModel = @"List";
+NSString *const kBottleOrderListModelBottleOrderModel = @"result";
+NSString *const kBottleOrderListModelMsg = @"msg";
+NSString *const kBottleOrderListModelType = @"type";
 
 
 @implementation BottleOrderListModel
@@ -25,6 +27,12 @@ NSString *const kBottleOrderListModelBottleOrderModel = @"List";
             [bottleOrderModelItems addObject:bottleOrderModelItem];
         }
         self.bottleOrderModel = bottleOrderModelItems;
+    }
+    if(![dictionary[kBottleOrderListModelMsg] isKindOfClass:[NSNull class]]){
+        self.msg = dictionary[kBottleOrderListModelMsg];
+    }
+    if(![dictionary[kBottleOrderListModelType] isKindOfClass:[NSNull class]]){
+        self.type = dictionary[kBottleOrderListModelType];
     }
     return self;
 }
@@ -43,6 +51,12 @@ NSString *const kBottleOrderListModelBottleOrderModel = @"List";
         }
         dictionary[kBottleOrderListModelBottleOrderModel] = dictionaryElements;
     }
+    if(self.msg != nil){
+        dictionary[kBottleOrderListModelMsg] = self.msg;
+    }
+    if(self.type != nil){
+        dictionary[kBottleOrderListModelType] = self.type;
+    }
     return dictionary;
     
 }
@@ -58,6 +72,12 @@ NSString *const kBottleOrderListModelBottleOrderModel = @"List";
     if(self.bottleOrderModel != nil){
         [aCoder encodeObject:self.bottleOrderModel forKey:kBottleOrderListModelBottleOrderModel];
     }
+    if(self.msg != nil){
+        [aCoder encodeObject:self.msg forKey:kBottleOrderListModelMsg];
+    }
+    if(self.type != nil){
+        [aCoder encodeObject:self.type forKey:kBottleOrderListModelType];
+    }
     
 }
 
@@ -68,6 +88,8 @@ NSString *const kBottleOrderListModelBottleOrderModel = @"List";
 {
     self = [super init];
     self.bottleOrderModel = [aDecoder decodeObjectForKey:kBottleOrderListModelBottleOrderModel];
+    self.msg = [aDecoder decodeObjectForKey:kBottleOrderListModelMsg];
+    self.type = [aDecoder decodeObjectForKey:kBottleOrderListModelType];
     return self;
     
 }
@@ -80,6 +102,8 @@ NSString *const kBottleOrderListModelBottleOrderModel = @"List";
     BottleOrderListModel *copy = [BottleOrderListModel new];
     
     copy.bottleOrderModel = [self.bottleOrderModel copy];
+    copy.msg = [self.msg copy];
+    copy.type = [self.type copy];
     
     return copy;
 }

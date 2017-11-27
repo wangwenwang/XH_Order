@@ -11,6 +11,8 @@
 
 @interface BottleInfoTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) NSString *ORD_WORKFLOW;
+
 @property (strong, nonatomic) BottleDetailItemModel *bottleDetailItemM;
 
 @end

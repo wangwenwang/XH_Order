@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BottleOrderListModel.h"
 
-@protocol GetReturnBottleListDelegate <NSObject>
+@protocol GetReturnOrderListDelegate <NSObject>
 
 /// 获取瓶子订单列表 成功
 @optional
@@ -25,10 +25,10 @@
 
 @end
 
-@interface GetReturnBottleListService : NSObject
+@interface GetReturnOrderListService : NSObject
 
-@property (weak, nonatomic, nullable)id <GetReturnBottleListDelegate> delegate;
+@property (weak, nonatomic, nullable)id <GetReturnOrderListDelegate> delegate;
 
-- (void)GetReturnBottleList:(nullable NSString *)BUSINESS_IDX andORD_ORG_IDX:(nullable NSString *)ORD_ORG_IDX andTMS_DRIVER_IDX:(nullable NSString *)TMS_DRIVER_IDX andstrType:(nullable NSString *)strType andstrPage:(NSUInteger)strPage andstrPageCount:(NSUInteger)strPageCount;
+- (void)GetReturnOrderList:(nullable NSString *)strBusinessId andstrUserId:(nullable NSString *)strUserId andstrPartyType:(nullable NSString *)strPartyType andstrPartyId:(nullable NSString *)strPartyId andstrState:(nullable NSString *)strState andstrPage:(NSUInteger)strPage andstrPageCount:(NSUInteger)strPageCount;
 
 @end

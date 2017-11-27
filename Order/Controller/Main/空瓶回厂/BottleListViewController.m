@@ -11,12 +11,13 @@
 #import "AppDelegate.h"
 #import "BottleListTableViewCell.h"
 #import "BottleInfoViewController.h"
+#import "GetReturnOrderListService.h"
 #import "Tools.h"
 
 
-@interface BottleListViewController ()<GetReturnBottleListDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface BottleListViewController ()<GetReturnOrderListDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) GetReturnBottleListService *service;
+@property (strong, nonatomic) GetReturnOrderListService *service;
 
 @property (strong, nonatomic) BottleOrderListModel *bottleOrderListM;
 
@@ -37,7 +38,7 @@
     
     if(self = [super init]) {
         
-        _service = [[GetReturnBottleListService alloc] init];
+        _service = [[GetReturnOrderListService alloc] init];
         _service.delegate = self;
         
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -53,7 +54,7 @@
     
     [self registerCell];
     
-    [_service GetReturnBottleList:_app.business.BUSINESS_IDX andORD_ORG_IDX:@"" andTMS_DRIVER_IDX:@"" andstrType:@"NPLY" andstrPage:1 andstrPageCount:999];
+    [_service GetReturnOrderList:_app.business.BUSINESS_IDX andstrUserId:_app.user.IDX andstrPartyType:@"" andstrPartyId:@"" andstrState:@"YPLY" andstrPage:1 andstrPageCount:999];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,7 +123,7 @@
 }
 
 
-#pragma mark - GetReturnBottleListDelegate
+#pragma mark - GetReturnOrderListDelegate
 
 - (void)successOfGetReturnBottleList:(BottleOrderListModel *)bottleOrderListM {
     

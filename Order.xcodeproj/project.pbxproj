@@ -44,6 +44,8 @@
 		3013F3721FC7F0F700CF69CA /* DriverOrderImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013F3711FC7F0F700CF69CA /* DriverOrderImageService.m */; };
 		3013F3751FC7FE2F00CF69CA /* ReturnOrderCancelService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013F3741FC7FE2F00CF69CA /* ReturnOrderCancelService.m */; };
 		3013F3781FC80F8B00CF69CA /* OrderCancelService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013F3771FC80F8B00CF69CA /* OrderCancelService.m */; };
+		3013F37C1FCBB66400CF69CA /* BottleInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013F37A1FCBB66400CF69CA /* BottleInfoTableViewCell.m */; };
+		3013F37D1FCBB66400CF69CA /* BottleInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3013F37B1FCBB66400CF69CA /* BottleInfoTableViewCell.xib */; };
 		301AD39C1F698E0100CD13D0 /* Store_GetPartyStockListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AD39B1F698E0100CD13D0 /* Store_GetPartyStockListService.m */; };
 		301AD39F1F69F8FF00CD13D0 /* Store_GetStockNoListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AD39E1F69F8FF00CD13D0 /* Store_GetStockNoListService.m */; };
 		301AD3A31F6A1EBD00CD13D0 /* StockNoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AD3A11F6A1EBD00CD13D0 /* StockNoListViewController.m */; };
@@ -484,6 +486,9 @@
 		3013F3741FC7FE2F00CF69CA /* ReturnOrderCancelService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReturnOrderCancelService.m; sourceTree = "<group>"; };
 		3013F3761FC80F8A00CF69CA /* OrderCancelService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCancelService.h; sourceTree = "<group>"; };
 		3013F3771FC80F8B00CF69CA /* OrderCancelService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCancelService.m; sourceTree = "<group>"; };
+		3013F3791FCBB66400CF69CA /* BottleInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottleInfoTableViewCell.h; sourceTree = "<group>"; };
+		3013F37A1FCBB66400CF69CA /* BottleInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottleInfoTableViewCell.m; sourceTree = "<group>"; };
+		3013F37B1FCBB66400CF69CA /* BottleInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleInfoTableViewCell.xib; sourceTree = "<group>"; };
 		301AD39A1F698E0100CD13D0 /* Store_GetPartyStockListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store_GetPartyStockListService.h; sourceTree = "<group>"; };
 		301AD39B1F698E0100CD13D0 /* Store_GetPartyStockListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store_GetPartyStockListService.m; sourceTree = "<group>"; };
 		301AD39D1F69F8FF00CD13D0 /* Store_GetStockNoListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store_GetStockNoListService.h; sourceTree = "<group>"; };
@@ -2706,6 +2711,9 @@
 				3013F3501FC7C44F00CF69CA /* BottleListTableViewCell.h */,
 				3013F3511FC7C44F00CF69CA /* BottleListTableViewCell.m */,
 				3013F3521FC7C44F00CF69CA /* BottleListTableViewCell.xib */,
+				3013F3791FCBB66400CF69CA /* BottleInfoTableViewCell.h */,
+				3013F37A1FCBB66400CF69CA /* BottleInfoTableViewCell.m */,
+				3013F37B1FCBB66400CF69CA /* BottleInfoTableViewCell.xib */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -2795,6 +2803,7 @@
 				303567011F710384009E6EFB /* GetInputInfoTableViewCell.xib in Resources */,
 				30F7B8D01DBF0B15004CD128 /* AddGiftTypesTableViewCell.xib in Resources */,
 				30126A791DB0725500BABACF /* SelectGoodsTableViewCell.xib in Resources */,
+				3013F37D1FCBB66400CF69CA /* BottleInfoTableViewCell.xib in Resources */,
 				30BB2E031F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.xib in Resources */,
 				303566B71F70F2AD009E6EFB /* InputReturnViewController.xib in Resources */,
 				30BBF1371F17612400496518 /* Add_AddressViewController.xib in Resources */,
@@ -2953,6 +2962,7 @@
 				301D7DB21F5A3D2E00D83410 /* GetAppBusinessFeeListTableViewCell.m in Sources */,
 				30201F201F1083970055BA6A /* GetFeeListService.m in Sources */,
 				309E10E31F6D19E0008E1F49 /* InputItemModel.m in Sources */,
+				3013F37C1FCBB66400CF69CA /* BottleInfoTableViewCell.m in Sources */,
 				304A7ABB1DB716780039B0B2 /* payTypeTableViewCell.m in Sources */,
 				30CDC6391D9907CD0035602F /* PhotoBroswerLayout.m in Sources */,
 				30CDC64B1D9907CD0035602F /* NSObject+Extend.m in Sources */,

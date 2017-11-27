@@ -22,7 +22,31 @@
 
 @property (strong, nonatomic) AppDelegate *app;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+// 客户名称
+@property (weak, nonatomic) IBOutlet UILabel *ORD_FROM_NAME;
+// 客户地址
+@property (weak, nonatomic) IBOutlet UILabel *ORD_FROM_ADDRESS;
+// 联系姓名
+@property (weak, nonatomic) IBOutlet UILabel *ORD_FROM_CNAME;
+// 联系电话
+@property (weak, nonatomic) IBOutlet UILabel *ORD_FROM_CTEL;
+
+// 厂家名称
+@property (weak, nonatomic) IBOutlet UILabel *ORD_TO_NAME;
+// 厂家地址
+@property (weak, nonatomic) IBOutlet UILabel *ORD_TO_ADDRESS;
+
+// 物流状态
+@property (weak, nonatomic) IBOutlet UILabel *ORD_WORKFLOW;
+
 @end
+
+
+#define kCellHeight 82
+
+#define kCellName @"BottleInfoTableViewCell"
 
 @implementation BottleInfoViewController
 

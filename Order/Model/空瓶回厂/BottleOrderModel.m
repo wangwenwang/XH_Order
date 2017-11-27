@@ -10,6 +10,7 @@
 
 
 NSString *const kBottleOrderModelIDX = @"IDX";
+NSString *const kBottleOrderModelORDDATEADD = @"ORD_DATE_ADD";
 NSString *const kBottleOrderModelORDENTIDX = @"ORD_ENT_IDX";
 NSString *const kBottleOrderModelORDFROMADDRESS = @"ORD_FROM_ADDRESS";
 NSString *const kBottleOrderModelORDFROMCITY = @"ORD_FROM_CITY";
@@ -48,6 +49,8 @@ NSString *const kBottleOrderModelORDTOREGION = @"ORD_TO_REGION";
 NSString *const kBottleOrderModelORDTOSITE = @"ORD_TO_SITE";
 NSString *const kBottleOrderModelORDTOZIP = @"ORD_TO_ZIP";
 NSString *const kBottleOrderModelORDWORKFLOW = @"ORD_WORKFLOW";
+NSString *const kBottleOrderModelOTSDELIVERYACTUAL = @"OTS_DELIVERY_ACTUAL";
+NSString *const kBottleOrderModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
 NSString *const kBottleOrderModelTMSDRIVERIDX = @"TMS_DRIVER_IDX";
 NSString *const kBottleOrderModelTMSDRIVERNAME = @"TMS_DRIVER_NAME";
 NSString *const kBottleOrderModelTMSDRIVERTEL = @"TMS_DRIVER_TEL";
@@ -66,6 +69,9 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     self = [super init];
     if(![dictionary[kBottleOrderModelIDX] isKindOfClass:[NSNull class]]){
         self.iDX = dictionary[kBottleOrderModelIDX];
+    }
+    if(![dictionary[kBottleOrderModelORDDATEADD] isKindOfClass:[NSNull class]]){
+        self.oRDDATEADD = dictionary[kBottleOrderModelORDDATEADD];
     }
     if(![dictionary[kBottleOrderModelORDENTIDX] isKindOfClass:[NSNull class]]){
         self.oRDENTIDX = dictionary[kBottleOrderModelORDENTIDX];
@@ -181,6 +187,12 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     if(![dictionary[kBottleOrderModelORDWORKFLOW] isKindOfClass:[NSNull class]]){
         self.oRDWORKFLOW = dictionary[kBottleOrderModelORDWORKFLOW];
     }
+    if(![dictionary[kBottleOrderModelOTSDELIVERYACTUAL] isKindOfClass:[NSNull class]]){
+        self.oTSDELIVERYACTUAL = dictionary[kBottleOrderModelOTSDELIVERYACTUAL];
+    }
+    if(![dictionary[kBottleOrderModelTMSDATECONFIRMED] isKindOfClass:[NSNull class]]){
+        self.tMSDATECONFIRMED = dictionary[kBottleOrderModelTMSDATECONFIRMED];
+    }
     if(![dictionary[kBottleOrderModelTMSDRIVERIDX] isKindOfClass:[NSNull class]]){
         self.tMSDRIVERIDX = dictionary[kBottleOrderModelTMSDRIVERIDX];
     }
@@ -220,6 +232,9 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
     if(self.iDX != nil){
         dictionary[kBottleOrderModelIDX] = self.iDX;
+    }
+    if(self.oRDDATEADD != nil){
+        dictionary[kBottleOrderModelORDDATEADD] = self.oRDDATEADD;
     }
     if(self.oRDENTIDX != nil){
         dictionary[kBottleOrderModelORDENTIDX] = self.oRDENTIDX;
@@ -335,6 +350,12 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     if(self.oRDWORKFLOW != nil){
         dictionary[kBottleOrderModelORDWORKFLOW] = self.oRDWORKFLOW;
     }
+    if(self.oTSDELIVERYACTUAL != nil){
+        dictionary[kBottleOrderModelOTSDELIVERYACTUAL] = self.oTSDELIVERYACTUAL;
+    }
+    if(self.tMSDATECONFIRMED != nil){
+        dictionary[kBottleOrderModelTMSDATECONFIRMED] = self.tMSDATECONFIRMED;
+    }
     if(self.tMSDRIVERIDX != nil){
         dictionary[kBottleOrderModelTMSDRIVERIDX] = self.tMSDRIVERIDX;
     }
@@ -376,6 +397,9 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
 {
     if(self.iDX != nil){
         [aCoder encodeObject:self.iDX forKey:kBottleOrderModelIDX];
+    }
+    if(self.oRDDATEADD != nil){
+        [aCoder encodeObject:self.oRDDATEADD forKey:kBottleOrderModelORDDATEADD];
     }
     if(self.oRDENTIDX != nil){
         [aCoder encodeObject:self.oRDENTIDX forKey:kBottleOrderModelORDENTIDX];
@@ -491,6 +515,12 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     if(self.oRDWORKFLOW != nil){
         [aCoder encodeObject:self.oRDWORKFLOW forKey:kBottleOrderModelORDWORKFLOW];
     }
+    if(self.oTSDELIVERYACTUAL != nil){
+        [aCoder encodeObject:self.oTSDELIVERYACTUAL forKey:kBottleOrderModelOTSDELIVERYACTUAL];
+    }
+    if(self.tMSDATECONFIRMED != nil){
+        [aCoder encodeObject:self.tMSDATECONFIRMED forKey:kBottleOrderModelTMSDATECONFIRMED];
+    }
     if(self.tMSDRIVERIDX != nil){
         [aCoder encodeObject:self.tMSDRIVERIDX forKey:kBottleOrderModelTMSDRIVERIDX];
     }
@@ -528,6 +558,7 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
 {
     self = [super init];
     self.iDX = [aDecoder decodeObjectForKey:kBottleOrderModelIDX];
+    self.oRDDATEADD = [aDecoder decodeObjectForKey:kBottleOrderModelORDDATEADD];
     self.oRDENTIDX = [aDecoder decodeObjectForKey:kBottleOrderModelORDENTIDX];
     self.oRDFROMADDRESS = [aDecoder decodeObjectForKey:kBottleOrderModelORDFROMADDRESS];
     self.oRDFROMCITY = [aDecoder decodeObjectForKey:kBottleOrderModelORDFROMCITY];
@@ -566,6 +597,8 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     self.oRDTOSITE = [aDecoder decodeObjectForKey:kBottleOrderModelORDTOSITE];
     self.oRDTOZIP = [aDecoder decodeObjectForKey:kBottleOrderModelORDTOZIP];
     self.oRDWORKFLOW = [aDecoder decodeObjectForKey:kBottleOrderModelORDWORKFLOW];
+    self.oTSDELIVERYACTUAL = [aDecoder decodeObjectForKey:kBottleOrderModelOTSDELIVERYACTUAL];
+    self.tMSDATECONFIRMED = [aDecoder decodeObjectForKey:kBottleOrderModelTMSDATECONFIRMED];
     self.tMSDRIVERIDX = [aDecoder decodeObjectForKey:kBottleOrderModelTMSDRIVERIDX];
     self.tMSDRIVERNAME = [aDecoder decodeObjectForKey:kBottleOrderModelTMSDRIVERNAME];
     self.tMSDRIVERTEL = [aDecoder decodeObjectForKey:kBottleOrderModelTMSDRIVERTEL];
@@ -587,6 +620,7 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     BottleOrderModel *copy = [BottleOrderModel new];
     
     copy.iDX = [self.iDX copy];
+    copy.oRDDATEADD = [self.oRDDATEADD copy];
     copy.oRDENTIDX = [self.oRDENTIDX copy];
     copy.oRDFROMADDRESS = [self.oRDFROMADDRESS copy];
     copy.oRDFROMCITY = [self.oRDFROMCITY copy];
@@ -625,6 +659,8 @@ NSString *const kBottleOrderModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
     copy.oRDTOSITE = [self.oRDTOSITE copy];
     copy.oRDTOZIP = [self.oRDTOZIP copy];
     copy.oRDWORKFLOW = [self.oRDWORKFLOW copy];
+    copy.oTSDELIVERYACTUAL = [self.oTSDELIVERYACTUAL copy];
+    copy.tMSDATECONFIRMED = [self.tMSDATECONFIRMED copy];
     copy.tMSDRIVERIDX = [self.tMSDRIVERIDX copy];
     copy.tMSDRIVERNAME = [self.tMSDRIVERNAME copy];
     copy.tMSDRIVERTEL = [self.tMSDRIVERTEL copy];

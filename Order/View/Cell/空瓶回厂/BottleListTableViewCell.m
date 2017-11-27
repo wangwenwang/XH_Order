@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ORD_NO;
 
+@property (weak, nonatomic) IBOutlet UILabel *ORD_DATE_ADD;
+
 @property (weak, nonatomic) IBOutlet UILabel *ORD_TO_ADDRESS;
 
 @property (weak, nonatomic) IBOutlet UILabel *ORD_WORKFLOW;
@@ -35,6 +37,7 @@
 - (void)setBottleOrderM:(BottleOrderModel *)bottleOrderM {
     
     _ORD_NO.text = bottleOrderM.oRDNO;
+    _ORD_DATE_ADD.text = bottleOrderM.oRDDATEADD;
     _ORD_TO_ADDRESS.text = bottleOrderM.oRDTOADDRESS;
     _ORD_WORKFLOW.text = bottleOrderM.oRDWORKFLOW;
 }

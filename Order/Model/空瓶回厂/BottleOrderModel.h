@@ -11,6 +11,7 @@
 @interface BottleOrderModel : NSObject
 
 @property (nonatomic, strong) NSString * iDX;
+@property (nonatomic, strong) NSString * oRDDATEADD;
 @property (nonatomic, strong) NSString * oRDENTIDX;
 @property (nonatomic, strong) NSString * oRDFROMADDRESS;
 @property (nonatomic, strong) NSString * oRDFROMCITY;
@@ -49,6 +50,8 @@
 @property (nonatomic, strong) NSString * oRDTOSITE;
 @property (nonatomic, strong) NSString * oRDTOZIP;
 @property (nonatomic, strong) NSString * oRDWORKFLOW;
+@property (nonatomic, strong) NSString * oTSDELIVERYACTUAL;
+@property (nonatomic, strong) NSString * tMSDATECONFIRMED;
 @property (nonatomic, strong) NSString * tMSDRIVERIDX;
 @property (nonatomic, strong) NSString * tMSDRIVERNAME;
 @property (nonatomic, strong) NSString * tMSDRIVERTEL;

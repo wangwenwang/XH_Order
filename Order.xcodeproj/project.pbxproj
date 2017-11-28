@@ -370,6 +370,9 @@
 		30E5A07B1D9E075800D94F77 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E5A0791D9E075800D94F77 /* OrderDetailViewController.xib */; };
 		30E616E91F28771B0039D73D /* ANBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E616E61F28771B0039D73D /* ANBlurredImageView.m */; };
 		30E616EA1F28771B0039D73D /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E616E81F28771B0039D73D /* UIImage+BoxBlur.m */; };
+		30E8BD381FCD6F9F009E4673 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 30E8BD331FCD6F9F009E4673 /* ico_make.png */; };
+		30E8BD391FCD6F9F009E4673 /* LMDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E8BD351FCD6F9F009E4673 /* LMDropDownMenu.m */; };
+		30E8BD3A1FCD6F9F009E4673 /* LMTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E8BD371FCD6F9F009E4673 /* LMTitleView.m */; };
 		30E9C0A01DA8E10300A09182 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E9C09E1DA8E10300A09182 /* NewsViewController.m */; };
 		30E9C0A11DA8E10300A09182 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E9C09F1DA8E10300A09182 /* NewsViewController.xib */; };
 		30E9C0A51DA8E15A00A09182 /* HotProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E9C0A31DA8E15A00A09182 /* HotProductViewController.m */; };
@@ -1059,6 +1062,11 @@
 		30E616E61F28771B0039D73D /* ANBlurredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBlurredImageView.m; sourceTree = "<group>"; };
 		30E616E71F28771B0039D73D /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
 		30E616E81F28771B0039D73D /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
+		30E8BD331FCD6F9F009E4673 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		30E8BD341FCD6F9F009E4673 /* LMDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDropDownMenu.h; sourceTree = "<group>"; };
+		30E8BD351FCD6F9F009E4673 /* LMDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDropDownMenu.m; sourceTree = "<group>"; };
+		30E8BD361FCD6F9F009E4673 /* LMTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTitleView.h; sourceTree = "<group>"; };
+		30E8BD371FCD6F9F009E4673 /* LMTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTitleView.m; sourceTree = "<group>"; };
 		30E9C09D1DA8E10300A09182 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		30E9C09E1DA8E10300A09182 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		30E9C09F1DA8E10300A09182 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
@@ -1569,6 +1577,7 @@
 		304A7AE41DB925990039B0B2 /* Custum */ = {
 			isa = PBXGroup;
 			children = (
+				30E8BD321FCD6F9F009E4673 /* LMDropDownMenu_TitleView */,
 				301D7DE61F5A3ECE00D83410 /* IB_UIButton.h */,
 				301D7DE71F5A3ECE00D83410 /* IB_UIButton.m */,
 				30B948E81EEA4B5500E4C3EC /* IB_UIView.h */,
@@ -2671,6 +2680,18 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		30E8BD321FCD6F9F009E4673 /* LMDropDownMenu_TitleView */ = {
+			isa = PBXGroup;
+			children = (
+				30E8BD331FCD6F9F009E4673 /* ico_make.png */,
+				30E8BD341FCD6F9F009E4673 /* LMDropDownMenu.h */,
+				30E8BD351FCD6F9F009E4673 /* LMDropDownMenu.m */,
+				30E8BD361FCD6F9F009E4673 /* LMTitleView.h */,
+				30E8BD371FCD6F9F009E4673 /* LMTitleView.m */,
+			);
+			path = LMDropDownMenu_TitleView;
+			sourceTree = "<group>";
+		};
 		30F93E0C1F31B3FF001904F1 /* LMBlurredView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2875,6 +2896,7 @@
 				3091FC361FC570A9008E01CC /* CarrierTableViewCell.xib in Resources */,
 				304A341E1F0E10ED0055D50C /* ChinaArea.plist in Resources */,
 				30BB2DC71F459375002E51E7 /* AddStockCellTableViewCell.xib in Resources */,
+				30E8BD381FCD6F9F009E4673 /* ico_make.png in Resources */,
 				30BB2DB51F459359002E51E7 /* GetStockListViewController.xib in Resources */,
 				303567121F711BEB009E6EFB /* GetInputInfoViewController.xib in Resources */,
 				30BBF1391F17612400496518 /* AddressListViewController.xib in Resources */,
@@ -2987,6 +3009,7 @@
 				302675E91F725E550098DEF1 /* Stock_SaveInputService.m in Sources */,
 				301D7DEB1F5A3F5400D83410 /* RouteAnnotation.m in Sources */,
 				30B1AE6D1F74986D00130A55 /* Store_GetOupputListService.m in Sources */,
+				30E8BD391FCD6F9F009E4673 /* LMDropDownMenu.m in Sources */,
 				30B1AE771F74989900130A55 /* Stock_InPutWorkflowService.m in Sources */,
 				30B1AE751F74989900130A55 /* Stock_GetInputInfoService.m in Sources */,
 				302675DF1F72494D0098DEF1 /* InputReturnConfirmViewController.m in Sources */,
@@ -3122,6 +3145,7 @@
 				302A057D1DB0B56700972490 /* PayTypeModel.m in Sources */,
 				3051DB711F18786F0034629B /* AddAddressService.m in Sources */,
 				3091FC2B1FC5618B008E01CC /* GetShipmentListService.m in Sources */,
+				30E8BD3A1FCD6F9F009E4673 /* LMTitleView.m in Sources */,
 				30F7B8CF1DBF0B15004CD128 /* AddGiftTypesTableViewCell.m in Sources */,
 				30BB2DC81F459375002E51E7 /* AddStockTableViewCell.m in Sources */,
 				30CDC64C1D9907CD0035602F /* NSString+Extend.m in Sources */,

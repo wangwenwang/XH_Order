@@ -52,6 +52,15 @@
 @property (nonatomic, strong) NSString * oRDWORKFLOW;
 @property (nonatomic, strong) NSString * oTSDELIVERYACTUAL;
 @property (nonatomic, strong) NSString * tMSDATECONFIRMED;
+@property (nonatomic, strong) NSString * tMSDRIVERIDX;
+@property (nonatomic, strong) NSString * tMSDRIVERNAME;
+@property (nonatomic, strong) NSString * tMSDRIVERTEL;
+@property (nonatomic, strong) NSString * tMSFLEETIDX;
+@property (nonatomic, strong) NSString * tMSFLEETNAME;
+@property (nonatomic, strong) NSString * tMSPLATENUMBER;
+@property (nonatomic, strong) NSString * tMSVEHICLEIDX;
+@property (nonatomic, strong) NSString * tMSVEHICLESIZE;
+@property (nonatomic, strong) NSString * tMSVEHICLETYPE;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

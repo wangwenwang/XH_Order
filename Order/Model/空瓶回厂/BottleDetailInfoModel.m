@@ -51,6 +51,16 @@ NSString *const kBottleDetailInfoModelORDTOZIP = @"ORD_TO_ZIP";
 NSString *const kBottleDetailInfoModelORDWORKFLOW = @"ORD_WORKFLOW";
 NSString *const kBottleDetailInfoModelOTSDELIVERYACTUAL = @"OTS_DELIVERY_ACTUAL";
 NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
+NSString *const kBottleDetailInfoModelTMSDRIVERIDX = @"TMS_DRIVER_IDX";
+NSString *const kBottleDetailInfoModelTMSDRIVERNAME = @"TMS_DRIVER_NAME";
+NSString *const kBottleDetailInfoModelTMSDRIVERTEL = @"TMS_DRIVER_TEL";
+NSString *const kBottleDetailInfoModelTMSFLEETIDX = @"TMS_FLEET_IDX";
+NSString *const kBottleDetailInfoModelTMSFLEETNAME = @"TMS_FLEET_NAME";
+NSString *const kBottleDetailInfoModelTMSPLATENUMBER = @"TMS_PLATE_NUMBER";
+NSString *const kBottleDetailInfoModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
+NSString *const kBottleDetailInfoModelTMSVEHICLESIZE = @"TMS_VEHICLE_SIZE";
+NSString *const kBottleDetailInfoModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
+
 
 @interface BottleDetailInfoModel ()
 @end
@@ -184,6 +194,33 @@ NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
     }
     if(![dictionary[kBottleDetailInfoModelTMSDATECONFIRMED] isKindOfClass:[NSNull class]]){
         self.tMSDATECONFIRMED = dictionary[kBottleDetailInfoModelTMSDATECONFIRMED];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSDRIVERIDX] isKindOfClass:[NSNull class]]){
+        self.tMSDRIVERIDX = dictionary[kBottleDetailInfoModelTMSDRIVERIDX];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSDRIVERNAME] isKindOfClass:[NSNull class]]){
+        self.tMSDRIVERNAME = dictionary[kBottleDetailInfoModelTMSDRIVERNAME];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSDRIVERTEL] isKindOfClass:[NSNull class]]){
+        self.tMSDRIVERTEL = dictionary[kBottleDetailInfoModelTMSDRIVERTEL];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSFLEETIDX] isKindOfClass:[NSNull class]]){
+        self.tMSFLEETIDX = dictionary[kBottleDetailInfoModelTMSFLEETIDX];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSFLEETNAME] isKindOfClass:[NSNull class]]){
+        self.tMSFLEETNAME = dictionary[kBottleDetailInfoModelTMSFLEETNAME];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSPLATENUMBER] isKindOfClass:[NSNull class]]){
+        self.tMSPLATENUMBER = dictionary[kBottleDetailInfoModelTMSPLATENUMBER];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSVEHICLEIDX] isKindOfClass:[NSNull class]]){
+        self.tMSVEHICLEIDX = dictionary[kBottleDetailInfoModelTMSVEHICLEIDX];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSVEHICLESIZE] isKindOfClass:[NSNull class]]){
+        self.tMSVEHICLESIZE = dictionary[kBottleDetailInfoModelTMSVEHICLESIZE];
+    }
+    if(![dictionary[kBottleDetailInfoModelTMSVEHICLETYPE] isKindOfClass:[NSNull class]]){
+        self.tMSVEHICLETYPE = dictionary[kBottleDetailInfoModelTMSVEHICLETYPE];
     }
     return self;
 }
@@ -320,6 +357,33 @@ NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
     }
     if(self.tMSDATECONFIRMED != nil){
         dictionary[kBottleDetailInfoModelTMSDATECONFIRMED] = self.tMSDATECONFIRMED;
+    }
+    if(self.tMSDRIVERIDX != nil){
+        dictionary[kBottleDetailInfoModelTMSDRIVERIDX] = self.tMSDRIVERIDX;
+    }
+    if(self.tMSDRIVERNAME != nil){
+        dictionary[kBottleDetailInfoModelTMSDRIVERNAME] = self.tMSDRIVERNAME;
+    }
+    if(self.tMSDRIVERTEL != nil){
+        dictionary[kBottleDetailInfoModelTMSDRIVERTEL] = self.tMSDRIVERTEL;
+    }
+    if(self.tMSFLEETIDX != nil){
+        dictionary[kBottleDetailInfoModelTMSFLEETIDX] = self.tMSFLEETIDX;
+    }
+    if(self.tMSFLEETNAME != nil){
+        dictionary[kBottleDetailInfoModelTMSFLEETNAME] = self.tMSFLEETNAME;
+    }
+    if(self.tMSPLATENUMBER != nil){
+        dictionary[kBottleDetailInfoModelTMSPLATENUMBER] = self.tMSPLATENUMBER;
+    }
+    if(self.tMSVEHICLEIDX != nil){
+        dictionary[kBottleDetailInfoModelTMSVEHICLEIDX] = self.tMSVEHICLEIDX;
+    }
+    if(self.tMSVEHICLESIZE != nil){
+        dictionary[kBottleDetailInfoModelTMSVEHICLESIZE] = self.tMSVEHICLESIZE;
+    }
+    if(self.tMSVEHICLETYPE != nil){
+        dictionary[kBottleDetailInfoModelTMSVEHICLETYPE] = self.tMSVEHICLETYPE;
     }
     return dictionary;
     
@@ -459,6 +523,33 @@ NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
     if(self.tMSDATECONFIRMED != nil){
         [aCoder encodeObject:self.tMSDATECONFIRMED forKey:kBottleDetailInfoModelTMSDATECONFIRMED];
     }
+    if(self.tMSDRIVERIDX != nil){
+        [aCoder encodeObject:self.tMSDRIVERIDX forKey:kBottleDetailInfoModelTMSDRIVERIDX];
+    }
+    if(self.tMSDRIVERNAME != nil){
+        [aCoder encodeObject:self.tMSDRIVERNAME forKey:kBottleDetailInfoModelTMSDRIVERNAME];
+    }
+    if(self.tMSDRIVERTEL != nil){
+        [aCoder encodeObject:self.tMSDRIVERTEL forKey:kBottleDetailInfoModelTMSDRIVERTEL];
+    }
+    if(self.tMSFLEETIDX != nil){
+        [aCoder encodeObject:self.tMSFLEETIDX forKey:kBottleDetailInfoModelTMSFLEETIDX];
+    }
+    if(self.tMSFLEETNAME != nil){
+        [aCoder encodeObject:self.tMSFLEETNAME forKey:kBottleDetailInfoModelTMSFLEETNAME];
+    }
+    if(self.tMSPLATENUMBER != nil){
+        [aCoder encodeObject:self.tMSPLATENUMBER forKey:kBottleDetailInfoModelTMSPLATENUMBER];
+    }
+    if(self.tMSVEHICLEIDX != nil){
+        [aCoder encodeObject:self.tMSVEHICLEIDX forKey:kBottleDetailInfoModelTMSVEHICLEIDX];
+    }
+    if(self.tMSVEHICLESIZE != nil){
+        [aCoder encodeObject:self.tMSVEHICLESIZE forKey:kBottleDetailInfoModelTMSVEHICLESIZE];
+    }
+    if(self.tMSVEHICLETYPE != nil){
+        [aCoder encodeObject:self.tMSVEHICLETYPE forKey:kBottleDetailInfoModelTMSVEHICLETYPE];
+    }
     
 }
 
@@ -510,6 +601,15 @@ NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
     self.oRDWORKFLOW = [aDecoder decodeObjectForKey:kBottleDetailInfoModelORDWORKFLOW];
     self.oTSDELIVERYACTUAL = [aDecoder decodeObjectForKey:kBottleDetailInfoModelOTSDELIVERYACTUAL];
     self.tMSDATECONFIRMED = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSDATECONFIRMED];
+    self.tMSDRIVERIDX = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSDRIVERIDX];
+    self.tMSDRIVERNAME = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSDRIVERNAME];
+    self.tMSDRIVERTEL = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSDRIVERTEL];
+    self.tMSFLEETIDX = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSFLEETIDX];
+    self.tMSFLEETNAME = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSFLEETNAME];
+    self.tMSPLATENUMBER = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSPLATENUMBER];
+    self.tMSVEHICLEIDX = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSVEHICLEIDX];
+    self.tMSVEHICLESIZE = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSVEHICLESIZE];
+    self.tMSVEHICLETYPE = [aDecoder decodeObjectForKey:kBottleDetailInfoModelTMSVEHICLETYPE];
     return self;
     
 }
@@ -563,6 +663,15 @@ NSString *const kBottleDetailInfoModelTMSDATECONFIRMED = @"TMS_DATE_CONFIRMED";
     copy.oRDWORKFLOW = [self.oRDWORKFLOW copy];
     copy.oTSDELIVERYACTUAL = [self.oTSDELIVERYACTUAL copy];
     copy.tMSDATECONFIRMED = [self.tMSDATECONFIRMED copy];
+    copy.tMSDRIVERIDX = [self.tMSDRIVERIDX copy];
+    copy.tMSDRIVERNAME = [self.tMSDRIVERNAME copy];
+    copy.tMSDRIVERTEL = [self.tMSDRIVERTEL copy];
+    copy.tMSFLEETIDX = [self.tMSFLEETIDX copy];
+    copy.tMSFLEETNAME = [self.tMSFLEETNAME copy];
+    copy.tMSPLATENUMBER = [self.tMSPLATENUMBER copy];
+    copy.tMSVEHICLEIDX = [self.tMSVEHICLEIDX copy];
+    copy.tMSVEHICLESIZE = [self.tMSVEHICLESIZE copy];
+    copy.tMSVEHICLETYPE = [self.tMSVEHICLETYPE copy];
     
     return copy;
 }

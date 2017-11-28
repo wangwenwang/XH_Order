@@ -22,6 +22,8 @@
                 <outlet property="cancenOrConfirmBtn" destination="tVr-j8-Z59" id="f5r-Ia-SPM"/>
                 <outlet property="checkPathBtn" destination="5yu-j7-klQ" id="4i2-3b-22x"/>
                 <outlet property="checkPictureBtn" destination="OlL-EC-n77" id="hyV-lc-xfB"/>
+                <outlet property="customerInfoViewHeight" destination="lM0-WL-f6M" id="dmh-aE-9QI"/>
+                <outlet property="factoryInfoViewHeight" destination="6nI-yn-Wwh" id="5CZ-uv-hIt"/>
                 <outlet property="goodsViewHeight" destination="Hc7-QA-ZnW" id="qiy-T0-CFx"/>
                 <outlet property="scrollContentViewHeight" destination="9Yz-Qf-WO6" id="bBf-If-RIS"/>
                 <outlet property="tableView" destination="gFL-pI-bxH" id="S3g-Jq-bgH"/>
@@ -513,7 +515,6 @@
                     </state>
                     <connections>
                         <action selector="checkPath" destination="-1" eventType="touchUpInside" id="U1U-IG-g3S"/>
-                        <action selector="commitOnclick" destination="-1" eventType="touchUpInside" id="1Xy-Qj-fjM"/>
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlL-EC-n77">
@@ -528,7 +529,6 @@
                     </state>
                     <connections>
                         <action selector="checkPicture" destination="-1" eventType="touchUpInside" id="3Qq-08-GIP"/>
-                        <action selector="commitOnclick" destination="-1" eventType="touchUpInside" id="b9o-0e-TRo"/>
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-j8-Z59">

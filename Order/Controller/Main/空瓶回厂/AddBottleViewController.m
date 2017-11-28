@@ -16,6 +16,7 @@
 #import "GetReturnProductListService.h"
 #import "ImportToOrderListService.h"
 #import <MBProgressHUD.h>
+#import "BottleListViewController.h"
 
 @interface AddBottleViewController ()<GetReturnPartyListDelegate, GetReturnProductListDelegate, ImportToOrderListDelegate>
 
@@ -224,6 +225,7 @@
                 NSString *jsonStr = [Tools JsonStringWithDictonary:json];
                 ImportToOrderListService *service_commit = [[ImportToOrderListService alloc] init];
                 service_commit.delegate = self;
+                [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
                 [service_commit ImportToOrderList:jsonStr];
             } else {
                 
@@ -292,14 +294,26 @@
 
 - (void)successOfImportToOrderList:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:msg];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+    // 告诉列表需要刷新
+    NSArray *array = self.navigationController.viewControllers;
+    for(int i = 0; i < array.count; i++) {
+        
+        UIViewController *vc = array[i];
+        if([vc isKindOfClass:[BottleListViewController class]]) {
+            
+            BottleListViewController *LMVC = (BottleListViewController *)vc;
+            [[NSNotificationCenter defaultCenter] postNotificationName:kBottleListViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
+            [self.navigationController popToViewController:LMVC animated:YES];
+        }
+    }
 }
 
 
 - (void)failureOfImportToOrderList:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
     [Tools showAlert:self.view andTitle:msg];
 }
 

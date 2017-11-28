@@ -36,11 +36,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *ORD_FROM_CNAME;
 // 联系电话
 @property (weak, nonatomic) IBOutlet UILabel *ORD_FROM_CTEL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerInfoViewHeight;
 
 // 厂家名称
 @property (weak, nonatomic) IBOutlet UILabel *ORD_TO_NAME;
 // 厂家地址
 @property (weak, nonatomic) IBOutlet UILabel *ORD_TO_ADDRESS;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *factoryInfoViewHeight;
 
 // 物流状态
 @property (weak, nonatomic) IBOutlet UILabel *ORD_WORKFLOW;
@@ -50,6 +52,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *goodsViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
+
+// 承运信息
+@property (weak, nonatomic) IBOutlet UILabel *TMS_PLATE_NUMBER;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_VEHICLE_TYPE;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_DRIVER_NAME;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_DRIVER_TEL;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_FLEET_NAME;
 
 @end
 
@@ -82,6 +91,7 @@
     
     GetReturnBottleInfoService *service = [[GetReturnBottleInfoService alloc] init];
     service.delegate = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [service GetReturnBottleInfo:_orderIDX];
 }
 
@@ -105,6 +115,12 @@
     
     _ORD_WORKFLOW.text = @" ";
     _ORD_DATE_ADD.text = @" ";
+    
+    _TMS_PLATE_NUMBER.text = @" ";
+    _TMS_VEHICLE_TYPE.text = @" ";
+    _TMS_DRIVER_NAME.text = @" ";
+    _TMS_DRIVER_TEL.text = @" ";
+    _TMS_FLEET_NAME.text = @" ";
 }
 
 
@@ -139,7 +155,7 @@
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         ReturnOrderCancelService *service = [[ReturnOrderCancelService alloc] init];
         service.delegate = self;
         [service ReturnOrderCancel:_bottleDetailM.bottleDetailInfoModel.iDX andstrUserIdx:_app.user.IDX];
@@ -188,20 +204,52 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     _bottleDetailM = bottleDetailM;
     
+    // 货物信息
     _goodsViewHeight.constant = 30 + bottleDetailM.bottleDetailItemModel.count * kCellHeight;
     _scrollContentViewHeight.constant += (_goodsViewHeight.constant - 100);
     [_tableView reloadData];
     
+    // 客户信息
     _ORD_FROM_NAME.text = bottleDetailM.bottleDetailInfoModel.oRDFROMNAME;
     _ORD_FROM_ADDRESS.text = bottleDetailM.bottleDetailInfoModel.oRDFROMADDRESS;
     _ORD_FROM_CNAME.text = bottleDetailM.bottleDetailInfoModel.oRDFROMCNAME;
     _ORD_FROM_CTEL.text = bottleDetailM.bottleDetailInfoModel.oRDFROMCTEL;
     
+    // 厂家信息
     _ORD_TO_NAME.text = bottleDetailM.bottleDetailInfoModel.oRDTONAME;
     _ORD_TO_ADDRESS.text = bottleDetailM.bottleDetailInfoModel.oRDTOADDRESS;
     
+    // 物流信息
     _ORD_WORKFLOW.text = bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW;
     _ORD_DATE_ADD.text = bottleDetailM.bottleDetailInfoModel.oRDDATEADD;
+    
+    // 承运信息
+    _TMS_PLATE_NUMBER.text = bottleDetailM.bottleDetailInfoModel.tMSPLATENUMBER;
+    _TMS_VEHICLE_TYPE.text = bottleDetailM.bottleDetailInfoModel.tMSVEHICLETYPE;
+    _TMS_DRIVER_NAME.text = bottleDetailM.bottleDetailInfoModel.tMSDRIVERNAME;
+    _TMS_DRIVER_TEL.text = bottleDetailM.bottleDetailInfoModel.tMSDRIVERTEL;
+    _TMS_FLEET_NAME.text = bottleDetailM.bottleDetailInfoModel.tMSFLEETNAME;
+    
+    // 客户地址换行
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_ORD_FROM_NAME.text fontSize:15 andWidth:(ScreenWidth - 8 - 46 + 2 - 3)];
+    _customerInfoViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    
+    // 客户名称换行
+    mulLine = [Tools getHeightOfString:_ORD_FROM_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 8 - 46 + 2 - 3)];
+    _customerInfoViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    
+    // 厂家名称换行
+    mulLine = [Tools getHeightOfString:_ORD_TO_NAME.text fontSize:15 andWidth:(ScreenWidth - 8 - 46 + 2 - 3)];
+    _factoryInfoViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    
+    // 厂家地址换行
+    mulLine = [Tools getHeightOfString:_ORD_TO_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 8 - 46 + 2 - 3)];
+    _factoryInfoViewHeight.constant += (mulLine - oneLine);
+    _scrollContentViewHeight.constant += (mulLine - oneLine);
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
         
@@ -211,8 +259,6 @@
         
         _cancenOrConfirmBtn.hidden = NO;
         [_cancenOrConfirmBtn setTitle:@"确认订单" forState:UIControlStateNormal];
-        _checkPathBtn.hidden = NO;
-        _checkPictureBtn.hidden = NO;
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已交付"]) {
         
         _checkPathBtn.hidden = NO;
@@ -232,14 +278,16 @@
 
 - (void)successOfReturnOrderCancel:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:msg];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+     [[NSNotificationCenter defaultCenter] postNotificationName:kBottleListViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (void)failureOfReturnOrderCancel:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
     [Tools showAlert:self.view andTitle:msg];
 }
 

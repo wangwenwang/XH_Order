@@ -44,13 +44,16 @@
             
             BottleOrderListModel *bottleOrderListM = [[BottleOrderListModel alloc] initWithDictionary:responseObject];
             
-            if(_type < 1) {
+            if(bottleOrderListM.bottleOrderModel.count == 0) {
 
                 [self successOfGetReturnBottleList_NoData];
             } else {
 
                 [self successOfGetReturnBottleList:bottleOrderListM];
             }
+        } else if(_type == -2) {
+            
+            [self successOfGetReturnBottleList_NoData];
         } else {
 
             [self failureOfGetReturnBottleList:msg];

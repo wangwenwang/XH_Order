@@ -121,6 +121,9 @@
 // BottleViewController 选择承运商
 #define kBottleViewController_Notification @"BottleViewController_Notification"
 
+// BottleListViewController 接收消息，刷新列表
+#define kBottleListViewController_receiveMsg @"BottleListViewController_receiveMsg"
+
 
 
 /*--------- API ---------*/

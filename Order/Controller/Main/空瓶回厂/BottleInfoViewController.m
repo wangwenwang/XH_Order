@@ -17,6 +17,7 @@
 #import "CheckOrderPathViewController.h"
 #import "CheckSignatureService.h"
 #import "CheckSignatureViewController.h"
+#import "LM_alert.h"
 
 @interface BottleInfoViewController ()<GetReturnBottleInfoDelegate, ReturnOrderCancelDelegate, CheckSignatureServiceDelegate>
 
@@ -155,10 +156,13 @@
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
         
-        [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
-        ReturnOrderCancelService *service = [[ReturnOrderCancelService alloc] init];
-        service.delegate = self;
-        [service ReturnOrderCancel:_bottleDetailM.bottleDetailInfoModel.iDX andstrUserIdx:_app.user.IDX];
+        [LM_alert showLMAlertViewWithTitle:@"" message:@"是否取消订单" cancleButtonTitle:@"不取消" okButtonTitle:@"取消" okClickHandle:^{
+            
+            [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
+            ReturnOrderCancelService *service = [[ReturnOrderCancelService alloc] init];
+            service.delegate = self;
+            [service ReturnOrderCancel:_bottleDetailM.bottleDetailInfoModel.iDX andstrUserIdx:_app.user.IDX];
+        } cancelClickHandle:nil];
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已出库"]) {
         
         PayBottleViewController *vc = [[PayBottleViewController alloc] init];
@@ -253,12 +257,18 @@
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
         
-        _cancenOrConfirmBtn.hidden = NO;
-        [_cancenOrConfirmBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+        
+        if([_app.user.USER_TYPE isEqualToString:kAGENCY]) {
+            _cancenOrConfirmBtn.hidden = NO;
+            [_cancenOrConfirmBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+        }
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已出库"]) {
         
-        _cancenOrConfirmBtn.hidden = NO;
-        [_cancenOrConfirmBtn setTitle:@"确认订单" forState:UIControlStateNormal];
+        if([_app.user.USER_TYPE isEqualToString:kFACTORY]) {
+            
+            _cancenOrConfirmBtn.hidden = NO;
+            [_cancenOrConfirmBtn setTitle:@"确认订单" forState:UIControlStateNormal];
+        }
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已交付"]) {
         
         _checkPathBtn.hidden = NO;
@@ -280,7 +290,7 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-     [[NSNotificationCenter defaultCenter] postNotificationName:kBottleListViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBottleListViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

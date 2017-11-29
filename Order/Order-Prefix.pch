@@ -71,6 +71,12 @@
 // 记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
 #define kWelcomeImageName @"ListTimeSelectProduct"
 
+// 经销商
+#define kAGENCY @"PARTY"
+
+// 工厂
+#define kFACTORY @"FACTORY"
+
 //
 #define CheckOrderViewControllerMenuHeight 44
 

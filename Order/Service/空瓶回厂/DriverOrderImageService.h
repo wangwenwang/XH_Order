@@ -13,7 +13,7 @@
 
 /// 交付订单成功
 @optional
-- (void)successOfDriverPay;
+- (void)successOfDriverPay:(NSString *)msg;
 
 /// 交付订单失败
 @optional

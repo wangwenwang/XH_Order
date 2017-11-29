@@ -212,8 +212,9 @@
     
     if(indexPath.row == 0) {
         
-        SearchOrderPathViewController *sopVC = [[SearchOrderPathViewController alloc] init];
-        [self.navigationController pushViewController:sopVC animated:YES];
+//        SearchOrderPathViewController *sopVC = [[SearchOrderPathViewController alloc] init];
+//        [self.navigationController pushViewController:sopVC animated:YES];
+         [Tools showAlert:self.view andTitle:@"正在维护中..."];
     } else if(indexPath.row == 1) {
         //        NewsViewController *newsVC = [[NewsViewController alloc] init];
         //        [self.navigationController pushViewController:newsVC animated:YES];
@@ -223,7 +224,7 @@
         
         HotProductViewController *hotVC = [[HotProductViewController alloc] init];
         [self.navigationController pushViewController:hotVC animated:YES];
-    } else if(indexPath.row == 3) {
+    } else if([title isEqualToString:@"查看报表"]) {
         
         //        //客户报表   ,,  产品报表
         //        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -231,10 +232,10 @@
         
         ChartViewController *vc = [[ChartViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-    } else if(indexPath.row == 4) {
+    } else if([title isEqualToString:@"查看订单"]) {
         
         self.tabBarController.selectedIndex = 2;
-    } else if(indexPath.row == 5) {
+    } else if(indexPath.row == 1005) {
         
         GetStockListViewController *vc = [[GetStockListViewController alloc] init];
         vc.title = title;

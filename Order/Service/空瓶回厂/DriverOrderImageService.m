@@ -45,7 +45,7 @@
             
             if(type == 1) {
                 
-                [self successOfDriverPay];
+                [self successOfDriverPay:msg];
                 LMLog(@"%@成功，msg:%@", kAPIName, msg);
             }else {
                 
@@ -68,27 +68,21 @@
 
 
 #pragma mark - 功能函数
-- (void)successOfDriverPay {
+- (void)successOfDriverPay:(NSString *)msg {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if([_delegate respondsToSelector:@selector(successOfDriverPay)]) {
+        if([_delegate respondsToSelector:@selector(successOfDriverPay:)]) {
             
-            [_delegate successOfDriverPay];
+            [_delegate successOfDriverPay:msg];
         }
-    });
 }
 
 
 - (void)failureOfDriverPay:(NSString *)msg {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
         if([_delegate respondsToSelector:@selector(failureOfDriverPay:)]) {
             
             [_delegate failureOfDriverPay:msg];
         }
-    });
 }
 
 @end

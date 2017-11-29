@@ -12,7 +12,7 @@
 #import "AutoGraphView.h"
 #import "DriverOrderImageService.h"
 #import <MBProgressHUD.h>
-
+#import "BottleListViewController.h"
 
 @interface PayBottleViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, DriverOrderImageDelegate,UIImagePickerControllerDelegate, UIActionSheetDelegate> {
     
@@ -239,9 +239,9 @@ typedef enum
     NSString *unLoadImageString = [Tools convertImageToString:_unLoadImage];
     NSString *receiptImageString = [Tools convertImageToString:_receiptImage];
     
-//    autoGraphImageString = [autoGraphImageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-//    unLoadImageString = [unLoadImageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-//    receiptImageString = [receiptImageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    //    autoGraphImageString = [autoGraphImageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    //    unLoadImageString = [unLoadImageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    //    receiptImageString = [receiptImageString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     [_service DriverPay:_orderIdx andPictureFile1:unLoadImageString andPictureFile2:receiptImageString andAutographFile:autoGraphImageString];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -332,30 +332,22 @@ typedef enum
 
 #pragma mark - DriverPayServiceDelegate
 
-- (void)successOfDriverPay {
+- (void)successOfDriverPay:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:@"交付成功"];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-       
-        // 延迟pop
-        usleep(1300000);
-        dispatch_async(dispatch_get_main_queue(), ^{
-           
-            // 找到nav上两层 并pop
-//            ZYInfoViewController *zyVC = nil;
-//            for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
-//
-//                UIViewController *vc = self.navigationController.viewControllers[i];
-//                if([vc isKindOfClass:[ZYInfoViewController class]]) {
-//
-//                    zyVC = (ZYInfoViewController *)vc;
-//                }
-//            }
-//            [self.navigationController popToViewController:zyVC animated:YES];
-        });
-    });
+    // 找到nav上两层 并pop
+    BottleListViewController *listVc = nil;
+    for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+        
+        UIViewController *vc = self.navigationController.viewControllers[i];
+        if([vc isKindOfClass:[BottleListViewController class]]) {
+            
+            listVc = (BottleListViewController *)vc;
+        }
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBottleListViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
+    [self.navigationController popToViewController:listVc animated:YES];
 }
 
 

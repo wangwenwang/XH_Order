@@ -29,6 +29,7 @@
 @property (assign, nonatomic) int page;
 @property (strong, nonatomic) NSMutableArray *orders;
 @property (strong, nonatomic) NSString *strState;
+@property (weak, nonatomic) IBOutlet UIButton *addBottleBtn;
 
 // TitleView
 @property (strong, nonatomic) LMTitleView *lmTitleView;
@@ -46,6 +47,9 @@
 #define kPrompt @"您还没有订单哦"
 
 @implementation BottleListViewController
+
+
+#pragma mark - 生命周期
 
 - (instancetype)init {
     
@@ -96,12 +100,25 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    if([_app.user.USER_TYPE isEqualToString:kFACTORY]) {
+        
+        _addBottleBtn.hidden = YES;
+    }
+}
+
+
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
     
     if(_isReloadTableView) {
         
+        _lmTitleView.titleText = _menuTexts[0];
+        [self setStrState_LM];
         [_tableView.mj_header beginRefreshing];
     }
 }
@@ -183,6 +200,21 @@
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
+    }
+}
+
+
+- (void)setStrState_LM {
+    
+    if([_lmTitleView.titleText isEqualToString:@"未交付"]) {
+        
+        _strState = @"NPLY";
+    } else if([_lmTitleView.titleText isEqualToString:@"已交付"]){
+        
+        _strState = @"YPLY";
+    } else if([_lmTitleView.titleText isEqualToString:@"已取消"]){
+        
+        _strState = @"CANCEL";
     }
 }
 
@@ -309,16 +341,7 @@
 - (void)menu:(LMTitleView *)menu didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _lmTitleView.titleText = _menuTexts[indexPath.row];
-    if([_lmTitleView.titleText isEqualToString:@"未交付"]) {
-        
-        _strState = @"NPLY";
-    } else if([_lmTitleView.titleText isEqualToString:@"已交付"]){
-        
-        _strState = @"YPLY";
-    } else if([_lmTitleView.titleText isEqualToString:@"已取消"]){
-        
-        _strState = @"CANCEL";
-    }
+    [self setStrState_LM];
     [_tableView.mj_header beginRefreshing];
 }
 

@@ -47,7 +47,7 @@
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
     NSLog(@"fds:%@", dict);
     
-    if(userName) {
+//    if(userName) {
     
         _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(skipAd) userInfo:nil repeats:YES];
         
@@ -62,10 +62,10 @@
             
             [self skipAd];
         }
-    } else {
-        
-        [self addLogoAnimation];
-    }
+//    } else {
+//
+//        [self addLogoAnimation];
+//    }
 }
 
 

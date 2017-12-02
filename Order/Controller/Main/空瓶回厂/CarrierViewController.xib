@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarrierViewController">
             <connections>
+                <outlet property="searchBar" destination="PnL-Xq-J6e" id="jCA-Iy-6sS"/>
                 <outlet property="tableView" destination="2mZ-2H-27g" id="24o-BS-ozT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

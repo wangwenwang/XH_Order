@@ -21,6 +21,10 @@
 
 @property (strong, nonatomic) CarrierListModel *carrierListM;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) UIButton *searchButton;
+
 @end
 
 
@@ -42,12 +46,22 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-    [self registerCell];
-    
     self.title = @"选择承运商";
+    
+    [self registerCell];
 }
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [_searchBar becomeFirstResponder];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

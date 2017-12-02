@@ -47,7 +47,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"获取厂商地址成功:%@", error);
-        [self failureOfGetReturnPartyList:nil];
+        [self failureOfGetReturnPartyList:@"请求厂家失败"];
     }];
 }
 

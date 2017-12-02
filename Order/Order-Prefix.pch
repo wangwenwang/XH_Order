@@ -325,6 +325,9 @@
 /// 取消订单
 #define API_ReturnOrderCancel @"http://oms.kaidongyuan.com:12300/api/ReturnOrderCancel"
 
+/// 车牌号(根据车队id、搜索关键字)
+#define API_GetPlateList @"http://oms.kaidongyuan.com:12300/api/GetPlateList"
+
 
 /*--------- 判断iOS版本 ---------*/
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue

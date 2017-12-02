@@ -17,8 +17,12 @@
 #import "ImportToOrderListService.h"
 #import <MBProgressHUD.h>
 #import "BottleListViewController.h"
+#import "FactoryViewController.h"
+#import "PlateNumberViewController.h"
+#import "PlateNumberModel.h"
+#import "AddBottleTableViewCell.h"
 
-@interface AddBottleViewController ()<GetReturnPartyListDelegate, GetReturnProductListDelegate, ImportToOrderListDelegate>
+@interface AddBottleViewController ()<GetReturnPartyListDelegate, GetReturnProductListDelegate, ImportToOrderListDelegate, AddBottleTableViewCellDelegate>
 
 // 客户名称
 @property (weak, nonatomic) IBOutlet UILabel *customer_NAME;
@@ -32,20 +36,22 @@
 
 // 厂商信息
 @property (strong, nonatomic) BottleAddressModel *factory;
+@property (strong, nonatomic) BottleAddressListModel *bottleAddressListM;
 // 供应商名称
 @property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME;
 // 供应商地址
 @property (weak, nonatomic) IBOutlet UILabel *PARTY_ADDRESS;
 @property (weak, nonatomic) IBOutlet UIButton *modifyFactoryBtn;
 @property (strong, nonatomic) AppDelegate *app;
+@property (weak, nonatomic) IBOutlet UIView *factoryView;
+@property (weak, nonatomic) IBOutlet UIView *addFactoryView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *factoryViewHeight;
 
 // 承运信息
 @property (strong, nonatomic) CarrierModel *carrierM;
 @property (weak, nonatomic) IBOutlet UIView *carrierInfoView;
 @property (weak, nonatomic) IBOutlet UIView *carrierInfoAddView;
 @property (weak, nonatomic) IBOutlet UIButton *modifyCarrierBtn;
-// 车牌号
-@property (weak, nonatomic) IBOutlet UILabel *TMS_PLATE_NUMBER;
 // 车辆类型
 @property (weak, nonatomic) IBOutlet UILabel *TMS_VEHICLE_TYPE;
 // 司机姓名
@@ -54,23 +60,32 @@
 @property (weak, nonatomic) IBOutlet UILabel *TMS_DRIVER_TEL;
 // 承运商名称
 @property (weak, nonatomic) IBOutlet UILabel *TMS_FLEET_NAME;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *carrierViewHeight;
+
+// 车牌信息
+@property (weak, nonatomic) IBOutlet UIView *plateNumberView;
+@property (weak, nonatomic) IBOutlet UIView *addPlateNumberView;
+@property (weak, nonatomic) IBOutlet UIButton *modifyPlateNumberBtn;
+@property (strong, nonatomic) PlateNumberModel *plateNumber;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_PLATE_NUMBER;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *plateNumberViewHeight;
 
 // 瓶子信息
 @property (strong, nonatomic) BottleInfoListModel *bottleInfoListM;
-// 小瓶
-@property (weak, nonatomic) IBOutlet UITextField *littleF;
-// 中瓶
-@property (weak, nonatomic) IBOutlet UITextField *midF;
-// 大瓶
-@property (weak, nonatomic) IBOutlet UITextField *maxF;
-// 托盘
-@property (weak, nonatomic) IBOutlet UITextField *trayF;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) CGFloat bottleTotal;
-@property (weak, nonatomic) IBOutlet UILabel *bottleTatalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bottleTotalLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottleViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottleViewPromptHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottleTotalViewHeight;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
 
 @end
+
+#define kCellHeight 44
+
+#define kCellName @"AddBottleTableViewCell"
 
 @implementation AddBottleViewController
 
@@ -90,6 +105,8 @@
     
     self.title = @"添加回瓶单";
     
+    [self registerCell];
+    
     [self initUI];
     [self addNotification];
     
@@ -105,9 +122,23 @@
 }
 
 
+- (void)updateViewConstraints {
+    
+    [super updateViewConstraints];
+    
+    _scrollContentViewHeight.constant =
+    _customerViewHeight.constant +
+    _factoryViewHeight.constant +
+    _bottleViewHeight.constant +
+    _carrierViewHeight.constant +
+    _plateNumberViewHeight.constant +
+    70;
+}
+
+
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -119,6 +150,13 @@
 
 #pragma mark - 函数
 
+// 注册Cell
+- (void)registerCell {
+    
+    [_tableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
 - (void)initUI {
     
     _customer_NAME.text = _partyM.PARTY_NAME;
@@ -126,33 +164,51 @@
     _customer_PERSON.text = _addressM.CONTACT_PERSON;
     _customer_TEL.text = _addressM.CONTACT_TEL;
     
+    _PARTY_NAME.text = @" ";
+    _PARTY_ADDRESS.text = @" ";
+    
+    _bottleTotalLabel.text = @"0";
+    
     // 客户名称换行
     CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
     CGFloat mulLine = [Tools getHeightOfString:_customer_NAME.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
     _customerViewHeight.constant += (mulLine - oneLine);
-    _scrollContentViewHeight.constant += (mulLine - oneLine);
     
     // 客户地址换行
     oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
     mulLine = [Tools getHeightOfString:_customer_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
     _customerViewHeight.constant += (mulLine - oneLine);
-    _scrollContentViewHeight.constant += (mulLine - oneLine);
+}
+
+
+- (void)fullFactory {
+    
+    _factoryView.hidden = NO;
+    _addFactoryView.hidden = YES;
+    _PARTY_NAME.text = _factory.pARTYNAME;
+    _PARTY_ADDRESS.text = _factory.aDDRESSINFO;
     
     // 厂家名称换行
-    oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
-    mulLine = [Tools getHeightOfString:_PARTY_NAME.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
-    _customerViewHeight.constant += (mulLine - oneLine);
-    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_PARTY_NAME.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
+    _factoryViewHeight.constant += (mulLine - oneLine);
     
     // 厂家地址换行
     oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
     mulLine = [Tools getHeightOfString:_PARTY_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
-    _customerViewHeight.constant += (mulLine - oneLine);
-    _scrollContentViewHeight.constant += (mulLine - oneLine);
+    _factoryViewHeight.constant += (mulLine - oneLine);
 }
 
 
 #pragma mark - 手势、事件
+
+- (IBAction)factoryOnclick {
+    
+    FactoryViewController *vc = [[FactoryViewController alloc] init];
+    vc.bottleAddressListM = _bottleAddressListM;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 - (IBAction)carrierOnclick {
     
@@ -161,84 +217,120 @@
 }
 
 
-- (IBAction)commitOnclick {
-    CGFloat little = [[_littleF textTrim] floatValue];
-    CGFloat mid = [[_midF textTrim] floatValue];
-    CGFloat max = [[_maxF textTrim] floatValue];
-    CGFloat tray = [[_trayF textTrim] floatValue];
-    _bottleTotal = little + mid + max + tray;
+- (IBAction)plateNumberOnclick {
     
-    if(little || mid || max || tray) {
+    if(_carrierM) {
         
-        NSMutableArray *OrderDetails = [[NSMutableArray alloc] init];
-        for (int i = 0; i < _bottleInfoListM.bottleInfoModel.count; i++) {
-            
-            BottleInfoModel *m = _bottleInfoListM.bottleInfoModel[i];
-            
-            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        m.iDX,@"PRODUCT_IDX",
-                                        @9008,@"ENT_IDX",
-                                        m.pRODUCTNO,@"PRODUCT_NO",
-                                        m.pRODUCTNAME,@"PRODUCT_NAME",
-                                        m.pRODUCTDESC,@"PRODUCT_DESC",
-                                        m.pRODUCTBARCODE,@"PRODUCT_BARCODE",
-                                        m.pRODUCTSTATE,@"PRODUCT_STATE",
-                                        @(i + 1),@"LINE_NO",
-                                        nil];
-            if([m.pRODUCTNAME isEqualToString:@"小瓶"]) {
-                [dic setValue:@(little) forKey:@"PO_QTY"];
-            } else if([m.pRODUCTNAME isEqualToString:@"中瓶"]) {
-                [dic setValue:@(mid) forKey:@"PO_QTY"];
-            } else if([m.pRODUCTNAME isEqualToString:@"大瓶"]) {
-                [dic setValue:@(max) forKey:@"PO_QTY"];
-            } else if([m.pRODUCTNAME isEqualToString:@"托盘"]) {
-                [dic setValue:@(tray) forKey:@"PO_QTY"];
-            }
-            CGFloat qty = [dic[@"PO_QTY"] floatValue];
-            if(qty) {
-                [OrderDetails addObject:dic];
-            }
+        PlateNumberViewController *vc = [[PlateNumberViewController alloc] init];
+        vc.fleetId = _carrierM.tMSFLEETIDX;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        
+        [Tools showAlert:self.view andTitle:@"请填写承运信息"];
+    }
+}
+
+
+- (IBAction)commitOnclick {
+    
+    // 剔除数量为0的实体
+    NSMutableArray *bottleInfoListM = [[NSMutableArray alloc] init];
+    _bottleTotal = 0;
+    for (BottleInfoModel *m in _bottleInfoListM.bottleInfoModel) {
+        CGFloat qty = [m.pOQTY floatValue];
+        if(qty > 0) {
+            [bottleInfoListM addObject:m];
+            _bottleTotal += qty;
         }
+    }
+    // 补全实体字段
+    for (int i = 0; i < bottleInfoListM.count; i++) {
         
-        if(_factory) {
+        BottleInfoModel *m = bottleInfoListM[i];
+        m.pRODUCTIDX = m.iDX;
+        m.eNTIDX = @"9008";
+        m.lINENO = [NSString stringWithFormat:@"%d", i + 1];
+    }
+    // 实体转字典
+    NSMutableArray *bottleInfoListDict = [[NSMutableArray alloc] init];
+    for (BottleInfoModel *m in bottleInfoListM) {
+        NSDictionary *dict = [m toDictionary];
+        [bottleInfoListDict addObject:dict];
+    }
+    
+    if(_factory) {
+        if(bottleInfoListDict.count > 0) {
             if(_carrierM) {
-                NSDictionary *json = @{
-                                       @"ORG_IDX":_carrierM.ordOrgIdx,
-                                       @"BUSINESS_IDX":_app.business.BUSINESS_IDX,
-                                       @"FROM_IDX":_addressM.IDX,
-                                       @"TO_IDX":_factory.iDX,
-                                       @"TOTAL_QTY":@(_bottleTotal),
-                                       @"TMS_FLEET_IDX":_carrierM.tMSFLEETIDX,
-                                       @"TMS_FLEET_NAME":_carrierM.tMSFLEETNAME,
-                                       @"TMS_VEHICLE_IDX":_carrierM.tMSVEHICLEIDX,
-                                       @"TMS_PLATE_NUMBER":_carrierM.tMSPLATENUMBER,
-                                       @"TMS_VEHICLE_TYPE":_carrierM.tMSVEHICLETYPE,
-                                       @"TMS_VEHICLE_SIZE":_carrierM.tMSVEHICLESIZE,
-                                       @"TMS_DRIVER_IDX":_carrierM.tMSDRIVERIDX,
-                                       @"TMS_DRIVER_NAME":_carrierM.tMSDRIVERNAME,
-                                       @"TMS_DRIVER_TEL":_carrierM.tMSDRIVERTEL,
-                                       @"ENT_IDX":@9008,
-                                       @"OrderDetails":OrderDetails
-                                       };
-                
-                
-                NSString *jsonStr = [Tools JsonStringWithDictonary:json];
-                ImportToOrderListService *service_commit = [[ImportToOrderListService alloc] init];
-                service_commit.delegate = self;
-                [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
-                [service_commit ImportToOrderList:jsonStr];
+                if(_plateNumber) {
+                    NSDictionary *json = @{
+                                           @"ORG_IDX":_carrierM.ordOrgIdx,
+                                           @"BUSINESS_IDX":_app.business.BUSINESS_IDX,
+                                           @"FROM_IDX":_addressM.IDX,
+                                           @"TO_IDX":_factory.iDX,
+                                           @"TOTAL_QTY":@(_bottleTotal),
+                                           @"TMS_FLEET_IDX":_carrierM.tMSFLEETIDX,
+                                           @"TMS_FLEET_NAME":_carrierM.tMSFLEETNAME,
+                                           @"TMS_VEHICLE_IDX":_plateNumber.tMSVEHICLEIDX,
+                                           @"TMS_PLATE_NUMBER":_plateNumber.tMSPLATENUMBER,
+                                           @"TMS_VEHICLE_TYPE":_carrierM.tMSVEHICLETYPE,
+                                           @"TMS_VEHICLE_SIZE":_carrierM.tMSVEHICLESIZE,
+                                           @"TMS_DRIVER_IDX":_carrierM.tMSDRIVERIDX,
+                                           @"TMS_DRIVER_NAME":_carrierM.tMSDRIVERNAME,
+                                           @"TMS_DRIVER_TEL":_carrierM.tMSDRIVERTEL,
+                                           @"ENT_IDX":@9008,
+                                           @"OrderDetails":bottleInfoListDict
+                                           };
+                    
+                    NSString *jsonStr = [Tools JsonStringWithDictonary:json];
+                    ImportToOrderListService *service_commit = [[ImportToOrderListService alloc] init];
+                    service_commit.delegate = self;
+                    [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
+                    [service_commit ImportToOrderList:jsonStr];
+                } else {
+                    
+                    [Tools showAlert:self.view andTitle:@"车牌不能为空哦"];
+                }
             } else {
                 
                 [Tools showAlert:self.view andTitle:@"承运信息不能为空哦"];
             }
         } else {
             
-            [Tools showAlert:self.view andTitle:@"厂商信息不能为空哦"];
+            [Tools showAlert:self.view andTitle:@"物品数量不能都为空哦"];
         }
     } else {
         
-        [Tools showAlert:self.view andTitle:@"物品数量不能都为空哦"];
+        [Tools showAlert:self.view andTitle:@"厂商信息不能为空哦"];
     }
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return _bottleInfoListM.bottleInfoModel.count;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return kCellHeight;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // 处理界面
+    static NSString *cellId = kCellName;
+    AddBottleTableViewCell *cell = (AddBottleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    cell.delegate = self;
+    
+    BottleInfoModel *m = _bottleInfoListM.bottleInfoModel[indexPath.row];
+    
+    cell.bottleInfoM = m;
+    
+    return cell;
 }
 
 
@@ -246,14 +338,21 @@
 
 - (void)successOfGetReturnPartyList:(BottleAddressListModel *)bottleAddressListM {
     
+    _bottleAddressListM = bottleAddressListM;
+    
     if(bottleAddressListM.bottleAddressModel.count == 1) {
         
         _factory = bottleAddressListM.bottleAddressModel[0];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            BottleAddressModel *bottleAddressM = bottleAddressListM.bottleAddressModel[0];
-            _PARTY_NAME.text = bottleAddressM.pARTYNAME;
-            _PARTY_ADDRESS.text = [NSString stringWithFormat:@"%@", bottleAddressM.aDDRESSINFO];
-        });
+        [self fullFactory];
+    } else if(bottleAddressListM.bottleAddressModel.count > 1) {
+        
+        _addFactoryView.hidden = NO;
+        _factoryView.hidden = YES;
+    } else {
+        
+        _addFactoryView.hidden = YES;
+        _factoryView.hidden = NO;
+        [Tools showAlert:self.view andTitle:@"请配置供应商信息"];
     }
 }
 
@@ -275,6 +374,8 @@
 - (void)successOfGetReturnProductList:(BottleInfoListModel *)bottleInfoListM {
     
     _bottleInfoListM = bottleInfoListM;
+    _bottleViewHeight.constant = _bottleInfoListM.bottleInfoModel.count * kCellHeight + _bottleViewPromptHeight.constant + _bottleTotalViewHeight.constant;
+    [_tableView reloadData];
 }
 
 
@@ -332,28 +433,56 @@
 
 - (void)reloadAddress:(NSNotification *)aNotify {
     
-    _carrierM = aNotify.userInfo[@"Carrier"];
-    if(_carrierM) {
-        _carrierInfoAddView.hidden = true;
-        _carrierInfoView.hidden = false;
-        _modifyCarrierBtn.hidden = false;
+    CarrierModel *carrierM = aNotify.userInfo[@"Carrier"];
+    BottleAddressModel *factory = aNotify.userInfo[@"Factory"];
+    PlateNumberModel *plateNumber = aNotify.userInfo[@"PlateNumber"];
+    if(carrierM) {
+        _carrierM = carrierM;
+        _carrierInfoAddView.hidden = YES;
+        _carrierInfoView.hidden = NO;
+        _modifyCarrierBtn.hidden = NO;
         _TMS_PLATE_NUMBER.text = _carrierM.tMSPLATENUMBER;
         _TMS_VEHICLE_TYPE.text = _carrierM.tMSVEHICLETYPE;
         _TMS_DRIVER_NAME.text = _carrierM.tMSDRIVERNAME;
         _TMS_DRIVER_TEL.text = _carrierM.tMSDRIVERTEL;
         _TMS_FLEET_NAME.text = _carrierM.tMSFLEETNAME;
+        // 更换承运商，车牌必然要置空
+        _plateNumber = nil;
+        _plateNumberView.hidden = YES;
+        _addPlateNumberView.hidden = NO;
+        _modifyPlateNumberBtn.hidden = YES;
+        _TMS_PLATE_NUMBER.text = @"";
+    }
+    
+    if(factory) {
+        _factory = factory;
+        _modifyFactoryBtn.hidden = NO;
+        [self fullFactory];
+    }
+    
+    if(plateNumber) {
+        
+        _plateNumber = plateNumber;
+        _plateNumberView.hidden = NO;
+        _addPlateNumberView.hidden = YES;
+        _modifyPlateNumberBtn.hidden = NO;
+        _TMS_PLATE_NUMBER.text = _plateNumber.tMSPLATENUMBER;
     }
 }
 
 
-- (IBAction)textChange {
+#pragma mark - AddBottleTableViewCellDelegate
+
+- (void)productQTYChange {
     
-    CGFloat little = [[_littleF textTrim] floatValue];
-    CGFloat mid = [[_midF textTrim] floatValue];
-    CGFloat max = [[_maxF textTrim] floatValue];
-    CGFloat tray = [[_trayF textTrim] floatValue];
-    _bottleTotal = little + mid + max + tray;
-    _bottleTatalLabel.text = [NSString stringWithFormat:@"%.1f", _bottleTotal];
+    _bottleTotal = 0;
+    for (BottleInfoModel *m in _bottleInfoListM.bottleInfoModel) {
+        CGFloat qty = [m.pOQTY floatValue];
+        if(qty > 0) {
+            _bottleTotal += qty;
+        }
+    }
+    _bottleTotalLabel.text = [NSString stringWithFormat:@"%.1f", _bottleTotal];
 }
 
 @end

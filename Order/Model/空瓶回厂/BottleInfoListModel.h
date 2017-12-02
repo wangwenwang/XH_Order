@@ -19,7 +19,11 @@
 //                            "PRODUCT_DESC": "回瓶的大瓶",
 //                            "PRODUCT_BARCODE": "",
 //                            "PRODUCT_STATE": "新建",
-//                            "IDX": "34688"
+//                            "IDX": "34688",
+//                            "PRODUCT_IDX": "",
+//                            "ENT_IDX": "",
+//                            "LINE_NO": "",
+//                            "PO_QTY": ""
 //                        }
 //                        ]
 //}

@@ -43,8 +43,8 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"获取瓶子订单产详情失败:%@", error);
-        [self failureOfGetReturnBottleInfo:nil];
+        NSLog(@"请求瓶子订单产详情失败:%@", error);
+        [self failureOfGetReturnBottleInfo:@"请求瓶子订单产详情失败"];
     }];
 }
 

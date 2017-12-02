@@ -115,6 +115,17 @@
 		302675E51F724BCA0098DEF1 /* Store_GetToAddressListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302675E21F724BCA0098DEF1 /* Store_GetToAddressListService.m */; };
 		302675E61F724BCA0098DEF1 /* Store_StockOutConfirmService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302675E41F724BCA0098DEF1 /* Store_StockOutConfirmService.m */; };
 		302675E91F725E550098DEF1 /* Stock_SaveInputService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302675E81F725E550098DEF1 /* Stock_SaveInputService.m */; };
+		3026B2EA1FD240FE001F2D3B /* FactoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B2E81FD240FE001F2D3B /* FactoryViewController.m */; };
+		3026B2EB1FD240FE001F2D3B /* FactoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3026B2E91FD240FE001F2D3B /* FactoryViewController.xib */; };
+		3026B2EF1FD241F0001F2D3B /* FactoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B2ED1FD241F0001F2D3B /* FactoryTableViewCell.m */; };
+		3026B2F01FD241F0001F2D3B /* FactoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3026B2EE1FD241F0001F2D3B /* FactoryTableViewCell.xib */; };
+		3026B2F41FD24740001F2D3B /* PlateNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B2F21FD24740001F2D3B /* PlateNumberViewController.m */; };
+		3026B2F51FD24740001F2D3B /* PlateNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3026B2F31FD24740001F2D3B /* PlateNumberViewController.xib */; };
+		3026B2F91FD2481E001F2D3B /* PlateNumberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B2F71FD2481E001F2D3B /* PlateNumberTableViewCell.m */; };
+		3026B2FA1FD2481E001F2D3B /* PlateNumberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3026B2F81FD2481E001F2D3B /* PlateNumberTableViewCell.xib */; };
+		3026B2FD1FD24B94001F2D3B /* GetPlateListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B2FC1FD24B94001F2D3B /* GetPlateListService.m */; };
+		3026B3001FD255C0001F2D3B /* PlateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B2FF1FD255C0001F2D3B /* PlateListModel.m */; };
+		3026B3031FD25618001F2D3B /* PlateNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026B3021FD25618001F2D3B /* PlateNumberModel.m */; };
 		302A057A1DB0AF4C00972490 /* SelectGoodsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05791DB0AF4C00972490 /* SelectGoodsService.m */; };
 		302A057D1DB0B56700972490 /* PayTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A057C1DB0B56700972490 /* PayTypeModel.m */; };
 		302A05801DB0C60100972490 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A057F1DB0C60100972490 /* ProductModel.m */; };
@@ -122,6 +133,8 @@
 		302A05861DB0CC7200972490 /* PolicyItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05851DB0CC7200972490 /* PolicyItemModel.m */; };
 		302A94251F4579450020E1C1 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302A94241F4579450020E1C1 /* MainCollection.plist */; };
 		302F6D431F73A57E00A84F39 /* Stock_GetOutProductTypeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */; };
+		303347CD1FD291EA00CC88CC /* AddBottleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303347CB1FD291EA00CC88CC /* AddBottleTableViewCell.m */; };
+		303347CE1FD291EA00CC88CC /* AddBottleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303347CC1FD291EA00CC88CC /* AddBottleTableViewCell.xib */; };
 		3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */; };
 		3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */; };
 		3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566951F70CD2B009E6EFB /* StockOutConfirmViewController.m */; };
@@ -618,6 +631,24 @@
 		302675E41F724BCA0098DEF1 /* Store_StockOutConfirmService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store_StockOutConfirmService.m; sourceTree = "<group>"; };
 		302675E71F725E550098DEF1 /* Stock_SaveInputService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock_SaveInputService.h; sourceTree = "<group>"; };
 		302675E81F725E550098DEF1 /* Stock_SaveInputService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock_SaveInputService.m; sourceTree = "<group>"; };
+		3026B2E71FD240FD001F2D3B /* FactoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactoryViewController.h; sourceTree = "<group>"; };
+		3026B2E81FD240FE001F2D3B /* FactoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FactoryViewController.m; sourceTree = "<group>"; };
+		3026B2E91FD240FE001F2D3B /* FactoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactoryViewController.xib; sourceTree = "<group>"; };
+		3026B2EC1FD241F0001F2D3B /* FactoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FactoryTableViewCell.h; sourceTree = "<group>"; };
+		3026B2ED1FD241F0001F2D3B /* FactoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FactoryTableViewCell.m; sourceTree = "<group>"; };
+		3026B2EE1FD241F0001F2D3B /* FactoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactoryTableViewCell.xib; sourceTree = "<group>"; };
+		3026B2F11FD24740001F2D3B /* PlateNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateNumberViewController.h; sourceTree = "<group>"; };
+		3026B2F21FD24740001F2D3B /* PlateNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateNumberViewController.m; sourceTree = "<group>"; };
+		3026B2F31FD24740001F2D3B /* PlateNumberViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlateNumberViewController.xib; sourceTree = "<group>"; };
+		3026B2F61FD2481E001F2D3B /* PlateNumberTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateNumberTableViewCell.h; sourceTree = "<group>"; };
+		3026B2F71FD2481E001F2D3B /* PlateNumberTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateNumberTableViewCell.m; sourceTree = "<group>"; };
+		3026B2F81FD2481E001F2D3B /* PlateNumberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlateNumberTableViewCell.xib; sourceTree = "<group>"; };
+		3026B2FB1FD24B94001F2D3B /* GetPlateListService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPlateListService.h; sourceTree = "<group>"; };
+		3026B2FC1FD24B94001F2D3B /* GetPlateListService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPlateListService.m; sourceTree = "<group>"; };
+		3026B2FE1FD255C0001F2D3B /* PlateListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateListModel.h; sourceTree = "<group>"; };
+		3026B2FF1FD255C0001F2D3B /* PlateListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateListModel.m; sourceTree = "<group>"; };
+		3026B3011FD25618001F2D3B /* PlateNumberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateNumberModel.h; sourceTree = "<group>"; };
+		3026B3021FD25618001F2D3B /* PlateNumberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateNumberModel.m; sourceTree = "<group>"; };
 		302A05781DB0AF4C00972490 /* SelectGoodsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGoodsService.h; sourceTree = "<group>"; };
 		302A05791DB0AF4C00972490 /* SelectGoodsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGoodsService.m; sourceTree = "<group>"; };
 		302A057B1DB0B56700972490 /* PayTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayTypeModel.h; sourceTree = "<group>"; };
@@ -631,6 +662,9 @@
 		302A94241F4579450020E1C1 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
 		302F6D411F73A57E00A84F39 /* Stock_GetOutProductTypeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock_GetOutProductTypeService.h; sourceTree = "<group>"; };
 		302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock_GetOutProductTypeService.m; sourceTree = "<group>"; };
+		303347CA1FD291EA00CC88CC /* AddBottleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddBottleTableViewCell.h; sourceTree = "<group>"; };
+		303347CB1FD291EA00CC88CC /* AddBottleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddBottleTableViewCell.m; sourceTree = "<group>"; };
+		303347CC1FD291EA00CC88CC /* AddBottleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddBottleTableViewCell.xib; sourceTree = "<group>"; };
 		303566911F70CD2B009E6EFB /* GetToAddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetToAddressListViewController.h; sourceTree = "<group>"; };
 		303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetToAddressListViewController.m; sourceTree = "<group>"; };
 		303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetToAddressListViewController.xib; sourceTree = "<group>"; };
@@ -1185,6 +1219,8 @@
 				3013F3711FC7F0F700CF69CA /* DriverOrderImageService.m */,
 				3013F3731FC7FE2F00CF69CA /* ReturnOrderCancelService.h */,
 				3013F3741FC7FE2F00CF69CA /* ReturnOrderCancelService.m */,
+				3026B2FB1FD24B94001F2D3B /* GetPlateListService.h */,
+				3026B2FC1FD24B94001F2D3B /* GetPlateListService.m */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -1214,6 +1250,10 @@
 				3013F3611FC7CB4A00CF69CA /* BottleDetailInfoModel.m */,
 				3013F35D1FC7CB1B00CF69CA /* BottleDetailItemModel.h */,
 				3013F35E1FC7CB1B00CF69CA /* BottleDetailItemModel.m */,
+				3026B2FE1FD255C0001F2D3B /* PlateListModel.h */,
+				3026B2FF1FD255C0001F2D3B /* PlateListModel.m */,
+				3026B3011FD25618001F2D3B /* PlateNumberModel.h */,
+				3026B3021FD25618001F2D3B /* PlateNumberModel.m */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -1283,9 +1323,15 @@
 				30FCAD871FC520A700DEFA8D /* AddBottleViewController.h */,
 				30FCAD881FC520A700DEFA8D /* AddBottleViewController.m */,
 				30FCAD891FC520A700DEFA8D /* AddBottleViewController.xib */,
+				3026B2E71FD240FD001F2D3B /* FactoryViewController.h */,
+				3026B2E81FD240FE001F2D3B /* FactoryViewController.m */,
+				3026B2E91FD240FE001F2D3B /* FactoryViewController.xib */,
 				3091FC241FC55FAC008E01CC /* CarrierViewController.h */,
 				3091FC251FC55FAC008E01CC /* CarrierViewController.m */,
 				3091FC261FC55FAC008E01CC /* CarrierViewController.xib */,
+				3026B2F11FD24740001F2D3B /* PlateNumberViewController.h */,
+				3026B2F21FD24740001F2D3B /* PlateNumberViewController.m */,
+				3026B2F31FD24740001F2D3B /* PlateNumberViewController.xib */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -2729,12 +2775,21 @@
 				3091FC321FC570A9008E01CC /* CarrierTableViewCell.h */,
 				3091FC331FC570A9008E01CC /* CarrierTableViewCell.m */,
 				3091FC341FC570A9008E01CC /* CarrierTableViewCell.xib */,
+				3026B2EC1FD241F0001F2D3B /* FactoryTableViewCell.h */,
+				3026B2ED1FD241F0001F2D3B /* FactoryTableViewCell.m */,
+				3026B2EE1FD241F0001F2D3B /* FactoryTableViewCell.xib */,
+				3026B2F61FD2481E001F2D3B /* PlateNumberTableViewCell.h */,
+				3026B2F71FD2481E001F2D3B /* PlateNumberTableViewCell.m */,
+				3026B2F81FD2481E001F2D3B /* PlateNumberTableViewCell.xib */,
 				3013F3501FC7C44F00CF69CA /* BottleListTableViewCell.h */,
 				3013F3511FC7C44F00CF69CA /* BottleListTableViewCell.m */,
 				3013F3521FC7C44F00CF69CA /* BottleListTableViewCell.xib */,
 				3013F3791FCBB66400CF69CA /* BottleInfoTableViewCell.h */,
 				3013F37A1FCBB66400CF69CA /* BottleInfoTableViewCell.m */,
 				3013F37B1FCBB66400CF69CA /* BottleInfoTableViewCell.xib */,
+				303347CA1FD291EA00CC88CC /* AddBottleTableViewCell.h */,
+				303347CB1FD291EA00CC88CC /* AddBottleTableViewCell.m */,
+				303347CC1FD291EA00CC88CC /* AddBottleTableViewCell.xib */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -2846,6 +2901,7 @@
 				304A7AC61DB867A90039B0B2 /* CheckOrderPathViewController.xib in Resources */,
 				30BB2DAF1F459359002E51E7 /* CustomerListSearchResultsViewController.xib in Resources */,
 				30CDC6421D9907CD0035602F /* PhotoItemView.xib in Resources */,
+				3026B2F51FD24740001F2D3B /* PlateNumberViewController.xib in Resources */,
 				30F7B8DD1DBFAD36004CD128 /* SelectedGiftsViewController.xib in Resources */,
 				30BB2DB31F459359002E51E7 /* GetAppStockListViewController.xib in Resources */,
 				3B0DC1421F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib in Resources */,
@@ -2875,7 +2931,9 @@
 				304A34171F0E071B0055D50C /* AreaProvinceViewController.xib in Resources */,
 				30BB2DC91F459375002E51E7 /* AddStockTableViewCell.xib in Resources */,
 				301D7DB31F5A3D2E00D83410 /* GetAppBusinessFeeListTableViewCell.xib in Resources */,
+				3026B2FA1FD2481E001F2D3B /* PlateNumberTableViewCell.xib in Resources */,
 				30F7B8D51DBF0B33004CD128 /* AddGiftProductsTableViewCell.xib in Resources */,
+				303347CE1FD291EA00CC88CC /* AddBottleTableViewCell.xib in Resources */,
 				304A7AB71DB612180039B0B2 /* BrandTableViewCell.xib in Resources */,
 				30A3C30E1D9A101C00BBE0DA /* MakeOrderViewController.xib in Resources */,
 				30E5A0761D9DFB6300D94F77 /* SearchOrderPathViewController.xib in Resources */,
@@ -2885,6 +2943,7 @@
 				30A3C3011D9A0E0F00BBE0DA /* MainViewController.xib in Resources */,
 				304A7ADA1DB8BAE20039B0B2 /* ChartViewController.xib in Resources */,
 				30A3C2F01D991E1000BBE0DA /* WelcomeViewController.xib in Resources */,
+				3026B2EB1FD240FE001F2D3B /* FactoryViewController.xib in Resources */,
 				301D7DC91F5A3E0400D83410 /* GetPartyListTableViewCell.xib in Resources */,
 				3000CA031DB20E2F00D8E731 /* ProductPolicyTableViewCell.xib in Resources */,
 				30BB2DCD1F459375002E51E7 /* GetAppStockListTableViewCell.xib in Resources */,
@@ -2918,6 +2977,7 @@
 				30A3C31D1D9A501300BBE0DA /* MainCollectionViewCell.xib in Resources */,
 				30F7B8E91DC36CA7004CD128 /* Default-568@2x.png in Resources */,
 				3035670D1F7103B0009E6EFB /* GetOupputListTableViewCell.xib in Resources */,
+				3026B2F01FD241F0001F2D3B /* FactoryTableViewCell.xib in Resources */,
 				30A3C2EE1D991E1000BBE0DA /* LoginViewController.xib in Resources */,
 				30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */,
 				30E9C0A11DA8E10300A09182 /* NewsViewController.xib in Resources */,
@@ -3018,6 +3078,7 @@
 				30CDC63D1D9907CD0035602F /* PBPGView.m in Sources */,
 				301AD3BB1F6A2D1500CD13D0 /* StockNoListTableViewCell.m in Sources */,
 				30126A781DB0725500BABACF /* SelectGoodsTableViewCell.m in Sources */,
+				3026B2F91FD2481E001F2D3B /* PlateNumberTableViewCell.m in Sources */,
 				30BB2DDA1F459391002E51E7 /* CancelStockService.m in Sources */,
 				30CDC6541D9907CD0035602F /* UIImage+FixOrientation.m in Sources */,
 				3088D3061F4BDC49006031D9 /* GetOupputListModel.m in Sources */,
@@ -3060,6 +3121,7 @@
 				3088D3051F4BDC49006031D9 /* GetOupputDetailModel.m in Sources */,
 				3088D30D1F4BDE96006031D9 /* GetOupputItemModel.m in Sources */,
 				302F6D431F73A57E00A84F39 /* Stock_GetOutProductTypeService.m in Sources */,
+				3026B2EA1FD240FE001F2D3B /* FactoryViewController.m in Sources */,
 				30E5A04D1D9B769000D94F77 /* CheckOrderService.m in Sources */,
 				30CDC6461D9907CD0035602F /* CoreArchive.m in Sources */,
 				304A7ADD1DB8BCFE0039B0B2 /* ChartService.m in Sources */,
@@ -3078,6 +3140,7 @@
 				3021605E1F135B850049374F /* LM_alert.m in Sources */,
 				30E9C0AE1DA8E58A00A09182 /* HotProductService.m in Sources */,
 				30CDC63E1D9907CD0035602F /* PBSaveBtn.m in Sources */,
+				3026B2EF1FD241F0001F2D3B /* FactoryTableViewCell.m in Sources */,
 				30CDC6531D9907CD0035602F /* UIImage+Extend.m in Sources */,
 				30E9C0AA1DA8E22500A09182 /* HotProductTableViewCell.m in Sources */,
 				30BBF1421F17695B00496518 /* GetPartyListViewController.m in Sources */,
@@ -3086,6 +3149,7 @@
 				30078D211DBA73EA00429813 /* AddGiftsViewController.m in Sources */,
 				30036FB71FC426C700E59504 /* GetReturnPartyListService.m in Sources */,
 				30E616E91F28771B0039D73D /* ANBlurredImageView.m in Sources */,
+				3026B2FD1FD24B94001F2D3B /* GetPlateListService.m in Sources */,
 				30BB2DFA1F46821B002E51E7 /* StockProductListModel.m in Sources */,
 				30BB2DCC1F459375002E51E7 /* GetAppStockListTableViewCell.m in Sources */,
 				30CDC6611D9907CD0035602F /* SVProgressHUD.m in Sources */,
@@ -3104,6 +3168,7 @@
 				30E5A07A1D9E075800D94F77 /* OrderDetailViewController.m in Sources */,
 				3000C9FE1DB1BF0800D8E731 /* ProductTbModel.m in Sources */,
 				30CDC6481D9907CD0035602F /* CALayer+Transition.m in Sources */,
+				3026B2F41FD24740001F2D3B /* PlateNumberViewController.m in Sources */,
 				30CDC63F1D9907CD0035602F /* PBScrollView.m in Sources */,
 				30FCAD8A1FC520A700DEFA8D /* AddBottleViewController.m in Sources */,
 				30BB2DB21F459359002E51E7 /* GetAppStockListViewController.m in Sources */,
@@ -3168,6 +3233,7 @@
 				302A057A1DB0AF4C00972490 /* SelectGoodsService.m in Sources */,
 				30BB2DAE1F459359002E51E7 /* CustomerListSearchResultsViewController.m in Sources */,
 				30EAC8A21F78AFB200F9B6D4 /* StockOutTableViewCell.m in Sources */,
+				3026B3001FD255C0001F2D3B /* PlateListModel.m in Sources */,
 				30BB2DEA1F4593AD002E51E7 /* AppStockModel.m in Sources */,
 				30EF59C01DAE2520003F5729 /* MakeOrderTableViewCell.m in Sources */,
 				302A05831DB0C9E700972490 /* ProductPolicyModel.m in Sources */,
@@ -3202,6 +3268,7 @@
 				30BB2DD91F459391002E51E7 /* AddStockService.m in Sources */,
 				302675DA1F72469B0098DEF1 /* InputToAddressModel.m in Sources */,
 				30EF59BB1DAE0F01003F5729 /* OrderProgressNodeTableViewCell.m in Sources */,
+				303347CD1FD291EA00CC88CC /* AddBottleTableViewCell.m in Sources */,
 				30CDC6571D9907CD0035602F /* UIView+Extend.m in Sources */,
 				30CDC65C1D9907CD0035602F /* UIImageView+SD.m in Sources */,
 				30CDC67B1D990B430035602F /* Tools.m in Sources */,
@@ -3241,6 +3308,7 @@
 				301D7DC61F5A3E0400D83410 /* AddressListTableViewCell.m in Sources */,
 				3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */,
 				30A7506B1F18C46A00B46B93 /* LM_A_B_C_D.m in Sources */,
+				3026B3031FD25618001F2D3B /* PlateNumberModel.m in Sources */,
 				30F7B8E11DBFAE80004CD128 /* SelectedGiftsTableViewCell.m in Sources */,
 				30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				30DE405A1F6D11EA00845CBB /* InputModel.m in Sources */,

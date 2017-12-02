@@ -47,7 +47,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"获取承运信息成功:%@", error);
-        [self failureOfGetShipmentList:nil];
+        [self failureOfGetShipmentList:@"请求承运信息失败"];
     }];
 }
 

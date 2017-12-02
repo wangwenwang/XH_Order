@@ -19,6 +19,11 @@
                 <outlet property="ORD_TO_ADDRESS" destination="oDd-X7-V0y" id="cif-mY-8hS"/>
                 <outlet property="ORD_TO_NAME" destination="9Rn-hB-nBM" id="FZN-J4-5fe"/>
                 <outlet property="ORD_WORKFLOW" destination="nLB-vf-ess" id="Fzx-FG-q5Q"/>
+                <outlet property="TMS_DRIVER_NAME" destination="1WT-Qj-mrZ" id="yrR-p8-5rn"/>
+                <outlet property="TMS_DRIVER_TEL" destination="LuY-Mw-nj2" id="Nup-ic-VWN"/>
+                <outlet property="TMS_FLEET_NAME" destination="cRY-g2-bGN" id="hA6-VW-DjE"/>
+                <outlet property="TMS_PLATE_NUMBER" destination="sH3-YH-Ppt" id="Tm4-OS-pU9"/>
+                <outlet property="TMS_VEHICLE_TYPE" destination="KgY-6N-e3f" id="pXQ-ea-AC6"/>
                 <outlet property="cancenOrConfirmBtn" destination="tVr-j8-Z59" id="f5r-Ia-SPM"/>
                 <outlet property="checkPathBtn" destination="5yu-j7-klQ" id="4i2-3b-22x"/>
                 <outlet property="checkPictureBtn" destination="OlL-EC-n77" id="hyV-lc-xfB"/>

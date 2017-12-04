@@ -256,7 +256,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DX0-m7-Ya7" userLabel="厂商信息">
                                             <rect key="frame" x="0.0" y="30" width="374" height="65"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单状态：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QN-7D-LGa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单流程：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QN-7D-LGa">
                                                     <rect key="frame" x="8" y="17" width="76.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -537,15 +537,19 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-j8-Z59">
-                    <rect key="frame" x="127.5" y="601" width="120" height="37"/>
+                    <rect key="frame" x="25" y="595" width="325" height="43"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="Oze-ZR-dR0"/>
-                        <constraint firstAttribute="height" constant="37" id="XqJ-uY-OrU"/>
+                        <constraint firstAttribute="height" constant="43" id="XqJ-uY-OrU"/>
                     </constraints>
                     <state key="normal" title="确认订单">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="commitOnclick" destination="-1" eventType="touchUpInside" id="Axk-Lz-0x1"/>
                     </connections>
@@ -555,10 +559,12 @@
             <constraints>
                 <constraint firstItem="9OZ-Wb-qzh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1KL-J2-PM5"/>
                 <constraint firstAttribute="trailing" secondItem="9OZ-Wb-qzh" secondAttribute="trailing" id="66w-AX-FZl"/>
+                <constraint firstItem="tVr-j8-Z59" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="8uz-aL-fD3"/>
                 <constraint firstItem="9OZ-Wb-qzh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GEG-81-ec0"/>
                 <constraint firstAttribute="bottom" secondItem="tVr-j8-Z59" secondAttribute="bottom" constant="20" id="Q0i-ay-r0a"/>
                 <constraint firstItem="tVr-j8-Z59" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Usn-g9-ohd"/>
                 <constraint firstItem="5yu-j7-klQ" firstAttribute="centerY" secondItem="OlL-EC-n77" secondAttribute="centerY" id="WPq-Es-466"/>
+                <constraint firstAttribute="trailing" secondItem="tVr-j8-Z59" secondAttribute="trailing" constant="25" id="aPI-8V-Ujp"/>
                 <constraint firstAttribute="bottom" secondItem="5yu-j7-klQ" secondAttribute="bottom" constant="20" id="hqt-ad-iwt"/>
                 <constraint firstAttribute="bottom" secondItem="9OZ-Wb-qzh" secondAttribute="bottom" id="npG-I6-Wf1"/>
                 <constraint firstItem="5yu-j7-klQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="r8m-56-ZLI"/>

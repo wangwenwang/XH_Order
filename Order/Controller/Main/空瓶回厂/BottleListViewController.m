@@ -39,7 +39,7 @@
 
 #define kPageCount 20
 
-#define kCellHeight 82
+#define kCellHeight 115
 
 #define kCellName @"BottleListTableViewCell"
 

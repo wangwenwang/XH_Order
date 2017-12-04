@@ -628,15 +628,19 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPA-Rf-jtK">
-                    <rect key="frame" x="72" y="980" width="230" height="37"/>
-                    <color key="backgroundColor" red="0.27013062170000002" green="0.65527860449999997" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                    <rect key="frame" x="25" y="974" width="325" height="43"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="230" id="WIC-AJ-Ikh"/>
-                        <constraint firstAttribute="height" constant="37" id="eOE-H7-hp7"/>
+                        <constraint firstAttribute="height" constant="43" id="eOE-H7-hp7"/>
                     </constraints>
                     <state key="normal" title="提交">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="commitOnclick" destination="-1" eventType="touchUpInside" id="Dsb-0O-0RG"/>
                     </connections>
@@ -645,10 +649,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ytc-1O-VRo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2Og-8G-HCj"/>
+                <constraint firstAttribute="trailing" secondItem="jPA-Rf-jtK" secondAttribute="trailing" constant="25" id="5ti-5x-9mb"/>
                 <constraint firstItem="ytc-1O-VRo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7As-Cm-xRP"/>
                 <constraint firstItem="ytc-1O-VRo" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="EuF-XE-dp3"/>
                 <constraint firstItem="jPA-Rf-jtK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FBO-ec-yhu"/>
                 <constraint firstAttribute="bottom" secondItem="jPA-Rf-jtK" secondAttribute="bottom" constant="20" id="InL-8q-d5B"/>
+                <constraint firstItem="jPA-Rf-jtK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="e1b-YT-Rn2"/>
                 <constraint firstItem="ytc-1O-VRo" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="y7S-cy-xuK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

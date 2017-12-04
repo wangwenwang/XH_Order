@@ -118,19 +118,7 @@
 
 - (void)addCycleScrollView {
     
-    NSArray *images = nil;
-    
-    NSString *welcomeImageName = [[NSUserDefaults standardUserDefaults] objectForKey:kWelcomeImageName];
-    if([welcomeImageName isEqualToString:@"YIB"] || [welcomeImageName isEqualToString:@"QH"]) {
-        
-        images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
-    } else if([welcomeImageName isEqualToString:@"DK"]) {
-        
-        images = [NSArray arrayWithObjects:@"ad_pic_20", @"ad_pic_21", @"ad_pic_22", @"ad_pic_23", nil];
-    } else {
-        
-        images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
-    }
+    NSArray *images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
     
     // 本地加载图片的轮播器
     SDCycleScrollView *_cycleScrollView1 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_cycleScrollView.frame)) imageNamesGroup:images];

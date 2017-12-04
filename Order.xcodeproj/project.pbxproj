@@ -2772,15 +2772,6 @@
 		3B546C9E1FC48F4100F154E7 /* 空瓶回厂 */ = {
 			isa = PBXGroup;
 			children = (
-				3091FC321FC570A9008E01CC /* CarrierTableViewCell.h */,
-				3091FC331FC570A9008E01CC /* CarrierTableViewCell.m */,
-				3091FC341FC570A9008E01CC /* CarrierTableViewCell.xib */,
-				3026B2EC1FD241F0001F2D3B /* FactoryTableViewCell.h */,
-				3026B2ED1FD241F0001F2D3B /* FactoryTableViewCell.m */,
-				3026B2EE1FD241F0001F2D3B /* FactoryTableViewCell.xib */,
-				3026B2F61FD2481E001F2D3B /* PlateNumberTableViewCell.h */,
-				3026B2F71FD2481E001F2D3B /* PlateNumberTableViewCell.m */,
-				3026B2F81FD2481E001F2D3B /* PlateNumberTableViewCell.xib */,
 				3013F3501FC7C44F00CF69CA /* BottleListTableViewCell.h */,
 				3013F3511FC7C44F00CF69CA /* BottleListTableViewCell.m */,
 				3013F3521FC7C44F00CF69CA /* BottleListTableViewCell.xib */,
@@ -2790,6 +2781,15 @@
 				303347CA1FD291EA00CC88CC /* AddBottleTableViewCell.h */,
 				303347CB1FD291EA00CC88CC /* AddBottleTableViewCell.m */,
 				303347CC1FD291EA00CC88CC /* AddBottleTableViewCell.xib */,
+				3091FC321FC570A9008E01CC /* CarrierTableViewCell.h */,
+				3091FC331FC570A9008E01CC /* CarrierTableViewCell.m */,
+				3091FC341FC570A9008E01CC /* CarrierTableViewCell.xib */,
+				3026B2EC1FD241F0001F2D3B /* FactoryTableViewCell.h */,
+				3026B2ED1FD241F0001F2D3B /* FactoryTableViewCell.m */,
+				3026B2EE1FD241F0001F2D3B /* FactoryTableViewCell.xib */,
+				3026B2F61FD2481E001F2D3B /* PlateNumberTableViewCell.h */,
+				3026B2F71FD2481E001F2D3B /* PlateNumberTableViewCell.m */,
+				3026B2F81FD2481E001F2D3B /* PlateNumberTableViewCell.xib */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";

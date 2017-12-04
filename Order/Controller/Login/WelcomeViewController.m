@@ -42,30 +42,19 @@
     
     [super viewDidLoad];
     
-    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:udUserName];
-    
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
     NSLog(@"fds:%@", dict);
     
-//    if(userName) {
+    //    if(userName) {
     
-        _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(skipAd) userInfo:nil repeats:YES];
-        
-        NSString *welcomeImageName = [[NSUserDefaults standardUserDefaults] objectForKey:kWelcomeImageName];
-        if([welcomeImageName isEqualToString:@"YIB"] || [welcomeImageName isEqualToString:@"QH"]) {
-            
-            _welcomeImageView.image = [UIImage imageNamed:@"welcome1"];
-        } else if([welcomeImageName isEqualToString:@"DK"]) {
-            
-            _welcomeImageView.image = [UIImage imageNamed:@"welcome2"];
-        } else {
-            
-            [self skipAd];
-        }
-//    } else {
-//
-//        [self addLogoAnimation];
-//    }
+    _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(skipAd) userInfo:nil repeats:YES];
+    
+    _welcomeImageView.image = [UIImage imageNamed:@"welcome1"];
+    
+    //    } else {
+    //
+    //        [self addLogoAnimation];
+    //    }
 }
 
 

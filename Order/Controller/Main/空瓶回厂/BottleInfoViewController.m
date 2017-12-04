@@ -156,7 +156,7 @@
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
         
-        [LM_alert showLMAlertViewWithTitle:@"" message:@"是否取消订单" cancleButtonTitle:@"不取消" okButtonTitle:@"取消" okClickHandle:^{
+        [LM_alert showLMAlertViewWithTitle:@"" message:@"是否取消订单" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
             
             [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
             ReturnOrderCancelService *service = [[ReturnOrderCancelService alloc] init];
@@ -257,7 +257,7 @@
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
         
-        
+
         if([_app.user.USER_TYPE isEqualToString:kAGENCY]) {
             _cancenOrConfirmBtn.hidden = NO;
             [_cancenOrConfirmBtn setTitle:@"取消订单" forState:UIControlStateNormal];

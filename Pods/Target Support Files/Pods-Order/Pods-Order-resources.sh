@@ -82,12 +82,10 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "SGQRCode/SGQRCode/SGQRCode.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "SGQRCode/SGQRCode/SGQRCode.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -11,5 +11,5 @@ pod 'WMPageController'
 pod 'BaiduMapKit'
 pod 'PNChart'
 pod 'Masonry'
-pod 'SGQRCode'
+#pod 'SGQRCode', '~> 2.1.8'
 end

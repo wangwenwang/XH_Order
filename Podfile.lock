@@ -25,6 +25,7 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - SGQRCode (2.1.3)
   - UICountingLabel (1.2.0)
   - WMPageController (1.9.0)
 
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - MJRefresh
   - PNChart
   - SDCycleScrollView (~> 1.64)
+  - SGQRCode
   - WMPageController
 
 SPEC CHECKSUMS:
@@ -47,9 +49,10 @@ SPEC CHECKSUMS:
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SGQRCode: b97b4d97b2d34f442ab54a6241d7cb093cb3c424
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   WMPageController: 088ab96e271f12878eff084b3851620b701826c6
 
-PODFILE CHECKSUM: 03670feffd46d5f7f95deaae9fdff56fea80ee6c
+PODFILE CHECKSUM: c977371f3a54442fe6c42812fb7cb4e338c5eee1
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.1

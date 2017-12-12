@@ -38,5 +38,11 @@
 		<key>imageName</key>
 		<string>ic_bottle</string>
 	</dict>
+	<dict>
+		<key>title</key>
+		<string>入厂扫码</string>
+		<key>imageName</key>
+		<string>ic_bottle</string>
+	</dict>
 </array>
 </plist>

@@ -11,4 +11,5 @@ pod 'WMPageController'
 pod 'BaiduMapKit'
 pod 'PNChart'
 pod 'Masonry'
+pod 'SGQRCode'
 end

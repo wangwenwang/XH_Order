@@ -14,6 +14,7 @@
 		30036FB71FC426C700E59504 /* GetReturnPartyListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30036FB61FC426C700E59504 /* GetReturnPartyListService.m */; };
 		30036FBB1FC4290C00E59504 /* BottleAddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30036FBA1FC4290C00E59504 /* BottleAddressListModel.m */; };
 		30036FBE1FC429CC00E59504 /* BottleAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30036FBD1FC429CC00E59504 /* BottleAddressModel.m */; };
+		300776261FE00C3F00D0FBB7 /* ScanCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300776251FE00C3F00D0FBB7 /* ScanCodeViewController.m */; };
 		30078D211DBA73EA00429813 /* AddGiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30078D1F1DBA73EA00429813 /* AddGiftsViewController.m */; };
 		30078D221DBA73EA00429813 /* AddGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30078D201DBA73EA00429813 /* AddGiftsViewController.xib */; };
 		30078D251DBB11B200429813 /* OrderConfirmService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30078D241DBB11B200429813 /* OrderConfirmService.m */; };
@@ -448,6 +449,8 @@
 		30036FBA1FC4290C00E59504 /* BottleAddressListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottleAddressListModel.m; sourceTree = "<group>"; };
 		30036FBC1FC429CC00E59504 /* BottleAddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottleAddressModel.h; sourceTree = "<group>"; };
 		30036FBD1FC429CC00E59504 /* BottleAddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottleAddressModel.m; sourceTree = "<group>"; };
+		300776241FE00C3F00D0FBB7 /* ScanCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanCodeViewController.h; sourceTree = "<group>"; };
+		300776251FE00C3F00D0FBB7 /* ScanCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanCodeViewController.m; sourceTree = "<group>"; };
 		30078D1E1DBA73EA00429813 /* AddGiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGiftsViewController.h; sourceTree = "<group>"; };
 		30078D1F1DBA73EA00429813 /* AddGiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGiftsViewController.m; sourceTree = "<group>"; };
 		30078D201DBA73EA00429813 /* AddGiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGiftsViewController.xib; sourceTree = "<group>"; };
@@ -1813,6 +1816,8 @@
 				30A3C2FD1D9A0E0F00BBE0DA /* MainViewController.h */,
 				30A3C2FE1D9A0E0F00BBE0DA /* MainViewController.m */,
 				30A3C2FF1D9A0E0F00BBE0DA /* MainViewController.xib */,
+				300776241FE00C3F00D0FBB7 /* ScanCodeViewController.h */,
+				300776251FE00C3F00D0FBB7 /* ScanCodeViewController.m */,
 				302A94241F4579450020E1C1 /* MainCollection.plist */,
 				30E5A0721D9DFB6300D94F77 /* SearchOrderPathViewController.h */,
 				30E5A0731D9DFB6300D94F77 /* SearchOrderPathViewController.m */,
@@ -3029,7 +3034,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3065,6 +3070,7 @@
 				304A7AC91DB868080039B0B2 /* CheckSignatureService.m in Sources */,
 				303567001F710384009E6EFB /* GetInputInfoTableViewCell.m in Sources */,
 				30A3C2F41D991E4C00BBE0DA /* LoginService.m in Sources */,
+				300776261FE00C3F00D0FBB7 /* ScanCodeViewController.m in Sources */,
 				3088D30A1F4BDE16006031D9 /* GetOupputInfoModel.m in Sources */,
 				302675E91F725E550098DEF1 /* Stock_SaveInputService.m in Sources */,
 				301D7DEB1F5A3F5400D83410 /* RouteAnnotation.m in Sources */,

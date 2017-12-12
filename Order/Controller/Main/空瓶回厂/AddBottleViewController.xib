@@ -314,11 +314,8 @@
                                             </constraints>
                                         </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0y9-qh-pP1">
-                                            <rect key="frame" x="0.0" y="30" width="210" height="180"/>
+                                            <rect key="frame" x="0.0" y="30" width="375" height="180"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="210" id="Rhh-hX-zcN"/>
-                                            </constraints>
                                             <connections>
                                                 <outlet property="dataSource" destination="-1" id="xJI-El-7Hv"/>
                                                 <outlet property="delegate" destination="-1" id="Jm2-SB-NDh"/>
@@ -361,6 +358,7 @@
                                         <constraint firstItem="0y9-qh-pP1" firstAttribute="top" secondItem="1jv-RI-cWQ" secondAttribute="bottom" id="iRK-Q6-0YX"/>
                                         <constraint firstItem="oJm-1C-O4v" firstAttribute="top" secondItem="0y9-qh-pP1" secondAttribute="bottom" id="nQJ-Mf-yAP"/>
                                         <constraint firstItem="1jv-RI-cWQ" firstAttribute="leading" secondItem="KXh-N4-tNT" secondAttribute="leading" id="pSn-4f-lUI"/>
+                                        <constraint firstAttribute="trailing" secondItem="0y9-qh-pP1" secondAttribute="trailing" id="pwo-Rm-edq"/>
                                         <constraint firstAttribute="trailing" secondItem="1jv-RI-cWQ" secondAttribute="trailing" id="vaI-rg-MRO"/>
                                     </constraints>
                                 </view>

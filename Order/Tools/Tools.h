@@ -297,4 +297,15 @@
  */
 + (nullable UIImage *)resizeImage:(nullable UIImage *)image andNewSize:(CGSize)newSize;
 
+
+/**
+ <#Description#>
+
+ @param string <#string description#>
+ @param Imagesize <#Imagesize description#>
+ @param waterImagesize <#waterImagesize description#>
+ @return <#return value description#>
+ */
++ (UIImage *)qrImageForString:(NSString *)string imageSize:(CGFloat)Imagesize logoImageSize:(CGFloat)waterImagesize;
+
 @end

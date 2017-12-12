@@ -21,6 +21,7 @@
 #import "GetFeeListViewController.h"
 #import "CustomerListViewController.h"
 #import "BottleListViewController.h"
+#import "ScanCodeViewController.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChartServiceDelegate>
 
@@ -257,6 +258,10 @@
     } else if([title isEqualToString:@"空瓶回厂"]) {
         
         BottleListViewController * vc = [[BottleListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if([title isEqualToString:@"入厂扫码"]) {
+        
+        ScanCodeViewController * vc = [[ScanCodeViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

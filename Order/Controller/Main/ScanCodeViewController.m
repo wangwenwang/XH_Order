@@ -7,20 +7,33 @@
 //
 
 #import "ScanCodeViewController.h"
-#import <SGQRCodeScanManager.h>
 #import "SGQRCode.h"
-//#import "ScanSuccessJumpVC.h"
+#import "Tools.h"
+#import <MBProgressHUD.h>
+#import "SetOidsToFactoryService.h"
+#import "LM_alert.h"
 
-@interface ScanCodeViewController () <SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
+@interface ScanCodeViewController () <SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate, SetOidsToFactoryServiceDelegate>
 @property (nonatomic, strong) SGQRCodeScanManager *manager;
 @property (nonatomic, strong) SGQRCodeScanningView *scanningView;
 @property (nonatomic, strong) UIButton *flashlightBtn;
 @property (nonatomic, strong) UILabel *promptLabel;
 @property (nonatomic, assign) BOOL isSelectedFlashlightBtn;
 @property (nonatomic, strong) UIView *bottomView;
+@property (strong, nonatomic) SetOidsToFactoryService *service;
 @end
 
 @implementation ScanCodeViewController
+
+- (instancetype)init {
+    
+    if(self = [super init]) {
+        
+        _service = [[SetOidsToFactoryService alloc] init];
+        _service.delegate = self;
+    }
+    return self;
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -31,17 +44,18 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.scanningView removeTimer];
-    [self removeFlashlightBtn];
+//    [self removeFlashlightBtn];
     [_manager cancelSampleBufferDelegate];
 }
 
 - (void)dealloc {
     NSLog(@"SGQRCodeScanningVC - dealloc");
-    [self removeScanningView];
+//    [self removeScanningView];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor clearColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -56,7 +70,7 @@
 
 - (void)setupNavigationBar {
     self.navigationItem.title = @"扫一扫";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:(UIBarButtonItemStyleDone) target:self action:@selector(rightBarButtonItenAction)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:(UIBarButtonItemStyleDone) target:self action:@selector(rightBarButtonItenAction)];
 }
 
 - (SGQRCodeScanningView *)scanningView {
@@ -68,6 +82,7 @@
     }
     return _scanningView;
 }
+
 - (void)removeScanningView {
     [self.scanningView removeTimer];
     [self.scanningView removeFromSuperview];
@@ -78,7 +93,7 @@
     SGQRCodeAlbumManager *manager = [SGQRCodeAlbumManager sharedManager];
     [manager readQRCodeFromAlbumWithCurrentController:self];
     manager.delegate = self;
-    
+
     if (manager.isPHAuthorization == YES) {
         [self.scanningView removeTimer];
     }
@@ -99,14 +114,14 @@
 }
 - (void)QRCodeAlbumManager:(SGQRCodeAlbumManager *)albumManager didFinishPickingMediaWithResult:(NSString *)result {
     if ([result hasPrefix:@"http"]) {
-        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-        jumpVC.jump_URL = result;
-        [self.navigationController pushViewController:jumpVC animated:YES];
-        
+//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
+//        jumpVC.jump_URL = result;
+//        [self.navigationController pushViewController:jumpVC animated:YES];
+
     } else {
-        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-        jumpVC.jump_bar_code = result;
-        [self.navigationController pushViewController:jumpVC animated:YES];
+//        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
+//        jumpVC.jump_bar_code = result;
+//        [self.navigationController pushViewController:jumpVC animated:YES];
     }
 }
 
@@ -116,12 +131,11 @@
     if (metadataObjects != nil && metadataObjects.count > 0) {
         [scanManager palySoundName:@"SGQRCode.bundle/sound.caf"];
         [scanManager stopRunning];
-        [scanManager videoPreviewLayerRemoveFromSuperlayer];
-        
+//        [scanManager videoPreviewLayerRemoveFromSuperlayer];
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
-        ScanSuccessJumpVC *jumpVC = [[ScanSuccessJumpVC alloc] init];
-        jumpVC.jump_URL = [obj stringValue];
-        [self.navigationController pushViewController:jumpVC animated:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [_service SetOidsToFactory:obj.stringValue];
+        
     } else {
         NSLog(@"暂未识别出扫描的二维码");
     }
@@ -195,6 +209,32 @@
         self.flashlightBtn.selected = NO;
         [self.flashlightBtn removeFromSuperview];
     });
+}
+
+
+#pragma mark - SetOidsToFactoryServiceDelegate
+
+- (void)successOfSetOidsToFactory:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [LM_alert showLMAlertViewWithTitle:@"" message:msg cancleButtonTitle:@"确定" okButtonTitle:nil okClickHandle:^{
+        
+    } cancelClickHandle:^{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+
+- (void)failureOfSetOidsToFactory:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [LM_alert showLMAlertViewWithTitle:@"" message:msg cancleButtonTitle:@"确定" okButtonTitle:nil okClickHandle:^{
+    
+    } cancelClickHandle:^{
+        
+        [_manager startRunning];
+    }];
 }
 
 @end

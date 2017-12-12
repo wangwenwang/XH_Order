@@ -328,6 +328,18 @@
 /// 车牌号(根据车队id、搜索关键字)
 #define API_GetPlateList @"http://oms.kaidongyuan.com:12300/api/GetPlateList"
 
+/// 修改入厂时间
+#define API_SetOidsToFactory @"http://oms.kaidongyuan.com:12300/api/SetOidsToFactory"
+
+/// 修改入月台时间
+#define API_SetOidsToMonth @"http://oms.kaidongyuan.com:12300/api/SetOidsToMonth"
+
+/// 修改出月台时间
+#define API_SetOidsMonth @"http://oms.kaidongyuan.com:12300/api/SetOidsMonth"
+
+/// 修改出厂时间
+#define API_SetOidsFactory @"http://oms.kaidongyuan.com:12300/api/SetOidsFactory"
+
 
 /*--------- 判断iOS版本 ---------*/
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue

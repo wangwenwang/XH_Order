@@ -11,60 +11,48 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="105" id="KGk-i7-Jjw" customClass="CarrierTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="KGk-i7-Jjw" customClass="CarrierTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xV-KY-LDH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="102.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车牌号　: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zea-rv-V9j">
-                                <rect key="frame" x="12" y="8" width="69.5" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粤C1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDr-tm-JxS">
-                                <rect key="frame" x="81.5" y="8" width="60" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="承运商　: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDE-kd-RvV">
-                                <rect key="frame" x="12" y="31" width="69.5" height="18"/>
+                                <rect key="frame" x="12" y="10" width="69.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车队测" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-Mj-hZd">
-                                <rect key="frame" x="81.5" y="31" width="46" height="18"/>
+                                <rect key="frame" x="81.5" y="10" width="46" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="司机姓名: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFe-62-348">
-                                <rect key="frame" x="12" y="54" width="69.5" height="18"/>
+                                <rect key="frame" x="12" y="33" width="69.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-4s-zEf">
-                                <rect key="frame" x="81.5" y="54" width="31" height="18"/>
+                                <rect key="frame" x="81.5" y="33" width="31" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cp-Wa-fF5">
-                                <rect key="frame" x="12" y="77" width="69.5" height="18"/>
+                                <rect key="frame" x="12" y="56" width="69.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13700000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-hR-RD8">
-                                <rect key="frame" x="81.5" y="77" width="98" height="18"/>
+                                <rect key="frame" x="81.5" y="56" width="98" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,20 +61,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sgK-4s-zEf" firstAttribute="leading" secondItem="VFe-62-348" secondAttribute="trailing" id="4Iq-h0-6id"/>
-                            <constraint firstItem="sDr-tm-JxS" firstAttribute="centerY" secondItem="zea-rv-V9j" secondAttribute="centerY" id="CAO-T8-gFx"/>
-                            <constraint firstItem="5Cp-Wa-fF5" firstAttribute="leading" secondItem="zea-rv-V9j" secondAttribute="leading" id="IW4-4z-bga"/>
-                            <constraint firstItem="zea-rv-V9j" firstAttribute="leading" secondItem="1xV-KY-LDH" secondAttribute="leading" constant="12" id="Kv2-BR-y68"/>
-                            <constraint firstItem="VFe-62-348" firstAttribute="leading" secondItem="zea-rv-V9j" secondAttribute="leading" id="Lx8-w5-hP2"/>
+                            <constraint firstItem="GDE-kd-RvV" firstAttribute="leading" secondItem="1xV-KY-LDH" secondAttribute="leading" constant="12" id="7u0-Bn-tkK"/>
+                            <constraint firstItem="5Cp-Wa-fF5" firstAttribute="leading" secondItem="GDE-kd-RvV" secondAttribute="leading" id="MKv-c9-Cpw"/>
                             <constraint firstItem="Aes-hR-RD8" firstAttribute="leading" secondItem="5Cp-Wa-fF5" secondAttribute="trailing" id="XZH-oQ-M4e"/>
+                            <constraint firstItem="GDE-kd-RvV" firstAttribute="top" secondItem="1xV-KY-LDH" secondAttribute="top" constant="10" id="YpM-z8-c35"/>
                             <constraint firstItem="Mgw-Mj-hZd" firstAttribute="centerY" secondItem="GDE-kd-RvV" secondAttribute="centerY" id="blN-J9-Fva"/>
                             <constraint firstItem="Mgw-Mj-hZd" firstAttribute="leading" secondItem="GDE-kd-RvV" secondAttribute="trailing" id="e3H-96-pEw"/>
-                            <constraint firstItem="zea-rv-V9j" firstAttribute="top" secondItem="1xV-KY-LDH" secondAttribute="top" constant="8" id="fKd-pd-A6s"/>
                             <constraint firstItem="Aes-hR-RD8" firstAttribute="centerY" secondItem="5Cp-Wa-fF5" secondAttribute="centerY" id="lFc-dY-TbT"/>
-                            <constraint firstItem="GDE-kd-RvV" firstAttribute="leading" secondItem="zea-rv-V9j" secondAttribute="leading" id="pmN-fR-0NS"/>
+                            <constraint firstItem="VFe-62-348" firstAttribute="leading" secondItem="GDE-kd-RvV" secondAttribute="leading" id="nVf-TQ-0AO"/>
                             <constraint firstItem="sgK-4s-zEf" firstAttribute="centerY" secondItem="VFe-62-348" secondAttribute="centerY" id="uIy-YD-xa5"/>
                             <constraint firstItem="5Cp-Wa-fF5" firstAttribute="top" secondItem="VFe-62-348" secondAttribute="bottom" constant="5" id="vze-ij-rJf"/>
-                            <constraint firstItem="sDr-tm-JxS" firstAttribute="leading" secondItem="zea-rv-V9j" secondAttribute="trailing" id="wmt-dt-rig"/>
-                            <constraint firstItem="GDE-kd-RvV" firstAttribute="top" secondItem="zea-rv-V9j" secondAttribute="bottom" constant="5" id="zgW-QG-XcZ"/>
                             <constraint firstItem="VFe-62-348" firstAttribute="top" secondItem="GDE-kd-RvV" secondAttribute="bottom" constant="5" id="zyC-vf-5dZ"/>
                         </constraints>
                     </view>
@@ -103,9 +87,8 @@
                 <outlet property="TMS_DRIVER_NAME" destination="sgK-4s-zEf" id="0Og-vZ-6br"/>
                 <outlet property="TMS_DRIVER_TEL" destination="Aes-hR-RD8" id="dLn-f6-tvR"/>
                 <outlet property="TMS_FLEET_NAME" destination="Mgw-Mj-hZd" id="uqQ-UU-Hfb"/>
-                <outlet property="TMS_PLATE_NUMBER" destination="sDr-tm-JxS" id="08Y-DP-FCa"/>
             </connections>
-            <point key="canvasLocation" x="34" y="168.5"/>
+            <point key="canvasLocation" x="33" y="152.5"/>
         </tableViewCell>
     </objects>
 </document>

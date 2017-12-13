@@ -315,8 +315,8 @@
 
 - (void)failureOfSetPartyBottleQTY:(NSString *)msg {
     
-    [Tools showAlert:_app.window andTitle:msg];
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    [Tools showAlert:_app.window andTitle:msg];
 }
 
 
@@ -324,15 +324,17 @@
 
 - (void)successOfOrderJiaoWorkflow:(NSString *)msg {
     
-    [Tools showAlert:_app.window andTitle:msg];
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBottleListViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (void)failureOfOrderJiaoWorkflow:(NSString *)msg {
     
-    [Tools showAlert:_app.window andTitle:msg];
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    [Tools showAlert:_app.window andTitle:msg];
 }
 
 @end

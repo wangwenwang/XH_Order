@@ -28,7 +28,7 @@
 @end
 
 
-#define kCellHeight 105
+#define kCellHeight 83
 
 #define kCellName @"CarrierTableViewCell"
 

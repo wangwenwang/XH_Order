@@ -10,9 +10,6 @@
 
 @interface CarrierTableViewCell ()
 
-// 车牌号
-@property (weak, nonatomic) IBOutlet UILabel *TMS_PLATE_NUMBER;
-
 // 承运商
 @property (weak, nonatomic) IBOutlet UILabel *TMS_FLEET_NAME;
 
@@ -40,7 +37,6 @@
 
 - (void)setCarrierM:(CarrierModel *)carrierM {
     
-    _TMS_PLATE_NUMBER.text = carrierM.tMSPLATENUMBER;
     _TMS_FLEET_NAME.text = carrierM.tMSFLEETNAME;
     _TMS_DRIVER_NAME.text = carrierM.tMSDRIVERNAME;
     _TMS_DRIVER_TEL.text = carrierM.tMSDRIVERTEL;

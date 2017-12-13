@@ -46,7 +46,8 @@
     
     _PRODUCT_NAME.text = _bottleDetailItemM.pRODUCTNAME;
     _ORDER_QTY.text = _bottleDetailItemM.oRDERQTY;
-    _ISSUE_QTY.text = ([_ORD_WORKFLOW isEqualToString:@"已出库"] || [_ORD_WORKFLOW isEqualToString:@"已交付"]) ? _bottleDetailItemM.iSSUEQTY : @"尚未收货";
+//    _ISSUE_QTY.text = ([_ORD_WORKFLOW isEqualToString:@"已出库"] || [_ORD_WORKFLOW isEqualToString:@"已交付"]) ? _bottleDetailItemM.iSSUEQTY : @"尚未收货";
+    _ISSUE_QTY.text = _bottleDetailItemM.iSSUEQTY;
     
     if([_ORD_WORKFLOW isEqualToString:@"已出库"] && [_USER_TYPE isEqualToString:kFACTORY]) {
         

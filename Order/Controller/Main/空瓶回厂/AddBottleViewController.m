@@ -52,8 +52,6 @@
 @property (weak, nonatomic) IBOutlet UIView *carrierInfoView;
 @property (weak, nonatomic) IBOutlet UIView *carrierInfoAddView;
 @property (weak, nonatomic) IBOutlet UIButton *modifyCarrierBtn;
-// 车辆类型
-@property (weak, nonatomic) IBOutlet UILabel *TMS_VEHICLE_TYPE;
 // 司机姓名
 @property (weak, nonatomic) IBOutlet UILabel *TMS_DRIVER_NAME;
 // 司机联系电话
@@ -68,6 +66,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *modifyPlateNumberBtn;
 @property (strong, nonatomic) PlateNumberModel *plateNumber;
 @property (weak, nonatomic) IBOutlet UILabel *TMS_PLATE_NUMBER;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_VEHICLE_TYPE;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_VEHICLE_SIZE;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *plateNumberViewHeight;
 
 // 瓶子信息
@@ -441,8 +441,6 @@
         _carrierInfoAddView.hidden = YES;
         _carrierInfoView.hidden = NO;
         _modifyCarrierBtn.hidden = NO;
-        _TMS_PLATE_NUMBER.text = _carrierM.tMSPLATENUMBER;
-        _TMS_VEHICLE_TYPE.text = _carrierM.tMSVEHICLETYPE;
         _TMS_DRIVER_NAME.text = _carrierM.tMSDRIVERNAME;
         _TMS_DRIVER_TEL.text = _carrierM.tMSDRIVERTEL;
         _TMS_FLEET_NAME.text = _carrierM.tMSFLEETNAME;
@@ -451,7 +449,6 @@
         _plateNumberView.hidden = YES;
         _addPlateNumberView.hidden = NO;
         _modifyPlateNumberBtn.hidden = YES;
-        _TMS_PLATE_NUMBER.text = @"";
     }
     
     if(factory) {
@@ -461,12 +458,13 @@
     }
     
     if(plateNumber) {
-        
         _plateNumber = plateNumber;
         _plateNumberView.hidden = NO;
         _addPlateNumberView.hidden = YES;
         _modifyPlateNumberBtn.hidden = NO;
         _TMS_PLATE_NUMBER.text = _plateNumber.tMSPLATENUMBER;
+        _TMS_VEHICLE_TYPE.text = _plateNumber.tMSVEHICLETYPE;
+        _TMS_VEHICLE_SIZE.text = _plateNumber.tMSVEHICLESIZE;
     }
 }
 

@@ -263,22 +263,22 @@
             if(_carrierM) {
                 if(_plateNumber) {
                     NSDictionary *json = @{
-                                           @"ORG_IDX":_carrierM.ordOrgIdx,
-                                           @"BUSINESS_IDX":_app.business.BUSINESS_IDX,
-                                           @"FROM_IDX":_addressM.IDX,
-                                           @"TO_IDX":_factory.iDX,
+                                           @"ORG_IDX":_carrierM.ordOrgIdx ? _carrierM.ordOrgIdx : @"",
+                                           @"BUSINESS_IDX":_app.business.BUSINESS_IDX ? _app.business.BUSINESS_IDX : @"",
+                                           @"FROM_IDX":_addressM.IDX ? _addressM.IDX : @"",
+                                           @"TO_IDX":_factory.iDX ? _factory.iDX : @"",
                                            @"TOTAL_QTY":@(_bottleTotal),
-                                           @"TMS_FLEET_IDX":_carrierM.tMSFLEETIDX,
-                                           @"TMS_FLEET_NAME":_carrierM.tMSFLEETNAME,
-                                           @"TMS_VEHICLE_IDX":_plateNumber.tMSVEHICLEIDX,
-                                           @"TMS_PLATE_NUMBER":_plateNumber.tMSPLATENUMBER,
-                                           @"TMS_VEHICLE_TYPE":_carrierM.tMSVEHICLETYPE,
-                                           @"TMS_VEHICLE_SIZE":_carrierM.tMSVEHICLESIZE,
-                                           @"TMS_DRIVER_IDX":_carrierM.tMSDRIVERIDX,
-                                           @"TMS_DRIVER_NAME":_carrierM.tMSDRIVERNAME,
-                                           @"TMS_DRIVER_TEL":_carrierM.tMSDRIVERTEL,
+                                           @"TMS_FLEET_IDX":_carrierM.tMSFLEETIDX ? _carrierM.tMSFLEETIDX : @"",
+                                           @"TMS_FLEET_NAME":_carrierM.tMSFLEETNAME ? _carrierM.tMSFLEETNAME : @"",
+                                           @"TMS_VEHICLE_IDX":_plateNumber.tMSVEHICLEIDX ? _plateNumber.tMSVEHICLEIDX : @"",
+                                           @"TMS_PLATE_NUMBER":_plateNumber.tMSPLATENUMBER ? _plateNumber.tMSPLATENUMBER : @"",
+                                           @"TMS_VEHICLE_TYPE":_plateNumber.tMSVEHICLETYPE ? _plateNumber.tMSVEHICLETYPE : @"",
+                                           @"TMS_VEHICLE_SIZE":_plateNumber.tMSVEHICLESIZE ? _plateNumber.tMSVEHICLESIZE : @"",
+                                           @"TMS_DRIVER_IDX":_carrierM.tMSDRIVERIDX ? _carrierM.tMSDRIVERIDX : @"",
+                                           @"TMS_DRIVER_NAME":_carrierM.tMSDRIVERNAME ? _carrierM.tMSDRIVERNAME : @"",
+                                           @"TMS_DRIVER_TEL":_carrierM.tMSDRIVERTEL ? _carrierM.tMSDRIVERTEL : @"",
                                            @"ENT_IDX":@9008,
-                                           @"OrderDetails":bottleInfoListDict
+                                           @"OrderDetails":bottleInfoListDict ? bottleInfoListDict : @""
                                            };
                     
                     NSString *jsonStr = [Tools JsonStringWithDictonary:json];

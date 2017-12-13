@@ -40,9 +40,9 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>入厂扫码</string>
+		<string>扫一扫</string>
 		<key>imageName</key>
-		<string>ic_bottle</string>
+		<string>ic_qrCodde</string>
 	</dict>
 </array>
 </plist>

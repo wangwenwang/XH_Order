@@ -15,8 +15,13 @@
 #import "OrderCancelService.h"
 #import "AppDelegate.h"
 #import "LM_alert.h"
+#import <YBPopupMenu.h>
+#import "SetOidsToFactoryService.h"
 
-@interface OrderDetailViewController ()<UITableViewDelegate, UITableViewDataSource, TransportInformationServiceDelegate, OrderCancelServiceDelegate>
+#define TITLES @[@"入月台", @"出月台"]
+#define ICONS  @[@"motify",@"delete"]
+
+@interface OrderDetailViewController ()<UITableViewDelegate, UITableViewDataSource, TransportInformationServiceDelegate, OrderCancelServiceDelegate, YBPopupMenuDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
@@ -120,6 +125,8 @@
 
 @property (strong, nonatomic) AppDelegate *app;
 
+@property (strong, nonatomic) SetOidsToFactoryService *service_scanQRCoce;
+
 @end
 
 
@@ -138,6 +145,9 @@
         _service = [[OrderCancelService alloc] init];
         _service.delegate = self;
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        _service_scanQRCoce = [[SetOidsToFactoryService alloc] init];
+        _service_scanQRCoce.delegate = self;
     }
     return self;
 }
@@ -158,6 +168,39 @@
     
     [self addAnimationForLabel];
     
+//    [Tools addNavRightItemTypeAdd:self andAction:@selector(scanQrCode)];
+}
+
+
+- (void)scanQrCode {
+    
+    CGPoint p = CGPointMake(ScreenWidth - 8, 60);
+    //推荐用这种写法
+    [YBPopupMenu showAtPoint:p titles:TITLES icons:nil menuWidth:110 otherSettings:^(YBPopupMenu *popupMenu) {
+        popupMenu.dismissOnSelected = NO;
+        popupMenu.isShowShadow = YES;
+        popupMenu.delegate = self;
+        popupMenu.offset = 10;
+        popupMenu.type = YBPopupMenuTypeDark;
+        popupMenu.rectCorner = UIRectCornerBottomLeft | UIRectCornerBottomRight;
+    }];
+}
+
+#pragma mark - YBPopupMenuDelegate
+
+- (void)ybPopupMenuDidSelectedAtIndex:(NSInteger)index ybPopupMenu:(YBPopupMenu *)ybPopupMenu {
+    
+//    if([TITLES[index] isEqualToString:@"入月台"]) {
+//
+//        [_service_scanQRCoce SetOidsToFactory:_order.TMS_SHIPMENT_NO andAPI:API_SetOidsToMonth and];
+//    } else if([TITLES[index] isEqualToString:@"出月台"]) {
+//
+//        [_service_scanQRCoce SetOidsToFactory:_order.TMS_SHIPMENT_NO andAPI:API_SetOidsMonth];
+//    } else if([TITLES[index] isEqualToString:@"出厂"]) {
+//
+//        [_service_scanQRCoce SetOidsToFactory:_order.TMS_SHIPMENT_NO andAPI:API_SetOidsFactory];
+//    }
+    NSLog(@"点击了 %@ 选项",TITLES[index]);
 }
 
 

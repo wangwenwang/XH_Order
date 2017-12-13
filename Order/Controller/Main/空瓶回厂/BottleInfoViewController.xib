@@ -24,9 +24,7 @@
                 <outlet property="TMS_FLEET_NAME" destination="cRY-g2-bGN" id="hA6-VW-DjE"/>
                 <outlet property="TMS_PLATE_NUMBER" destination="sH3-YH-Ppt" id="Tm4-OS-pU9"/>
                 <outlet property="TMS_VEHICLE_TYPE" destination="KgY-6N-e3f" id="pXQ-ea-AC6"/>
-                <outlet property="cancenOrConfirmBtn" destination="tVr-j8-Z59" id="f5r-Ia-SPM"/>
-                <outlet property="checkPathBtn" destination="5yu-j7-klQ" id="4i2-3b-22x"/>
-                <outlet property="checkPictureBtn" destination="OlL-EC-n77" id="hyV-lc-xfB"/>
+                <outlet property="cancelOrConfirmBtn" destination="tVr-j8-Z59" id="QVW-Eh-lQJ"/>
                 <outlet property="customerInfoViewHeight" destination="lM0-WL-f6M" id="dmh-aE-9QI"/>
                 <outlet property="factoryInfoViewHeight" destination="6nI-yn-Wwh" id="5CZ-uv-hIt"/>
                 <outlet property="goodsViewHeight" destination="Hc7-QA-ZnW" id="qiy-T0-CFx"/>
@@ -508,34 +506,6 @@
                         <constraint firstItem="Grh-uk-C4U" firstAttribute="leading" secondItem="9OZ-Wb-qzh" secondAttribute="leading" id="y3E-8p-zZF"/>
                     </constraints>
                 </scrollView>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yu-j7-klQ">
-                    <rect key="frame" x="20" y="601" width="120" height="37"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="37" id="3zZ-5W-Dxm"/>
-                        <constraint firstAttribute="width" constant="120" id="jA5-lv-HSz"/>
-                    </constraints>
-                    <state key="normal" title="查看轨迹">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="checkPath" destination="-1" eventType="touchUpInside" id="U1U-IG-g3S"/>
-                    </connections>
-                </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlL-EC-n77">
-                    <rect key="frame" x="235" y="601" width="120" height="37"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="120" id="0uB-fo-39g"/>
-                        <constraint firstAttribute="height" constant="37" id="jbh-iK-4xL"/>
-                    </constraints>
-                    <state key="normal" title="查看图片">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="checkPicture" destination="-1" eventType="touchUpInside" id="3Qq-08-GIP"/>
-                    </connections>
-                </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-j8-Z59">
                     <rect key="frame" x="25" y="595" width="325" height="43"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -563,12 +533,8 @@
                 <constraint firstItem="9OZ-Wb-qzh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GEG-81-ec0"/>
                 <constraint firstAttribute="bottom" secondItem="tVr-j8-Z59" secondAttribute="bottom" constant="20" id="Q0i-ay-r0a"/>
                 <constraint firstItem="tVr-j8-Z59" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Usn-g9-ohd"/>
-                <constraint firstItem="5yu-j7-klQ" firstAttribute="centerY" secondItem="OlL-EC-n77" secondAttribute="centerY" id="WPq-Es-466"/>
                 <constraint firstAttribute="trailing" secondItem="tVr-j8-Z59" secondAttribute="trailing" constant="25" id="aPI-8V-Ujp"/>
-                <constraint firstAttribute="bottom" secondItem="5yu-j7-klQ" secondAttribute="bottom" constant="20" id="hqt-ad-iwt"/>
                 <constraint firstAttribute="bottom" secondItem="9OZ-Wb-qzh" secondAttribute="bottom" id="npG-I6-Wf1"/>
-                <constraint firstItem="5yu-j7-klQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="r8m-56-ZLI"/>
-                <constraint firstAttribute="trailing" secondItem="OlL-EC-n77" secondAttribute="trailing" constant="20" id="tH4-7R-MGm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="29.5" y="111"/>

@@ -207,6 +207,8 @@
 		3051DB921F1898EF0034629B /* NormalAdressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3051DB911F1898EF0034629B /* NormalAdressListModel.m */; };
 		3051DB951F18999A0034629B /* NormalAdressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3051DB941F18999A0034629B /* NormalAdressModel.m */; };
 		30598E471F1CB363000530D6 /* UpdateAddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30598E461F1CB363000530D6 /* UpdateAddressService.m */; };
+		306D16D01FE15EE0003C4863 /* SetPartyBottleQTYService.m in Sources */ = {isa = PBXBuildFile; fileRef = 306D16CF1FE15EE0003C4863 /* SetPartyBottleQTYService.m */; };
+		306D16D31FE163D2003C4863 /* OrderJiaoWorkflowService.m in Sources */ = {isa = PBXBuildFile; fileRef = 306D16D21FE163D2003C4863 /* OrderJiaoWorkflowService.m */; };
 		3072AE891DA8948D00359147 /* OrderDetailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3072AE881DA8948D00359147 /* OrderDetailService.m */; };
 		3072AE8D1DA8CDA400359147 /* OrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3072AE8B1DA8CDA400359147 /* OrderDetailTableViewCell.m */; };
 		3072AE8E1DA8CDA400359147 /* OrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3072AE8C1DA8CDA400359147 /* OrderDetailTableViewCell.xib */; };
@@ -788,6 +790,10 @@
 		3051DB941F18999A0034629B /* NormalAdressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAdressModel.m; sourceTree = "<group>"; };
 		30598E451F1CB363000530D6 /* UpdateAddressService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateAddressService.h; sourceTree = "<group>"; };
 		30598E461F1CB363000530D6 /* UpdateAddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAddressService.m; sourceTree = "<group>"; };
+		306D16CE1FE15EE0003C4863 /* SetPartyBottleQTYService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetPartyBottleQTYService.h; sourceTree = "<group>"; };
+		306D16CF1FE15EE0003C4863 /* SetPartyBottleQTYService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetPartyBottleQTYService.m; sourceTree = "<group>"; };
+		306D16D11FE163D2003C4863 /* OrderJiaoWorkflowService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderJiaoWorkflowService.h; sourceTree = "<group>"; };
+		306D16D21FE163D2003C4863 /* OrderJiaoWorkflowService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderJiaoWorkflowService.m; sourceTree = "<group>"; };
 		3072AE871DA8948D00359147 /* OrderDetailService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailService.h; sourceTree = "<group>"; };
 		3072AE881DA8948D00359147 /* OrderDetailService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailService.m; sourceTree = "<group>"; };
 		3072AE8A1DA8CDA400359147 /* OrderDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTableViewCell.h; sourceTree = "<group>"; };
@@ -1245,6 +1251,10 @@
 				3013F3741FC7FE2F00CF69CA /* ReturnOrderCancelService.m */,
 				3026B2FB1FD24B94001F2D3B /* GetPlateListService.h */,
 				3026B2FC1FD24B94001F2D3B /* GetPlateListService.m */,
+				306D16CE1FE15EE0003C4863 /* SetPartyBottleQTYService.h */,
+				306D16CF1FE15EE0003C4863 /* SetPartyBottleQTYService.m */,
+				306D16D11FE163D2003C4863 /* OrderJiaoWorkflowService.h */,
+				306D16D21FE163D2003C4863 /* OrderJiaoWorkflowService.m */,
 			);
 			path = "空瓶回厂";
 			sourceTree = "<group>";
@@ -3170,6 +3180,7 @@
 				30BB2DC61F459375002E51E7 /* AddStockCellTableViewCell.m in Sources */,
 				302675E51F724BCA0098DEF1 /* Store_GetToAddressListService.m in Sources */,
 				30CDC6511D9907CD0035602F /* UIImage+Color.m in Sources */,
+				306D16D01FE15EE0003C4863 /* SetPartyBottleQTYService.m in Sources */,
 				30A3C3251D9A71AC00BBE0DA /* MineTableViewCell.m in Sources */,
 				30E9C0A51DA8E15A00A09182 /* HotProductViewController.m in Sources */,
 				30DE40571F6D116100845CBB /* InputListModel.m in Sources */,
@@ -3368,6 +3379,7 @@
 				30BBF1381F17612400496518 /* AddressListViewController.m in Sources */,
 				30A3C3001D9A0E0F00BBE0DA /* MainViewController.m in Sources */,
 				301AD3A31F6A1EBD00CD13D0 /* StockNoListViewController.m in Sources */,
+				306D16D31FE163D2003C4863 /* OrderJiaoWorkflowService.m in Sources */,
 				3013F3621FC7CB4A00CF69CA /* BottleDetailInfoModel.m in Sources */,
 				301D7DC61F5A3E0400D83410 /* AddressListTableViewCell.m in Sources */,
 				3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */,

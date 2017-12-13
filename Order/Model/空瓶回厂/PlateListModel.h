@@ -10,18 +10,22 @@
 #import "PlateNumberModel.h"
 
 //{
-//    "type" : "1",
-//    "msg" : "获取成功",
-//    "PlateNumber" : [
-//                     {
-//                         "TMS_VEHICLE_IDX" : "5295",
-//                         "TMS_PLATE_NUMBER" : "G34567"
-//                     },
-//                     {
-//                         "TMS_VEHICLE_IDX" : "5297",
-//                         "TMS_PLATE_NUMBER" : "333"
-//                     }
-//                     ]
+//    "type": "1",
+//    "msg": "获取成功",
+//    "PlateNumberModel": [
+//                         {
+//                             "TMS_PLATE_NUMBER": "粤BTEST",
+//                             "TMS_VEHICLE_TYPE": "常温车",
+//                             "TMS_VEHICLE_SIZE": "4.2M",
+//                             "TMS_VEHICLE_IDX": "5294"
+//                         },
+//                         {
+//                             "TMS_PLATE_NUMBER": "粤 ADSFA",
+//                             "TMS_VEHICLE_TYPE": "常温车",
+//                             "TMS_VEHICLE_SIZE": "小面包",
+//                             "TMS_VEHICLE_IDX": "5296"
+//                         }
+//                         ]
 //}
 
 @interface PlateListModel : NSObject

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,11 +20,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货物轨迹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1r-TO-r7R">
+                        <rect key="frame" x="26.5" y="75.5" width="49.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_track_press" translatesAutoresizingMaskIntoConstraints="NO" id="oLt-FO-o0m">
+                        <rect key="frame" x="27" y="17.5" width="49" height="49"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oLt-FO-o0m" secondAttribute="height" multiplier="1:1" id="BLr-cc-glR"/>
                         </constraints>
@@ -31,7 +36,6 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oLt-FO-o0m" secondAttribute="trailing" id="2qJ-TB-dwA"/>
-                <constraint firstItem="H1r-TO-r7R" firstAttribute="width" secondItem="oLt-FO-o0m" secondAttribute="width" id="4DF-AC-qDK"/>
                 <constraint firstItem="H1r-TO-r7R" firstAttribute="leading" secondItem="oLt-FO-o0m" secondAttribute="leading" id="DO1-AC-fAe"/>
                 <constraint firstItem="H1r-TO-r7R" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="H81-ps-DUz"/>
                 <constraint firstItem="H1r-TO-r7R" firstAttribute="top" secondItem="oLt-FO-o0m" secondAttribute="bottom" constant="9" id="HLe-g5-Gmy"/>

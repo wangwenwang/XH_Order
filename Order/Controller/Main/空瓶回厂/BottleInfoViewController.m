@@ -15,15 +15,16 @@
 #import "AppDelegate.h"
 #import "BottleInfoTableViewCell.h"
 #import "CheckOrderPathViewController.h"
-#import "CheckSignatureService.h"
 #import "CheckSignatureViewController.h"
 #import "LM_alert.h"
+#import "SetPartyBottleQTYService.h"
+#import "OrderJiaoWorkflowService.h"
 
-@interface BottleInfoViewController ()<GetReturnBottleInfoDelegate, ReturnOrderCancelDelegate, CheckSignatureServiceDelegate>
+@interface BottleInfoViewController ()<GetReturnBottleInfoDelegate, ReturnOrderCancelDelegate, SetPartyBottleQTYServiceDelegate, OrderJiaoWorkflowServiceDelegate>
 
 @property (strong, nonatomic) BottleDetailModel *bottleDetailM;
 
-@property (weak, nonatomic) IBOutlet UIButton *cancenOrConfirmBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cancelOrConfirmBtn;
 @property (weak, nonatomic) IBOutlet UIButton *checkPathBtn;
 @property (weak, nonatomic) IBOutlet UIButton *checkPictureBtn;
 
@@ -61,10 +62,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *TMS_DRIVER_TEL;
 @property (weak, nonatomic) IBOutlet UILabel *TMS_FLEET_NAME;
 
+// 修改数量成功次数
+@property (assign, nonatomic) NSUInteger requestSuccessCount;
+
 @end
 
 
-#define kCellHeight 44
+#define kCellHeight 104
 
 #define kCellName @"BottleInfoTableViewCell"
 
@@ -92,7 +96,7 @@
     
     GetReturnBottleInfoService *service = [[GetReturnBottleInfoService alloc] init];
     service.delegate = self;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
     [service GetReturnBottleInfo:_orderIDX];
 }
 
@@ -135,23 +139,6 @@
 
 #pragma mark - 事件
 
-- (IBAction)checkPath {
-    
-    CheckOrderPathViewController *vc = [[CheckOrderPathViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-    vc.orderIDX = _bottleDetailM.bottleDetailInfoModel.iDX;
-}
-
-
-- (IBAction)checkPicture {
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    CheckSignatureService *service = [[CheckSignatureService alloc] init] ;
-    service.delegate = self;
-    [service getAutographAndPictureData:_bottleDetailM.bottleDetailInfoModel.iDX];
-}
-
-
 - (IBAction)commitOnclick {
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
@@ -165,9 +152,18 @@
         } cancelClickHandle:nil];
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已出库"]) {
         
-        PayBottleViewController *vc = [[PayBottleViewController alloc] init];
-        vc.orderIdx = _bottleDetailM.bottleDetailInfoModel.iDX;
+        [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
+        SetPartyBottleQTYService *service = [[SetPartyBottleQTYService alloc] init];
+        service.delegate = self;
+        for (BottleDetailItemModel *item in _bottleDetailM.bottleDetailItemModel) {
+            
+            [service SetPartyBottleQTY:item.iDX andStrQty:item.qTYDELIVERY];
+        }
+    } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已交付"]) {
+        
+        CheckOrderPathViewController *vc = [[CheckOrderPathViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+        vc.orderIDX = _bottleDetailM.bottleDetailInfoModel.iDX;
     }
 }
 
@@ -193,7 +189,7 @@
     BottleInfoTableViewCell *cell = (BottleInfoTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     BottleDetailItemModel *m = _bottleDetailM.bottleDetailItemModel[indexPath.row];
-    
+    cell.USER_TYPE = _app.user.USER_TYPE;
     cell.ORD_WORKFLOW = _bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW;
     cell.bottleDetailItemM = m;
     
@@ -205,7 +201,7 @@
 
 - (void)successOfGetReturnBottleInfo:(BottleDetailModel *)bottleDetailM {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
     _bottleDetailM = bottleDetailM;
     
     // 货物信息
@@ -256,31 +252,32 @@
     _scrollContentViewHeight.constant += (mulLine - oneLine);
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
-        
-
+    
         if([_app.user.USER_TYPE isEqualToString:kAGENCY]) {
-            _cancenOrConfirmBtn.hidden = NO;
-            [_cancenOrConfirmBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+            _cancelOrConfirmBtn.hidden = NO;
+            [_cancelOrConfirmBtn setTitle:@"取消订单" forState:UIControlStateNormal];
         }
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已出库"]) {
         
         if([_app.user.USER_TYPE isEqualToString:kFACTORY]) {
             
-            _cancenOrConfirmBtn.hidden = NO;
-            [_cancenOrConfirmBtn setTitle:@"确认订单" forState:UIControlStateNormal];
+            _cancelOrConfirmBtn.hidden = NO;
+            [_cancelOrConfirmBtn setTitle:@"确认订单" forState:UIControlStateNormal];
         }
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已交付"]) {
         
-        _checkPathBtn.hidden = NO;
-        _checkPictureBtn.hidden = NO;
+        [_cancelOrConfirmBtn setTitle:@"查看轨迹" forState:UIControlStateNormal];
+    } else {
+        
+        _cancelOrConfirmBtn.hidden = YES;
     }
 }
 
 
 - (void)failureOfGetReturnBottleInfo:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:@"请求失败"];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    [Tools showAlert:_app.window andTitle:@"请求失败"];
 }
 
 
@@ -298,28 +295,44 @@
 - (void)failureOfReturnOrderCancel:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
-    [Tools showAlert:self.view andTitle:msg];
+    [Tools showAlert:_app.window andTitle:msg];
 }
 
 
-#pragma mark - CheckSignatureServiceDelegate 查看图片
+#pragma mark - SetPartyBottleQTYServiceDelegate
 
-- (void)successOfCheckSignature:(NSMutableArray *)signatures {
+- (void)successOfSetPartyBottleQTY:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    CheckSignatureViewController *vc = [[CheckSignatureViewController alloc] init];
-    vc.signatures = signatures;
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    _requestSuccessCount ++;
+    if(_requestSuccessCount == _bottleDetailM.bottleDetailItemModel.count) {
+        
+        OrderJiaoWorkflowService *service =  [[OrderJiaoWorkflowService alloc] init];
+        service.delegate = self;
+        [service OrderJiaoWorkflow:_orderIDX andADUT_USER:_app.user.USER_NAME];
+    }
 }
 
 
-- (void)failureOfCheckSignature:(NSString *)msg {
+- (void)failureOfSetPartyBottleQTY:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:msg ? msg : @"获取签名失败"];
+    [Tools showAlert:_app.window andTitle:msg];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+}
+
+
+#pragma mark - OrderJiaoWorkflowServiceDelegate
+
+- (void)successOfOrderJiaoWorkflow:(NSString *)msg {
+    
+    [Tools showAlert:_app.window andTitle:msg];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+}
+
+
+- (void)failureOfOrderJiaoWorkflow:(NSString *)msg {
+    
+    [Tools showAlert:_app.window andTitle:msg];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
 }
 
 @end

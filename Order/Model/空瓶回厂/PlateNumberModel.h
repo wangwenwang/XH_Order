@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSString * tMSPLATENUMBER;
 @property (nonatomic, strong) NSString * tMSVEHICLEIDX;
+@property (nonatomic, strong) NSString * tMSVEHICLESIZE;
+@property (nonatomic, strong) NSString * tMSVEHICLETYPE;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

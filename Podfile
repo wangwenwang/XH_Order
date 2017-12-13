@@ -11,5 +11,5 @@ pod 'WMPageController'
 pod 'BaiduMapKit'
 pod 'PNChart'
 pod 'Masonry'
-#pod 'SGQRCode', '~> 2.1.8'
+pod 'YBPopupMenu'
 end

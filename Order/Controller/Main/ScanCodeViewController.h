@@ -10,4 +10,8 @@
 
 @interface ScanCodeViewController : UIViewController
 
+@property (strong, nonatomic) NSString *API;
+
+@property (strong, nonatomic) NSString *strUserName;
+
 @end

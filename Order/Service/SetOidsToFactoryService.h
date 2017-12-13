@@ -24,6 +24,6 @@
 
 @property (weak, nonatomic, nullable)id <SetOidsToFactoryServiceDelegate> delegate;
 
-- (void)SetOidsToFactory:(nullable NSString *)stridxs;
+- (void)SetOidsToFactory:(nullable NSString *)stridxs andAPI:(nullable NSString *)API andstrUserName:(nullable NSString *)strUserName;
 
 @end

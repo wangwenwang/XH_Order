@@ -46,7 +46,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lm-8e-5N8" userLabel="下橫线">
-                                <rect key="frame" x="58" y="38" width="262" height="1"/>
+                                <rect key="frame" x="58" y="38" width="252" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.55515242909999996" blue="0.15981585300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="HOh-zB-6jP"/>
@@ -55,7 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9lm-8e-5N8" firstAttribute="trailing" secondItem="eTp-o7-5Yw" secondAttribute="trailing" id="HuN-nP-Pdb"/>
+                            <constraint firstItem="9lm-8e-5N8" firstAttribute="trailing" secondItem="eTp-o7-5Yw" secondAttribute="trailing" constant="-10" id="HuN-nP-Pdb"/>
                             <constraint firstItem="eTp-o7-5Yw" firstAttribute="bottom" secondItem="aSP-v4-eWc" secondAttribute="bottom" id="Qow-nK-Ncv"/>
                             <constraint firstItem="aSP-v4-eWc" firstAttribute="leading" secondItem="JSb-Ub-iJX" secondAttribute="leading" constant="12" id="ZSj-Oi-fIe"/>
                             <constraint firstItem="eTp-o7-5Yw" firstAttribute="leading" secondItem="Yrt-51-xcn" secondAttribute="trailing" id="a40-hc-TNg"/>

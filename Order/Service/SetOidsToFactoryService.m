@@ -15,18 +15,27 @@
 
 @implementation SetOidsToFactoryService
 
-- (void)SetOidsToFactory:(nullable NSString *)stridxs {
+- (void)SetOidsToFactory:(nullable NSString *)stridxs andAPI:(nullable NSString *)API andstrUserName:(nullable NSString *)strUserName {
     
-    NSDictionary *parameters = @{
-                                 @"stridxs" : stridxs,
-                                 @"strLicense" : @""
-                                 };
+    NSDictionary *parameters = nil;
+    if([strUserName isEqualToString:@""]) {
+        parameters = @{
+                       @"stridxs" : stridxs,
+                       @"strLicense" : @""
+                       };
+    } else {
+        parameters = @{
+                       @"stridxs" : stridxs,
+                       @"strUserName" : strUserName,
+                       @"strLicense" : @""
+                       };
+    }
     
-    LMLog(@"请求%@参数:%@", kAPIName, parameters);
+    LMLog(@"请求%@接口:%@参数:%@", kAPIName, API, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_SetOidsToFactory parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:API parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         LMLog(@"%@,请求成功,返回值:%@", kAPIName, responseObject);

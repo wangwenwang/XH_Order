@@ -260,52 +260,92 @@
         
         BottleListViewController * vc = [[BottleListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-    } else if([title isEqualToString:@"入厂扫码"]) {
+    } else if([title isEqualToString:@"扫一扫"]) {
         
-        // 1、 获取摄像设备
-        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        if (device) {
-            AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-            if (status == AVAuthorizationStatusNotDetermined) {
-                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-                    if (granted) {
-                        dispatch_sync(dispatch_get_main_queue(), ^{
-                            
-                            ScanCodeViewController * vc = [[ScanCodeViewController alloc] init];
-                            [self.navigationController pushViewController:vc animated:YES];
-                        });
-                        // 用户第一次同意了访问相机权限
-                        NSLog(@"用户第一次同意了访问相机权限 - - %@", [NSThread currentThread]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择扫码类型" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+        alert.delegate = self;
+        [alert addButtonWithTitle:@"到厂"];
+        [alert addButtonWithTitle:@"到月台"];
+        [alert addButtonWithTitle:@"出月台"];
+        [alert addButtonWithTitle:@"出厂"];
+        [alert addButtonWithTitle:@"返物进厂"];
+        [alert addButtonWithTitle:@"返物到月台"];
+        [alert show];
+    }
+}
+
+
+- (void)scanQRCode:(NSString *)API andstrUserName:(NSString *)strUserName {
+    
+    
+    // 1、 获取摄像设备
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (device) {
+        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (status == AVAuthorizationStatusNotDetermined) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    dispatch_sync(dispatch_get_main_queue(), ^{
                         
-                    } else {
-                        // 用户第一次拒绝了访问相机权限
-                        NSLog(@"用户第一次拒绝了访问相机权限 - - %@", [NSThread currentThread]);
-                    }
-                }];
-            } else if (status == AVAuthorizationStatusAuthorized) { // 用户允许当前应用访问相机
-                ScanCodeViewController * vc = [[ScanCodeViewController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-            } else if (status == AVAuthorizationStatusDenied) { // 用户拒绝当前应用访问相机
-                UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - SGQRCodeExample] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
-                UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                        ScanCodeViewController *vc = [[ScanCodeViewController alloc] init];
+                        vc.API = API;
+                        vc.strUserName = _app.user.USER_NAME;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    });
+                    // 用户第一次同意了访问相机权限
+                    NSLog(@"用户第一次同意了访问相机权限 - - %@", [NSThread currentThread]);
                     
-                }];
-                
-                [alertC addAction:alertA];
-                [self presentViewController:alertC animated:YES completion:nil];
-                
-            } else if (status == AVAuthorizationStatusRestricted) {
-                NSLog(@"因为系统原因, 无法访问相册");
-            }
-        } else {
-            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"未检测到您的摄像头" preferredStyle:(UIAlertControllerStyleAlert)];
+                } else {
+                    // 用户第一次拒绝了访问相机权限
+                    NSLog(@"用户第一次拒绝了访问相机权限 - - %@", [NSThread currentThread]);
+                }
+            }];
+        } else if (status == AVAuthorizationStatusAuthorized) { // 用户允许当前应用访问相机
+            ScanCodeViewController *vc = [[ScanCodeViewController alloc] init];
+            vc.API = API;
+            vc.strUserName = _app.user.USER_NAME;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else if (status == AVAuthorizationStatusDenied) { // 用户拒绝当前应用访问相机
+            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - SGQRCodeExample] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
                 
             }];
             
             [alertC addAction:alertA];
             [self presentViewController:alertC animated:YES completion:nil];
+            
+        } else if (status == AVAuthorizationStatusRestricted) {
+            NSLog(@"因为系统原因, 无法访问相册");
         }
+    } else {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"未检测到您的摄像头" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertC addAction:alertA];
+        [self presentViewController:alertC animated:YES completion:nil];
+    }
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"buttonIndex:%ld", (long)buttonIndex);
+
+    if(buttonIndex == 0) {
+        nil;  //点击取消， 不操作
+    } else if(buttonIndex == 1) {
+        [self scanQRCode:API_SetOidsToFactory andstrUserName:@""];
+    } else if(buttonIndex == 2) {
+        [self scanQRCode:API_SetOidsToMonth andstrUserName:@""];
+    } else if(buttonIndex == 3) {
+        [self scanQRCode:API_SetOidsMonth andstrUserName:_app.user.USER_NAME];
+    } else if(buttonIndex == 4) {
+        [self scanQRCode:API_SetOidsFactory andstrUserName:@""];
+    } else if(buttonIndex == 5) {
+        [self scanQRCode:API_StrReToF andstrUserName:@""];
+    } else if(buttonIndex == 6) {
+        [self scanQRCode:API_SetReToM andstrUserName:@""];
     }
 }
 

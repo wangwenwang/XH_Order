@@ -22,6 +22,8 @@
 #import <Masonry.h>
 #import "AppDelegate.h"
 #import "StockManViewController.h"
+#import "BottleListViewController.h"
+#import "AddBottleViewController.h"
 
 @interface CustomerListSearchResultsViewController ()<MakeOrderServiceDelegate, LMBlurredViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -85,9 +87,21 @@
 }
 
 
+#pragma mark - 功能函数
+
 - (void)pushStockManVC {
     
     StockManViewController *vc = [[StockManViewController alloc] init];
+    vc.partyM = _currentParty;
+    vc.addressM = _currentAddress;
+    
+    [_nav pushViewController:vc animated:YES];
+}
+
+
+- (void)pushAddBottleVC {
+    
+    AddBottleViewController *vc = [[AddBottleViewController alloc] init];
     vc.partyM = _currentParty;
     vc.addressM = _currentAddress;
     
@@ -131,40 +145,66 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    PartyModel *party = _searchDataArray[indexPath.row];
-//
-//    if([_vcClass isEqualToString:NSStringFromClass([GetStockListViewController class])]) {
-//
-//        AddStockViewController *vc = [[AddStockViewController alloc] init];
-//        vc.partyM = party;
-//        [_nav pushViewController:vc animated:YES];
-//    } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])]) {
-//
-//        GetAppBillFeeListViewController *vc = [[GetAppBillFeeListViewController alloc] init];
-//        vc.PARTY_IDX = party.IDX;
-//        [_nav pushViewController:vc animated:YES];
-//    }
+    //    PartyModel *party = _searchDataArray[indexPath.row];
+    //
+    //    if([_vcClass isEqualToString:NSStringFromClass([GetStockListViewController class])]) {
+    //
+    //        AddStockViewController *vc = [[AddStockViewController alloc] init];
+    //        vc.partyM = party;
+    //        [_nav pushViewController:vc animated:YES];
+    //    } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])]) {
+    //
+    //        GetAppBillFeeListViewController *vc = [[GetAppBillFeeListViewController alloc] init];
+    //        vc.PARTY_IDX = party.IDX;
+    //        [_nav pushViewController:vc animated:YES];
+    //    }
     
+    // 客户信息
+    if(tableView.tag == 1001) {
+        
+        PartyModel *party = _searchDataArray[indexPath.row];
+        
+        if([_vcClass isEqualToString:NSStringFromClass([GetStockListViewController class])]) {
+            
+            AddStockViewController *vc = [[AddStockViewController alloc] init];
+            vc.partyM = party;
+            [_nav pushViewController:vc animated:YES];
+        } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"费用帐单"]) {
+            
+            GetAppBillFeeListViewController *vc = [[GetAppBillFeeListViewController alloc] init];
+            vc.PARTY_IDX = party.IDX;
+            [_nav pushViewController:vc animated:YES];
+        } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
+            
+            PartyModel *m = _searchDataArray[indexPath.row];
+            _currentParty = m;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service getPartygetAddressInfo:m.IDX];
+        } else if([_vcClass isEqualToString:NSStringFromClass([BottleListViewController class])]) {
+            
+            PartyModel *m = _searchDataArray[indexPath.row];
+            _currentParty = m;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service getPartygetAddressInfo:m.IDX];
+        }
+    }
     
-    PartyModel *party = _searchDataArray[indexPath.row];
-    
-    if([_vcClass isEqualToString:NSStringFromClass([GetStockListViewController class])]) {
+    // 客户地址
+    else if(tableView.tag == 1002) {
         
-        AddStockViewController *vc = [[AddStockViewController alloc] init];
-        vc.partyM = party;
-        [_nav pushViewController:vc animated:YES];
-    } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"费用帐单"]) {
+        [_blurredView clear];
+        [self LMBlurredViewClear];
+        _currentAddress = _address[indexPath.row];
         
-        GetAppBillFeeListViewController *vc = [[GetAppBillFeeListViewController alloc] init];
-        vc.PARTY_IDX = party.IDX;
-        [_nav pushViewController:vc animated:YES];
-    } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
-        
-        PartyModel *m = _searchDataArray[indexPath.row];
-        _currentParty = m;
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_service getPartygetAddressInfo:m.IDX];
+        if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])]) {
+            
+            [self pushStockManVC];
+        } else if([_vcClass isEqualToString:NSStringFromClass([BottleListViewController class])]) {
+            
+            [self pushAddBottleVC];
+        }
     }
 }
 
@@ -291,7 +331,13 @@
     } else if(_address.count == 1) {
         
         _currentAddress = _address[0];
-        [self pushStockManVC];
+        if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])]) {
+            
+            [self pushStockManVC];
+        } else if([_vcClass isEqualToString:NSStringFromClass([BottleListViewController class])]) {
+            
+            [self pushAddBottleVC];
+        }
     } else {
         
         [Tools showAlert:self.view andTitle:@"没有可用地址"];

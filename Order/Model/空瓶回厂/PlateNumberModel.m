@@ -11,6 +11,8 @@
 
 NSString *const kPlateNumberModelTMSPLATENUMBER = @"TMS_PLATE_NUMBER";
 NSString *const kPlateNumberModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
+NSString *const kPlateNumberModelTMSVEHICLESIZE = @"TMS_VEHICLE_SIZE";
+NSString *const kPlateNumberModelTMSVEHICLETYPE = @"TMS_VEHICLE_TYPE";
 
 
 @implementation PlateNumberModel
@@ -23,6 +25,12 @@ NSString *const kPlateNumberModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
     }
     if(![dictionary[kPlateNumberModelTMSVEHICLEIDX] isKindOfClass:[NSNull class]]){
         self.tMSVEHICLEIDX = dictionary[kPlateNumberModelTMSVEHICLEIDX];
+    }
+    if(![dictionary[kPlateNumberModelTMSVEHICLESIZE] isKindOfClass:[NSNull class]]){
+        self.tMSVEHICLESIZE = dictionary[kPlateNumberModelTMSVEHICLESIZE];
+    }
+    if(![dictionary[kPlateNumberModelTMSVEHICLETYPE] isKindOfClass:[NSNull class]]){
+        self.tMSVEHICLETYPE = dictionary[kPlateNumberModelTMSVEHICLETYPE];
     }
     return self;
 }
@@ -39,6 +47,12 @@ NSString *const kPlateNumberModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
     }
     if(self.tMSVEHICLEIDX != nil){
         dictionary[kPlateNumberModelTMSVEHICLEIDX] = self.tMSVEHICLEIDX;
+    }
+    if(self.tMSVEHICLESIZE != nil){
+        dictionary[kPlateNumberModelTMSVEHICLESIZE] = self.tMSVEHICLESIZE;
+    }
+    if(self.tMSVEHICLETYPE != nil){
+        dictionary[kPlateNumberModelTMSVEHICLETYPE] = self.tMSVEHICLETYPE;
     }
     return dictionary;
     
@@ -58,6 +72,12 @@ NSString *const kPlateNumberModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
     if(self.tMSVEHICLEIDX != nil){
         [aCoder encodeObject:self.tMSVEHICLEIDX forKey:kPlateNumberModelTMSVEHICLEIDX];
     }
+    if(self.tMSVEHICLESIZE != nil){
+        [aCoder encodeObject:self.tMSVEHICLESIZE forKey:kPlateNumberModelTMSVEHICLESIZE];
+    }
+    if(self.tMSVEHICLETYPE != nil){
+        [aCoder encodeObject:self.tMSVEHICLETYPE forKey:kPlateNumberModelTMSVEHICLETYPE];
+    }
     
 }
 
@@ -69,6 +89,8 @@ NSString *const kPlateNumberModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
     self = [super init];
     self.tMSPLATENUMBER = [aDecoder decodeObjectForKey:kPlateNumberModelTMSPLATENUMBER];
     self.tMSVEHICLEIDX = [aDecoder decodeObjectForKey:kPlateNumberModelTMSVEHICLEIDX];
+    self.tMSVEHICLESIZE = [aDecoder decodeObjectForKey:kPlateNumberModelTMSVEHICLESIZE];
+    self.tMSVEHICLETYPE = [aDecoder decodeObjectForKey:kPlateNumberModelTMSVEHICLETYPE];
     return self;
     
 }
@@ -82,6 +104,8 @@ NSString *const kPlateNumberModelTMSVEHICLEIDX = @"TMS_VEHICLE_IDX";
     
     copy.tMSPLATENUMBER = [self.tMSPLATENUMBER copy];
     copy.tMSVEHICLEIDX = [self.tMSVEHICLEIDX copy];
+    copy.tMSVEHICLESIZE = [self.tMSVEHICLESIZE copy];
+    copy.tMSVEHICLETYPE = [self.tMSVEHICLETYPE copy];
     
     return copy;
 }

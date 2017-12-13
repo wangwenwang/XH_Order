@@ -134,7 +134,7 @@
 //        [scanManager videoPreviewLayerRemoveFromSuperlayer];
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_service SetOidsToFactory:obj.stringValue];
+        [_service SetOidsToFactory:obj.stringValue andAPI:_API andstrUserName:_strUserName];
         
     } else {
         NSLog(@"暂未识别出扫描的二维码");

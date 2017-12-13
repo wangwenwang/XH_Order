@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSString *ORD_WORKFLOW;
 
+@property (strong, nonatomic) NSString *USER_TYPE;
+
 @property (strong, nonatomic) BottleDetailItemModel *bottleDetailItemM;
 
 @end

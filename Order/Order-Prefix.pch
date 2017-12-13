@@ -340,6 +340,18 @@
 /// 修改出厂时间
 #define API_SetOidsFactory @"http://oms.kaidongyuan.com:12300/api/SetOidsFactory"
 
+/// 回瓶单到工厂时间
+#define API_StrReToF @"http://oms.kaidongyuan.com:12300/api/StrReToF"
+
+/// 回瓶单到月台时间
+#define API_SetReToM @"http://oms.kaidongyuan.com:12300/api/SetReToM"
+
+/// 工厂确认回瓶数量
+#define API_SetPartyBottleQTY @"http://oms.kaidongyuan.com:12300/api/SetPartyBottleQTY"
+
+/// 工厂交付
+#define API_OrderJiaoWorkflow @"http://oms.kaidongyuan.com:12300/api/OrderJiaoWorkflow"
+
 
 /*--------- 判断iOS版本 ---------*/
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue

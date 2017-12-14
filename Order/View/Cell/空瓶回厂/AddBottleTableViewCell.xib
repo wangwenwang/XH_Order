@@ -11,30 +11,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddBottleTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="38" id="KGk-i7-Jjw" customClass="AddBottleTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="37.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSb-Ub-iJX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="36.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSP-v4-eWc">
-                                <rect key="frame" x="12" y="21" width="37.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSP-v4-eWc">
+                                <rect key="frame" x="12" y="10" width="37.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrt-51-xcn">
-                                <rect key="frame" x="49.5" y="21" width="8.5" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTp-o7-5Yw">
-                                <rect key="frame" x="58" y="7" width="262" height="32"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTp-o7-5Yw">
+                                <rect key="frame" x="52.5" y="-4" width="267.5" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="TOg-Oh-016"/>
                                 </constraints>
@@ -46,7 +40,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lm-8e-5N8" userLabel="下橫线">
-                                <rect key="frame" x="58" y="38" width="252" height="1"/>
+                                <rect key="frame" x="52.5" y="27" width="257.5" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.55515242909999996" blue="0.15981585300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="HOh-zB-6jP"/>
@@ -55,16 +49,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aSP-v4-eWc" secondAttribute="trailing" constant="80" id="Glz-2s-jwa"/>
                             <constraint firstItem="9lm-8e-5N8" firstAttribute="trailing" secondItem="eTp-o7-5Yw" secondAttribute="trailing" constant="-10" id="HuN-nP-Pdb"/>
+                            <constraint firstItem="aSP-v4-eWc" firstAttribute="top" secondItem="JSb-Ub-iJX" secondAttribute="top" constant="10" id="MGL-Rh-maa"/>
                             <constraint firstItem="eTp-o7-5Yw" firstAttribute="bottom" secondItem="aSP-v4-eWc" secondAttribute="bottom" id="Qow-nK-Ncv"/>
+                            <constraint firstItem="eTp-o7-5Yw" firstAttribute="leading" secondItem="aSP-v4-eWc" secondAttribute="trailing" constant="3" id="UGI-Yq-ulf"/>
                             <constraint firstItem="aSP-v4-eWc" firstAttribute="leading" secondItem="JSb-Ub-iJX" secondAttribute="leading" constant="12" id="ZSj-Oi-fIe"/>
-                            <constraint firstItem="eTp-o7-5Yw" firstAttribute="leading" secondItem="Yrt-51-xcn" secondAttribute="trailing" id="a40-hc-TNg"/>
                             <constraint firstAttribute="trailing" secondItem="eTp-o7-5Yw" secondAttribute="trailing" id="dUo-KI-lML"/>
-                            <constraint firstItem="Yrt-51-xcn" firstAttribute="leading" secondItem="aSP-v4-eWc" secondAttribute="trailing" id="ejV-FH-afe"/>
                             <constraint firstItem="9lm-8e-5N8" firstAttribute="bottom" secondItem="eTp-o7-5Yw" secondAttribute="bottom" id="k5e-p6-8Wc"/>
-                            <constraint firstItem="Yrt-51-xcn" firstAttribute="centerY" secondItem="aSP-v4-eWc" secondAttribute="centerY" id="kd0-rI-4Jb"/>
                             <constraint firstItem="9lm-8e-5N8" firstAttribute="leading" secondItem="eTp-o7-5Yw" secondAttribute="leading" id="oVj-Ba-g8S"/>
-                            <constraint firstAttribute="bottom" secondItem="aSP-v4-eWc" secondAttribute="bottom" constant="4" id="snK-mL-sT5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -72,12 +65,14 @@
                     <constraint firstAttribute="trailing" secondItem="JSb-Ub-iJX" secondAttribute="trailing" id="40m-T7-1H5"/>
                     <constraint firstItem="JSb-Ub-iJX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GLJ-Yg-pmV"/>
                     <constraint firstItem="JSb-Ub-iJX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="T53-4H-vOU"/>
-                    <constraint firstAttribute="bottom" secondItem="JSb-Ub-iJX" secondAttribute="bottom" id="zYe-EJ-aTg"/>
+                    <constraint firstAttribute="bottom" secondItem="JSb-Ub-iJX" secondAttribute="bottom" constant="1" id="zYe-EJ-aTg"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
                 <outlet property="PRODUCT_NAME" destination="aSP-v4-eWc" id="v2e-s4-IDl"/>
             </connections>
+            <point key="canvasLocation" x="33" y="66"/>
         </tableViewCell>
     </objects>
 </document>

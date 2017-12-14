@@ -83,7 +83,7 @@
 
 @end
 
-#define kCellHeight 44
+#define kCellHeight 38
 
 #define kCellName @"AddBottleTableViewCell"
 
@@ -178,6 +178,8 @@
     oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
     mulLine = [Tools getHeightOfString:_customer_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
     _customerViewHeight.constant += (mulLine - oneLine);
+    
+    [self updateViewConstraints];
 }
 
 
@@ -197,6 +199,8 @@
     oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
     mulLine = [Tools getHeightOfString:_PARTY_ADDRESS.text fontSize:15 andWidth:(ScreenWidth - 12 - 46 - 3 + 2)];
     _factoryViewHeight.constant += (mulLine - oneLine);
+    
+    [self updateViewConstraints];
 }
 
 
@@ -315,7 +319,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kCellHeight;
+    BottleInfoModel *m = _bottleInfoListM.bottleInfoModel[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -374,7 +379,17 @@
 - (void)successOfGetReturnProductList:(BottleInfoListModel *)bottleInfoListM {
     
     _bottleInfoListM = bottleInfoListM;
-    _bottleViewHeight.constant = _bottleInfoListM.bottleInfoModel.count * kCellHeight + _bottleViewPromptHeight.constant + _bottleTotalViewHeight.constant;
+    
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+    CGFloat tableViewHeight = 0;
+    for (BottleInfoModel *m in _bottleInfoListM.bottleInfoModel) {
+        
+        CGFloat mulLine = [Tools getHeightOfString:m.pRODUCTNAME fontSize:15 andWidth:ScreenWidth - 12 - 3 - 80];
+        m.cellHeight = kCellHeight + (mulLine - oneLine);
+        tableViewHeight += m.cellHeight;
+    }
+    _bottleViewHeight.constant = _bottleViewPromptHeight.constant + tableViewHeight + _bottleTotalViewHeight.constant;
+    [self updateViewConstraints];
     [_tableView reloadData];
 }
 

@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UserModel.h"
 #import "BusinessModel.h"
+#import <GTSDK/GeTuiSdk.h>
+
+#define kGtAppId @"taIKzBvN4W8lV7w2EOa4w3"
+#define kGtAppKey @"fsambVKLAG8Y1L44ewdUR7"
+#define kGtAppSecret @"CoqTYyK66jAD0U9Vrmg9H7"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,6 +23,7 @@
 
 @property (strong, nonatomic) BusinessModel *business;
 
+@property (assign, nonatomic) int lastPayloadIndex;
 
 @end
 

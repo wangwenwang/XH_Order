@@ -40,7 +40,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>扫一扫</string>
+		<string>扫二维码</string>
 		<key>imageName</key>
 		<string>ic_qrCodde</string>
 	</dict>

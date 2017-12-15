@@ -439,6 +439,7 @@
 		3B0DC1421F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */; };
 		3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */; };
 		3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */; };
+		3B6FD9EE1FE4521A00E233FF /* SavaPushTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FD9ED1FE4521A00E233FF /* SavaPushTokenService.m */; };
 		3B76E5FF1FE04FE50060659E /* SetOidsToFactoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B76E5FE1FE04FE50060659E /* SetOidsToFactoryService.m */; };
 /* End PBXBuildFile section */
 
@@ -1218,6 +1219,8 @@
 		3B0DC13E1F72CCCE00D1E6AA /* OutputReturnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputReturnViewController.h; sourceTree = "<group>"; };
 		3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputReturnViewController.m; sourceTree = "<group>"; };
 		3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnViewController.xib; sourceTree = "<group>"; };
+		3B6FD9EC1FE4521A00E233FF /* SavaPushTokenService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SavaPushTokenService.h; sourceTree = "<group>"; };
+		3B6FD9ED1FE4521A00E233FF /* SavaPushTokenService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SavaPushTokenService.m; sourceTree = "<group>"; };
 		3B76E5FD1FE04FE50060659E /* SetOidsToFactoryService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOidsToFactoryService.h; sourceTree = "<group>"; };
 		3B76E5FE1FE04FE50060659E /* SetOidsToFactoryService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetOidsToFactoryService.m; sourceTree = "<group>"; };
 		8632758C8A4785EDD0DF8722 /* Pods-Order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Order/Pods-Order.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1944,6 +1947,8 @@
 				302160921F15BEE40049374F /* RegisterService.m */,
 				3013F3761FC80F8A00CF69CA /* OrderCancelService.h */,
 				3013F3771FC80F8B00CF69CA /* OrderCancelService.m */,
+				3B6FD9EC1FE4521A00E233FF /* SavaPushTokenService.h */,
+				3B6FD9ED1FE4521A00E233FF /* SavaPushTokenService.m */,
 				30036FB41FC4266300E59504 /* 空瓶回厂 */,
 				30BB2DF31F467B33002E51E7 /* 库存管理 */,
 				30BB2DD01F459391002E51E7 /* 库存登记 */,
@@ -3423,6 +3428,7 @@
 				3013F34C1FC7C24100CF69CA /* BottleOrderListModel.m in Sources */,
 				30D9961F1DAB718800974553 /* TransportInformationViewController.m in Sources */,
 				30BB2DAA1F459359002E51E7 /* AddStockViewController.m in Sources */,
+				3B6FD9EE1FE4521A00E233FF /* SavaPushTokenService.m in Sources */,
 				301D7DE81F5A3ECE00D83410 /* IB_UIButton.m in Sources */,
 				30CDC6411D9907CD0035602F /* PhotoItemView.m in Sources */,
 				30CDC65F1D9907CD0035602F /* SVIndefiniteAnimatedView.m in Sources */,

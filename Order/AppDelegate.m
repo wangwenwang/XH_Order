@@ -42,6 +42,8 @@
     
     _user = [[UserModel alloc] init];
     _business = [[BusinessModel alloc] init];
+    _token = @"";
+    _cid = @"";
     
     
     //地图操作
@@ -187,6 +189,7 @@
     NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", token);
     
     // [ GTSdk ]：向个推服务器注册deviceToken
+    _token = token;
     [GeTuiSdk registerDeviceToken:token];
 }
 
@@ -240,6 +243,7 @@
 /** SDK启动成功返回cid */
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     // [ GTSdk ]：个推SDK已注册，返回clientId
+    _cid = clientId;
     NSLog(@">>[GTSdk RegisterClient]:%@", clientId);
 }
 

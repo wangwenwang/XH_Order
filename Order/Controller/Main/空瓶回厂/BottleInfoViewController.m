@@ -259,13 +259,13 @@
     
     if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已确认"]) {
     
-        if([_app.user.USER_TYPE isEqualToString:kAGENCY]) {
+        if([Tools PARTY]) {
             _cancelOrConfirmBtn.hidden = NO;
             [_cancelOrConfirmBtn setTitle:@"取消订单" forState:UIControlStateNormal];
         }
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已出库"]) {
         
-        if([_app.user.USER_TYPE isEqualToString:kFACTORY]) {
+        if([Tools FACTORY]) {
             
             _cancelOrConfirmBtn.hidden = NO;
             [_cancelOrConfirmBtn setTitle:@"确认订单" forState:UIControlStateNormal];

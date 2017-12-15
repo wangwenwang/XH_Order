@@ -793,4 +793,34 @@ typedef void (^Animation)(void);
     return newPic;
 }
 
+
++ (BOOL)PARTY {
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([app.user.USER_TYPE isEqualToString:kPARTY]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
++ (BOOL)FACTORY {
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([app.user.USER_TYPE isEqualToString:kFACTORY]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
++ (BOOL)GUARD {
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([app.user.USER_TYPE isEqualToString:kGUARD]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 @end

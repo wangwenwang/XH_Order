@@ -71,13 +71,13 @@
 // 记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
 #define kWelcomeImageName @"ListTimeSelectProduct"
 
-// 经销商
-#define kAGENCY @"PARTY"
-
-// 工厂
-#define kFACTORY @"FACTORY"
+// 经销商（客户）
+#define kPARTY @"PARTY"
 
 // 仓库管理员
+#define kFACTORY @"FACTORY"
+
+// 门卫
 #define kGUARD @"GUARD"
 
 //
@@ -354,6 +354,9 @@
 
 /// 工厂交付
 #define API_OrderJiaoWorkflow @"http://oms.kaidongyuan.com:12300/api/OrderJiaoWorkflow"
+
+/// 添加cid和Token
+#define API_SavaPushToken @"http://oms.kaidongyuan.com:12300/api/SavaPushToken"
 
 
 /*--------- 判断iOS版本 ---------*/

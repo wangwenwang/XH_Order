@@ -25,5 +25,10 @@
 
 @property (assign, nonatomic) int lastPayloadIndex;
 
+// 上传token, cid
+@property (copy, nonatomic) NSString *token;
+
+@property (copy, nonatomic) NSString *cid;
+
 @end
 

@@ -22,8 +22,9 @@
 
 #import "ConfirmOrderViewController.h"
 #import "RegisterViewController.h"
+#import "SavaPushTokenService.h"
 
-@interface LoginViewController ()<LoginServiceDelegate, UIAlertViewDelegate>
+@interface LoginViewController ()<LoginServiceDelegate, UIAlertViewDelegate, SavaPushTokenServiceDelegate>
 
 //帐号
 @property (weak, nonatomic) IBOutlet UITextField *userNameT;
@@ -239,14 +240,35 @@
     //
     UITabBarController *tbc = [[UITabBarController alloc] init];
     tbc.tabBar.tintColor = YBGreen;
-//    tbc.viewControllers = @[mainVC_nav, makeVC_nav, pageController_nav, mineVC_nav];
-    tbc.viewControllers = @[mainVC, makeVC, pageController, mineVC];
+    //    tbc.viewControllers = @[mainVC_nav, makeVC_nav, pageController_nav, mineVC_nav];
+    if([Tools GUARD]) {
+        
+        tbc.viewControllers = @[mainVC, mineVC];
+    } else {
+        
+        tbc.viewControllers = @[mainVC, makeVC, pageController, mineVC];
+    }
     
     //导航控制器
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tbc];
     
     //切换根控制器
     [Tools setRootViewControllerWithFlipFromRight:_app.window andViewController:nav];
+    
+    SavaPushTokenService *service_savePush = [[SavaPushTokenService alloc] init];
+    service_savePush.delegate = self;
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        do {
+            if(![_app.token isEqualToString:@""] && ![_app.cid isEqualToString:@""]) {
+                [service_savePush SavaPushToken:_app.user.IDX andstrCID:_app.cid andstrToken:_app.token];
+            } else {
+                NSLog(@"cid 或 token 为空，延迟上传...");
+                sleep(2);
+            }
+        } while ([_app.token isEqualToString:@""] || [_app.cid isEqualToString:@""]);
+    });
 }
 
 - (void)successOfLoginSelectBusinss:(NSMutableArray *)business {

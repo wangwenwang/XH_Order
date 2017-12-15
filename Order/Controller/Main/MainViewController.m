@@ -39,7 +39,18 @@
 
 @property (strong, nonatomic) AppDelegate *app;
 
+// 扫码数组
+@property (strong, nonatomic) NSArray *qrCodeArray;
+
 @end
+
+
+#define kIntoFactory @"进厂"
+#define kIntoPlatform @"进月台"
+#define kOutPlatform @"出月台"
+#define kOutFactory @"出厂"
+#define kReturnIntoFactory @"返物进工厂"
+#define kReturnIntoPlatform @"返物进月台"
 
 @implementation MainViewController
 
@@ -137,20 +148,26 @@
     
     NSString *dataPath = [[NSBundle mainBundle]pathForResource:@"MainCollection.plist" ofType:nil];
     _myCollectionDataArrM = [NSMutableArray arrayWithContentsOfFile:dataPath];
+    NSArray *plisArray = [_myCollectionDataArrM copy];
     
-    if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0) {
+    // 客户，没有扫码功能
+    if([Tools PARTY]) {
         
-    } else {
-//        
-//        if(_myCollectionDataArrM.count >= 7) {
-//            
-//            [_myCollectionDataArrM removeObjectAtIndex:6];
-//            
-//            if(_myCollectionDataArrM.count >= 7) {
-//                
-//                [_myCollectionDataArrM removeObjectAtIndex:6];
-//            }
-//        }
+        if(_myCollectionDataArrM.count >= 7) {
+            
+            [_myCollectionDataArrM removeObjectAtIndex:6];
+        }
+    }
+    
+    // 门卫，除了扫码没有任何功能
+    else if([Tools GUARD]) {
+        for (NSDictionary *dic in plisArray) {
+            
+            if(![dic[@"title"] isEqualToString:@"扫二维码"]) {
+                
+                [_myCollectionDataArrM removeObject:dic];
+            }
+        }
     }
 }
 
@@ -200,17 +217,17 @@
     
     NSString *title =  _myCollectionDataArrM[indexPath.row][@"title"];
     
-    if(indexPath.row == 0) {
+    if([title isEqualToString:@"货物轨迹"]) {
         
-//        SearchOrderPathViewController *sopVC = [[SearchOrderPathViewController alloc] init];
-//        [self.navigationController pushViewController:sopVC animated:YES];
-         [Tools showAlert:self.view andTitle:@"正在维护中..."];
-    } else if(indexPath.row == 1) {
+        //        SearchOrderPathViewController *sopVC = [[SearchOrderPathViewController alloc] init];
+        //        [self.navigationController pushViewController:sopVC animated:YES];
+        [Tools showAlert:self.view andTitle:@"正在维护中..."];
+    } else if([title isEqualToString:@"最新资讯"]) {
         //        NewsViewController *newsVC = [[NewsViewController alloc] init];
         //        [self.navigationController pushViewController:newsVC animated:YES];
         
         [Tools showAlert:self.view andTitle:@"正在维护中..."];
-    } else if(indexPath.row == 2) {
+    } else if([title isEqualToString:@"热销产品"]) {
         
         HotProductViewController *hotVC = [[HotProductViewController alloc] init];
         [self.navigationController pushViewController:hotVC animated:YES];
@@ -260,16 +277,25 @@
         
         BottleListViewController * vc = [[BottleListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-    } else if([title isEqualToString:@"扫一扫"]) {
+    } else if([title isEqualToString:@"扫二维码"]) {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择扫码类型" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
         alert.delegate = self;
-        [alert addButtonWithTitle:@"到厂"];
-        [alert addButtonWithTitle:@"到月台"];
-        [alert addButtonWithTitle:@"出月台"];
-        [alert addButtonWithTitle:@"出厂"];
-        [alert addButtonWithTitle:@"返物进厂"];
-        [alert addButtonWithTitle:@"返物到月台"];
+        if([Tools GUARD]) {
+            
+            [alert addButtonWithTitle:kIntoFactory];
+            [alert addButtonWithTitle:kOutFactory];
+            _qrCodeArray = @[kIntoFactory, kOutFactory];
+        } else if([Tools FACTORY]) {
+            
+            [alert addButtonWithTitle:kIntoFactory];
+            [alert addButtonWithTitle:kIntoPlatform];
+            [alert addButtonWithTitle:kOutPlatform];
+            [alert addButtonWithTitle:kOutFactory];
+            [alert addButtonWithTitle:kReturnIntoFactory];
+            [alert addButtonWithTitle:kReturnIntoPlatform];
+            _qrCodeArray = @[kIntoFactory, kIntoPlatform, kOutPlatform, kOutFactory, kReturnIntoFactory, kReturnIntoPlatform];
+        }
         [alert show];
     }
 }
@@ -331,21 +357,22 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"buttonIndex:%ld", (long)buttonIndex);
-
-    if(buttonIndex == 0) {
-        nil;  //点击取消， 不操作
-    } else if(buttonIndex == 1) {
-        [self scanQRCode:API_SetOidsToFactory andstrUserName:@""];
-    } else if(buttonIndex == 2) {
-        [self scanQRCode:API_SetOidsToMonth andstrUserName:@""];
-    } else if(buttonIndex == 3) {
-        [self scanQRCode:API_SetOidsMonth andstrUserName:_app.user.USER_NAME];
-    } else if(buttonIndex == 4) {
-        [self scanQRCode:API_SetOidsFactory andstrUserName:@""];
-    } else if(buttonIndex == 5) {
-        [self scanQRCode:API_StrReToF andstrUserName:@""];
-    } else if(buttonIndex == 6) {
-        [self scanQRCode:API_SetReToM andstrUserName:@""];
+    
+    if(buttonIndex != 0) {
+        NSString *qrCodeType = _qrCodeArray[buttonIndex - 1];
+        if([qrCodeType isEqualToString:kIntoFactory]) {
+            [self scanQRCode:API_SetOidsToFactory andstrUserName:@""];
+        } else if([qrCodeType isEqualToString:kIntoPlatform]) {
+            [self scanQRCode:API_SetOidsToMonth andstrUserName:@""];
+        } else if([qrCodeType isEqualToString:kOutPlatform]) {
+            [self scanQRCode:API_SetOidsMonth andstrUserName:_app.user.USER_NAME];
+        } else if([qrCodeType isEqualToString:kOutFactory]) {
+            [self scanQRCode:API_SetOidsFactory andstrUserName:@""];
+        } else if([qrCodeType isEqualToString:kReturnIntoFactory]) {
+            [self scanQRCode:API_StrReToF andstrUserName:@""];
+        } else if([qrCodeType isEqualToString:kReturnIntoPlatform]) {
+            [self scanQRCode:API_SetReToM andstrUserName:@""];
+        }
     }
 }
 

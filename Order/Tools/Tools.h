@@ -308,4 +308,14 @@
  */
 + (UIImage *)qrImageForString:(NSString *)string imageSize:(CGFloat)Imagesize logoImageSize:(CGFloat)waterImagesize;
 
+
+// 是否客户
++ (BOOL)PARTY;
+
+// 是否仓库管理员
++ (BOOL)FACTORY;
+
+// 是否门卫
++ (BOOL)GUARD;
+
 @end

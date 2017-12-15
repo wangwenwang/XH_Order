@@ -7,7 +7,7 @@
 //
 
 #import "ScanCodeViewController.h"
-#import "SGQRCode.h"
+#import <SGQRCode.h>
 #import "Tools.h"
 #import <MBProgressHUD.h>
 #import "SetOidsToFactoryService.h"

@@ -11,5 +11,6 @@ pod 'BaiduMapKit'
 pod 'PNChart'
 pod 'Masonry'
 pod 'YBPopupMenu'
+pod 'SGQRCode'
 pod 'GTSDK', '2.0.0.0-noidfa'
 end

@@ -440,10 +440,6 @@
 		3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */; };
 		3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */; };
 		3B76E5FF1FE04FE50060659E /* SetOidsToFactoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B76E5FE1FE04FE50060659E /* SetOidsToFactoryService.m */; };
-		3B8449361FE048390019C7C1 /* SGQRCodeScanManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA661711FE043900024EC61 /* SGQRCodeScanManager.m */; };
-		3B8449371FE048820019C7C1 /* SGQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA6616F1FE043900024EC61 /* SGQRCodeHelperTool.m */; };
-		3BA661741FE0473B0024EC61 /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA661731FE043900024EC61 /* SGQRCodeScanningView.m */; };
-		3BA661751FE047C20024EC61 /* SGQRCodeAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA6616B1FE043900024EC61 /* SGQRCodeAlbumManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1224,20 +1220,6 @@
 		3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnViewController.xib; sourceTree = "<group>"; };
 		3B76E5FD1FE04FE50060659E /* SetOidsToFactoryService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetOidsToFactoryService.h; sourceTree = "<group>"; };
 		3B76E5FE1FE04FE50060659E /* SetOidsToFactoryService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetOidsToFactoryService.m; sourceTree = "<group>"; };
-		3BA661661FE043900024EC61 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
-		3BA661671FE043900024EC61 /* UIImage+ImageSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageSize.m"; sourceTree = "<group>"; };
-		3BA661681FE043900024EC61 /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
-		3BA661691FE043900024EC61 /* SGQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
-		3BA6616A1FE043900024EC61 /* SGQRCodeAlbumManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeAlbumManager.h; sourceTree = "<group>"; };
-		3BA6616B1FE043900024EC61 /* SGQRCodeAlbumManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeAlbumManager.m; sourceTree = "<group>"; };
-		3BA6616C1FE043900024EC61 /* SGQRCodeGenerateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeGenerateManager.h; sourceTree = "<group>"; };
-		3BA6616D1FE043900024EC61 /* SGQRCodeGenerateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeGenerateManager.m; sourceTree = "<group>"; };
-		3BA6616E1FE043900024EC61 /* SGQRCodeHelperTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeHelperTool.h; sourceTree = "<group>"; };
-		3BA6616F1FE043900024EC61 /* SGQRCodeHelperTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeHelperTool.m; sourceTree = "<group>"; };
-		3BA661701FE043900024EC61 /* SGQRCodeScanManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanManager.h; sourceTree = "<group>"; };
-		3BA661711FE043900024EC61 /* SGQRCodeScanManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanManager.m; sourceTree = "<group>"; };
-		3BA661721FE043900024EC61 /* SGQRCodeScanningView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningView.h; sourceTree = "<group>"; };
-		3BA661731FE043900024EC61 /* SGQRCodeScanningView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanningView.m; sourceTree = "<group>"; };
 		8632758C8A4785EDD0DF8722 /* Pods-Order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Order/Pods-Order.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C50C09B8AE2AB012816CA7 /* libPods-Order.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Order.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2401,7 +2383,6 @@
 		30CDC5B31D9907CD0035602F /* Thire */ = {
 			isa = PBXGroup;
 			children = (
-				3BA661641FE043900024EC61 /* SGQRCode */,
 				3079885F1F6B79A80063DE2A /* JSDropDownMenu */,
 				30C476251F4D2EFA00A5FB93 /* TPKeyboardAvoiding */,
 				3009143C1F41A8700022E150 /* BackButtonHandler */,
@@ -2887,35 +2868,6 @@
 			path = "空瓶回厂";
 			sourceTree = "<group>";
 		};
-		3BA661641FE043900024EC61 /* SGQRCode */ = {
-			isa = PBXGroup;
-			children = (
-				3BA661651FE043900024EC61 /* Category */,
-				3BA661681FE043900024EC61 /* SGQRCode.bundle */,
-				3BA661691FE043900024EC61 /* SGQRCode.h */,
-				3BA6616A1FE043900024EC61 /* SGQRCodeAlbumManager.h */,
-				3BA6616B1FE043900024EC61 /* SGQRCodeAlbumManager.m */,
-				3BA6616C1FE043900024EC61 /* SGQRCodeGenerateManager.h */,
-				3BA6616D1FE043900024EC61 /* SGQRCodeGenerateManager.m */,
-				3BA6616E1FE043900024EC61 /* SGQRCodeHelperTool.h */,
-				3BA6616F1FE043900024EC61 /* SGQRCodeHelperTool.m */,
-				3BA661701FE043900024EC61 /* SGQRCodeScanManager.h */,
-				3BA661711FE043900024EC61 /* SGQRCodeScanManager.m */,
-				3BA661721FE043900024EC61 /* SGQRCodeScanningView.h */,
-				3BA661731FE043900024EC61 /* SGQRCodeScanningView.m */,
-			);
-			path = SGQRCode;
-			sourceTree = "<group>";
-		};
-		3BA661651FE043900024EC61 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				3BA661661FE043900024EC61 /* UIImage+ImageSize.h */,
-				3BA661671FE043900024EC61 /* UIImage+ImageSize.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
 		A5516C1ACE2CD89545D8610B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3174,6 +3126,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Order/Pods-Order-resources.sh",
 				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SGQRCode/SGQRCode/SGQRCode.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -3217,10 +3170,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B8449371FE048820019C7C1 /* SGQRCodeHelperTool.m in Sources */,
-				3B8449361FE048390019C7C1 /* SGQRCodeScanManager.m in Sources */,
-				3BA661751FE047C20024EC61 /* SGQRCodeAlbumManager.m in Sources */,
-				3BA661741FE0473B0024EC61 /* SGQRCodeScanningView.m in Sources */,
 				3051DB951F18999A0034629B /* NormalAdressModel.m in Sources */,
 				304A7AE01DB91C2B0039B0B2 /* CustomerChartModel.m in Sources */,
 				301D7DB21F5A3D2E00D83410 /* GetAppBusinessFeeListTableViewCell.m in Sources */,

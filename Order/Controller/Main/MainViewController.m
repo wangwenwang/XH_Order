@@ -45,12 +45,12 @@
 @end
 
 
-#define kIntoFactory @"进厂"
-#define kIntoPlatform @"进月台"
-#define kOutPlatform @"出月台"
-#define kOutFactory @"出厂"
-#define kReturnIntoFactory @"返物进工厂"
-#define kReturnIntoPlatform @"返物进月台"
+#define kIntoFactory @"送酒入厂时间"
+#define kIntoPlatform @"送酒入月台时间"
+#define kOutPlatform @"送酒出月台时间"
+#define kOutFactory @"送酒出厂时间"
+#define kReturnIntoFactory @"空瓶回厂时间"
+#define kReturnIntoPlatform @"空瓶到月台时间"
 
 @implementation MainViewController
 
@@ -279,13 +279,14 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else if([title isEqualToString:@"扫二维码"]) {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择扫码类型" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择扫码记录流程：" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
         alert.delegate = self;
         if([Tools GUARD]) {
             
             [alert addButtonWithTitle:kIntoFactory];
             [alert addButtonWithTitle:kOutFactory];
             _qrCodeArray = @[kIntoFactory, kOutFactory];
+            [alert addButtonWithTitle:kReturnIntoFactory];
         } else if([Tools FACTORY]) {
             
             [alert addButtonWithTitle:kIntoFactory];
@@ -302,7 +303,6 @@
 
 
 - (void)scanQRCode:(NSString *)API andstrUserName:(NSString *)strUserName {
-    
     
     // 1、 获取摄像设备
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -332,7 +332,7 @@
             vc.strUserName = _app.user.USER_NAME;
             [self.navigationController pushViewController:vc animated:YES];
         } else if (status == AVAuthorizationStatusDenied) { // 用户拒绝当前应用访问相机
-            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - SGQRCodeExample] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - 雪花(订单)] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
                 
             }];

@@ -21,7 +21,7 @@
                                  @"strLicense" : @""
                                  };
     
-    LMLog(@"请求%@\n接口:%@\n参数:%@", kAPIName, API_SetPartyBottleQTY, parameters);
+    LMLog(@"请求%@\n接口:%@\n参数:%@", kAPIName, API_OrderJiaoWorkflow, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

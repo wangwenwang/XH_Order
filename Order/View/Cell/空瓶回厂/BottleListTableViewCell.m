@@ -12,11 +12,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ORD_NO;
 
+@property (weak, nonatomic) IBOutlet UILabel *ORD_WORKFLOW;
+
 @property (weak, nonatomic) IBOutlet UILabel *ORD_DATE_ADD;
 
-@property (weak, nonatomic) IBOutlet UILabel *ORD_TO_ADDRESS;
+@property (weak, nonatomic) IBOutlet UILabel *TMS_DATE_ISSUE;
 
-@property (weak, nonatomic) IBOutlet UILabel *ORD_WORKFLOW;
+@property (weak, nonatomic) IBOutlet UILabel *ORD_TO_ADDRESS;
 
 @end
 
@@ -37,9 +39,10 @@
 - (void)setBottleOrderM:(BottleOrderModel *)bottleOrderM {
     
     _ORD_NO.text = bottleOrderM.oRDNO;
-    _ORD_DATE_ADD.text = bottleOrderM.oRDDATEADD;
-    _ORD_TO_ADDRESS.text = bottleOrderM.oRDTOADDRESS;
     _ORD_WORKFLOW.text = bottleOrderM.oRDWORKFLOW;
+    _ORD_DATE_ADD.text = bottleOrderM.oRDDATEADD;
+    _TMS_DATE_ISSUE.text = bottleOrderM.tMSDATEISSUE;
+    _ORD_TO_ADDRESS.text = bottleOrderM.oRDTOADDRESS;
 }
 
 @end

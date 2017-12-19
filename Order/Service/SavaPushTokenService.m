@@ -29,29 +29,29 @@
                                  @"strLicense" : @""
                                  };
     
-    LMLog(@"请求%@参数:%@", kAPIName, parameters);
+    NSLog(@"请求%@参数:%@", kAPIName, parameters);
     
     [manager POST:API_SavaPushToken parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        LMLog(@"%@,请求成功,返回值:%@", kAPIName, responseObject);
+        NSLog(@"%@,请求成功,返回值:%@", kAPIName, responseObject);
         NSInteger type = [responseObject[@"type"] intValue];
         NSString *msg = responseObject[@"msg"];
         
         if(type == 1) {
             
             [self failureOfSavaPushToken:msg];
-            LMLog(@"%@成功，msg:%@", kAPIName, msg);
+            NSLog(@"%@成功，msg:%@", kAPIName, msg);
         } else {
             
             [self failureOfSavaPushToken:msg];
-            LMLog(@"%@失败，msg:%@", kAPIName, msg);
+            NSLog(@"%@失败，msg:%@", kAPIName, msg);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         [self failureOfSavaPushToken:@"请求失败"];
-        LMLog(@"%@时，请求失败，error:%@", kAPIName, error);
+        NSLog(@"%@时，请求失败，error:%@", kAPIName, error);
     }];
 }
 

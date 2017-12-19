@@ -52,6 +52,7 @@
 @property (nonatomic, strong) NSString * oRDWORKFLOW;
 @property (nonatomic, strong) NSString * oTSDELIVERYACTUAL;
 @property (nonatomic, strong) NSString * tMSDATECONFIRMED;
+@property (nonatomic, strong) NSString * tMSDATEISSUE;
 @property (nonatomic, strong) NSString * tMSDRIVERIDX;
 @property (nonatomic, strong) NSString * tMSDRIVERNAME;
 @property (nonatomic, strong) NSString * tMSDRIVERTEL;

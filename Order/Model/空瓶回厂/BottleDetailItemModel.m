@@ -20,6 +20,9 @@ NSString *const kBottleDetailItemModelPRODUCTDESC = @"PRODUCT_DESC";
 NSString *const kBottleDetailItemModelPRODUCTNAME = @"PRODUCT_NAME";
 NSString *const kBottleDetailItemModelPRODUCTNO = @"PRODUCT_NO";
 NSString *const kBottleDetailItemModelQTYDELIVERY = @"QTY_DELIVERY";
+NSString *const kBottleDetailItemModelQTYMISSING = @"QTY_MISSING";
+NSString *const kBottleDetailItemModelQTYREJECT = @"QTY_REJECT";
+
 
 @implementation BottleDetailItemModel
 
@@ -58,6 +61,12 @@ NSString *const kBottleDetailItemModelQTYDELIVERY = @"QTY_DELIVERY";
     }
     if(![dictionary[kBottleDetailItemModelQTYDELIVERY] isKindOfClass:[NSNull class]]){
         self.qTYDELIVERY = dictionary[kBottleDetailItemModelQTYDELIVERY];
+    }
+    if(![dictionary[kBottleDetailItemModelQTYMISSING] isKindOfClass:[NSNull class]]){
+        self.qTYMISSING = dictionary[kBottleDetailItemModelQTYMISSING];
+    }
+    if(![dictionary[kBottleDetailItemModelQTYREJECT] isKindOfClass:[NSNull class]]){
+        self.qTYREJECT = dictionary[kBottleDetailItemModelQTYREJECT];
     }
     return self;
 }
@@ -101,6 +110,12 @@ NSString *const kBottleDetailItemModelQTYDELIVERY = @"QTY_DELIVERY";
     }
     if(self.qTYDELIVERY != nil){
         dictionary[kBottleDetailItemModelQTYDELIVERY] = self.qTYDELIVERY;
+    }
+    if(self.qTYMISSING != nil){
+        dictionary[kBottleDetailItemModelQTYMISSING] = self.qTYMISSING;
+    }
+    if(self.qTYREJECT != nil){
+        dictionary[kBottleDetailItemModelQTYREJECT] = self.qTYREJECT;
     }
     return dictionary;
     
@@ -147,6 +162,12 @@ NSString *const kBottleDetailItemModelQTYDELIVERY = @"QTY_DELIVERY";
     if(self.qTYDELIVERY != nil){
         [aCoder encodeObject:self.qTYDELIVERY forKey:kBottleDetailItemModelQTYDELIVERY];
     }
+    if(self.qTYMISSING != nil){
+        [aCoder encodeObject:self.qTYMISSING forKey:kBottleDetailItemModelQTYMISSING];
+    }
+    if(self.qTYREJECT != nil){
+        [aCoder encodeObject:self.qTYREJECT forKey:kBottleDetailItemModelQTYREJECT];
+    }
     
 }
 
@@ -167,6 +188,8 @@ NSString *const kBottleDetailItemModelQTYDELIVERY = @"QTY_DELIVERY";
     self.pRODUCTNAME = [aDecoder decodeObjectForKey:kBottleDetailItemModelPRODUCTNAME];
     self.pRODUCTNO = [aDecoder decodeObjectForKey:kBottleDetailItemModelPRODUCTNO];
     self.qTYDELIVERY = [aDecoder decodeObjectForKey:kBottleDetailItemModelQTYDELIVERY];
+    self.qTYMISSING = [aDecoder decodeObjectForKey:kBottleDetailItemModelQTYMISSING];
+    self.qTYREJECT = [aDecoder decodeObjectForKey:kBottleDetailItemModelQTYREJECT];
     return self;
     
 }
@@ -189,6 +212,8 @@ NSString *const kBottleDetailItemModelQTYDELIVERY = @"QTY_DELIVERY";
     copy.pRODUCTNAME = [self.pRODUCTNAME copy];
     copy.pRODUCTNO = [self.pRODUCTNO copy];
     copy.qTYDELIVERY = [self.qTYDELIVERY copy];
+    copy.qTYMISSING = [self.qTYMISSING copy];
+    copy.qTYREJECT = [self.qTYREJECT copy];
     
     return copy;
 }

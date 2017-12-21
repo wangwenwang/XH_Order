@@ -350,7 +350,7 @@
 #define API_SetReToM @"http://oms.kaidongyuan.com:12300/api/SetReToM"
 
 /// 工厂确认回瓶数量
-#define API_SetPartyBottleQTY @"http://oms.kaidongyuan.com:12300/api/SetPartyBottleQTY"
+#define API_SetPartyBottleQTY @"http://oms.kaidongyuan.com:12300/api/FactoryReceiveBottleQTY"
 
 /// 工厂交付
 #define API_OrderJiaoWorkflow @"http://oms.kaidongyuan.com:12300/api/OrderJiaoWorkflow"

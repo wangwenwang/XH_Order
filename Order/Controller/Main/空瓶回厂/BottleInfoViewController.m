@@ -44,6 +44,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *ORD_TO_NAME;
 // 厂家地址
 @property (weak, nonatomic) IBOutlet UILabel *ORD_TO_ADDRESS;
+// 供应商联系人
+@property (weak, nonatomic) IBOutlet UILabel *ORD_TO_CNAME;
+// 供应商联系方式
+@property (weak, nonatomic) IBOutlet UILabel *ORD_TO_CTEL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *factoryInfoViewHeight;
 
 // 物流状态
@@ -123,6 +127,8 @@
     
     _ORD_TO_NAME.text = @" ";
     _ORD_TO_ADDRESS.text = @" ";
+    _ORD_TO_CNAME.text = @" ";
+    _ORD_TO_CTEL.text = @" ";
     
     _ORD_WORKFLOW.text = @" ";
     _ORD_DATE_ADD.text = @" ";
@@ -163,7 +169,8 @@
         service.delegate = self;
         for (BottleDetailItemModel *item in _bottleDetailM.bottleDetailItemModel) {
             
-            [service SetPartyBottleQTY:item.iDX andStrQty:item.qTYDELIVERY];
+            CGFloat QTY_MISSING = [item.iSSUEQTY floatValue] - [item.qTYDELIVERY floatValue] - [item.qTYREJECT floatValue];
+            [service SetPartyBottleQTY:item.iDX andQTY_DELIVERY:item.qTYDELIVERY andQTY_REJECT:item.qTYREJECT andQTY_MISSING:QTY_MISSING];
         }
     } else if([_bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW isEqualToString:@"已交付"]) {
         
@@ -184,7 +191,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kCellHeight;
+    BottleDetailItemModel *m = _bottleDetailM.bottleDetailItemModel[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -210,8 +218,18 @@
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     _bottleDetailM = bottleDetailM;
     
+    // Cell 高度
+    CGFloat tableViewHeight = 0;
+    for (BottleDetailItemModel *m in _bottleDetailM.bottleDetailItemModel) {
+        
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:15 andWidth:MAXFLOAT];
+        CGFloat mulLine = [Tools getHeightOfString:m.pRODUCTNAME fontSize:15 andWidth:(ScreenWidth - 8 - 69.5 - 3)];
+        m.cellHeight = kCellHeight + (mulLine - oneLine);
+        tableViewHeight += m.cellHeight;
+    }
+    
     // 货物信息
-    _goodsViewHeight.constant = 30 + bottleDetailM.bottleDetailItemModel.count * kCellHeight;
+    _goodsViewHeight.constant = 30 + tableViewHeight;
     _scrollContentViewHeight.constant += (_goodsViewHeight.constant - 100);
     [_tableView reloadData];
     
@@ -224,6 +242,8 @@
     // 厂家信息
     _ORD_TO_NAME.text = bottleDetailM.bottleDetailInfoModel.oRDTONAME;
     _ORD_TO_ADDRESS.text = bottleDetailM.bottleDetailInfoModel.oRDTOADDRESS;
+    _ORD_TO_CNAME.text = bottleDetailM.bottleDetailInfoModel.oRDTOCNAME;
+    _ORD_TO_CTEL.text = bottleDetailM.bottleDetailInfoModel.oRDTOCTEL;
     
     // 物流信息
     _ORD_WORKFLOW.text = bottleDetailM.bottleDetailInfoModel.oRDWORKFLOW;

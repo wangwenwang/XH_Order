@@ -21,9 +21,13 @@
 @property (nonatomic, strong) NSString * pRODUCTNAME;
 @property (nonatomic, strong) NSString * pRODUCTNO;
 @property (nonatomic, strong) NSString * qTYDELIVERY;
+@property (nonatomic, strong) NSString * qTYMISSING;
+@property (nonatomic, strong) NSString * qTYREJECT;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 -(NSDictionary *)toDictionary;
+
+@property (assign, nonatomic) CGFloat cellHeight;
 
 @end

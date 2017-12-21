@@ -15,117 +15,90 @@
 #import "OrderCancelService.h"
 #import "AppDelegate.h"
 #import "LM_alert.h"
-#import <YBPopupMenu.h>
-#import "SetOidsToFactoryService.h"
 
-#define TITLES @[@"入月台", @"出月台"]
-#define ICONS  @[@"motify",@"delete"]
-
-@interface OrderDetailViewController ()<UITableViewDelegate, UITableViewDataSource, TransportInformationServiceDelegate, OrderCancelServiceDelegate, YBPopupMenuDelegate>
+@interface OrderDetailViewController ()<UITableViewDelegate, UITableViewDataSource, TransportInformationServiceDelegate, OrderCancelServiceDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 
 // 订单编号
 @property (weak, nonatomic) IBOutlet UILabel *orderNoLabel;
-
-// 订单创建时间
+// 创建时间
 @property (weak, nonatomic) IBOutlet UILabel *createTimeLabel;
-
-// 订单客户名称
+// 客户名称
 @property (weak, nonatomic) IBOutlet UILabel *customerNameLabel;
-
-// 订单客户名称 距下
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerNameLabel_bottom;
-
-//订单客户地址
+// 客户地址
 @property (weak, nonatomic) IBOutlet UILabel *customerAddressLabel;
-
-// 订单客户地址 距下
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerAddressLabel_bottom;
-
-// 订单起始地址
+// 起始地址
 @property (weak, nonatomic) IBOutlet UILabel *beginAddressLabel;
-
-// 下单数量
+// 数量
 @property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
-
-// 订单总重
+// 总重
 @property (weak, nonatomic) IBOutlet UILabel *orderTotalWeigthLabel;
-
-// 订单体积
+// 体积
 @property (weak, nonatomic) IBOutlet UILabel *orderVolumeLabel;
-
 // 订单流程
 @property (weak, nonatomic) IBOutlet UILabel *orderProcessLabel;
-
 // 订单状态
 @property (weak, nonatomic) IBOutlet UILabel *orderStatusLabel;
-
 // 付款方式
 @property (weak, nonatomic) IBOutlet UILabel *payMethodLabel;
-
-// 货物信息
-@property (weak, nonatomic) IBOutlet UITableView *orderTableView;
-
-// ScrollView高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
-
-// 头部View高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headViewHeight;
-
-// 货物信息TableView高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderTableViewHeight;
-
-// 赠品TableView高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftsTableViewHeight;
-
-// 尾部View高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tailViewHeight;
+// 订单信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderInfoViewHeight;
 
 // 货物信息
 @property (strong, nonatomic) NSMutableArray *arrGoods;
-
-// 提示无赠品
-@property (weak, nonatomic) IBOutlet UILabel *giftsPromptLabel;
-
-// 赠品TableView
-@property (weak, nonatomic) IBOutlet UITableView *giftTableView;
+// 货物信息
+@property (weak, nonatomic) IBOutlet UITableView *orderTableView;
+// 货物信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderNrViewHeight;
 
 // 赠品
 @property (strong, nonatomic) NSMutableArray *arrGitfs;
+// 提示无赠品
+@property (weak, nonatomic) IBOutlet UILabel *giftsPromptLabel;
+// 赠品信息
+@property (weak, nonatomic) IBOutlet UITableView *giftTableView;
+// 赠品信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderGfViewHeight;
 
 // 现价
 @property (weak, nonatomic) IBOutlet UILabel *nowPriceLabel;
-
 // 满减
 @property (weak, nonatomic) IBOutlet UILabel *OnSaleLabel;
-
 // 付款价
 @property (weak, nonatomic) IBOutlet UILabel *payPriceLabel;
-
-// 备注
+// 备注信息
 @property (weak, nonatomic) IBOutlet UILabel *reMarkLabel;
+// 尾部View高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tailViewHeight;
+
+// 时间节点
+@property (weak, nonatomic) IBOutlet UIView *timePointView;
+// 时间节点信息
+@property (weak, nonatomic) IBOutlet UIView *timePointInfoView;
+// 时间节点下拉提示
+@property (weak, nonatomic) IBOutlet UIButton *timePointPromptBtn;
+// 时间节点高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timePointViewHeight;
+// 时间节点提示高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timePointPromptViewHeight;
+
 
 // 查看物流信息
-- (IBAction)checkTransportinfoOnclick:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+// 查看物流信息按钮
+@property (weak, nonatomic) IBOutlet UIButton *tailBtn;
+
+// ContentView高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
 
 // 获取物流信息
 @property (strong, nonatomic) TransportInformationService *transortService;
-
-// Bottom，查看物流信息按钮
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
-
-//
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tailViewHeight_orderMsg;
-
-@property (weak, nonatomic) IBOutlet UIButton *tailBtn;
-
+// 获取订单详情
 @property (strong, nonatomic) OrderCancelService *service;
-
+// 全局变量
 @property (strong, nonatomic) AppDelegate *app;
-
-@property (strong, nonatomic) SetOidsToFactoryService *service_scanQRCoce;
 
 @end
 
@@ -133,6 +106,8 @@
 #define kCellHeight 100.0
 
 @implementation OrderDetailViewController
+
+#pragma mark - 生命周期
 
 - (instancetype)init {
     
@@ -145,12 +120,10 @@
         _service = [[OrderCancelService alloc] init];
         _service.delegate = self;
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        _service_scanQRCoce = [[SetOidsToFactoryService alloc] init];
-        _service_scanQRCoce.delegate = self;
     }
     return self;
 }
+
 
 - (void)viewDidLoad {
     
@@ -158,55 +131,21 @@
     
     self.title = @"订单详情";
     
-    [self dealWithData];
+//    _order.ORD_TO_NAME = @"dsfsdfsafsafsdfsdafsdafsdfhsdalfisjkfskda;lfjs;adjfkl;sjfl;skadjfkl;sdajjfklsjfkl;sdjfkl;sjflk;jsflk;sjdfklsjdflkjsdlfk;jsafl;kjsdalk;fjf";
+//
+//    _order.ORD_TO_ADDRESS = @"dsfsdfsafsafsdfsdafsdafsdfhsdalfisjkfskda;lfjs;adjfkl;sjfl;skfskda;lfjs;adjfkl;sjfl;skadjfkl;sdajjfklsjfkl;sdjfkl;sjflk;jsflk;sjdfklsjdflkjsdlfk;jsafl;kjsdalk;fadjfkl;sdajf";
+//
+//    _order.ORD_FROM_NAME = @"dsfsdfsafsafsdfsdafsdafsdfhsdalfisjkfskda;lfjs;adjfkl;sjfl;skfskda;lfjs;adjfkl;sjfl;skadjfkl;sdajjfklsjfkl;sdjfkl;sjflk;jsflk;sjdfklsjdflkjsdlfk;jsafl;kjsdalk;fadjfkl;sdajf";
+    
+//    _order.ORD_REMARK_CONSIGNEE = @"dsfsdfsafsafsdfsdafsdafsdfhsdalfisjkfskda;lfjs;adjfkl;sjfl;skfskda;lfjs;adjfkl;sjfl;skadjfkl;sdajjfklsjfkl;sdjfkl;sjflk;jsflk;sjdfklsjdflkjsdlfk;jsafl;kjsdalk;fadjfkl;sdajf";
     
     [self initUI];
     
     [self fullData];
     
+    [self dealWithData];
+    
     [self registerCell];
-    
-    [self addAnimationForLabel];
-    
-//    [Tools addNavRightItemTypeAdd:self andAction:@selector(scanQrCode)];
-}
-
-
-- (void)scanQrCode {
-    
-    CGPoint p = CGPointMake(ScreenWidth - 8, 60);
-    //推荐用这种写法
-    [YBPopupMenu showAtPoint:p titles:TITLES icons:nil menuWidth:110 otherSettings:^(YBPopupMenu *popupMenu) {
-        popupMenu.dismissOnSelected = NO;
-        popupMenu.isShowShadow = YES;
-        popupMenu.delegate = self;
-        popupMenu.offset = 10;
-        popupMenu.type = YBPopupMenuTypeDark;
-        popupMenu.rectCorner = UIRectCornerBottomLeft | UIRectCornerBottomRight;
-    }];
-}
-
-#pragma mark - YBPopupMenuDelegate
-
-- (void)ybPopupMenuDidSelectedAtIndex:(NSInteger)index ybPopupMenu:(YBPopupMenu *)ybPopupMenu {
-    
-//    if([TITLES[index] isEqualToString:@"入月台"]) {
-//
-//        [_service_scanQRCoce SetOidsToFactory:_order.TMS_SHIPMENT_NO andAPI:API_SetOidsToMonth and];
-//    } else if([TITLES[index] isEqualToString:@"出月台"]) {
-//
-//        [_service_scanQRCoce SetOidsToFactory:_order.TMS_SHIPMENT_NO andAPI:API_SetOidsMonth];
-//    } else if([TITLES[index] isEqualToString:@"出厂"]) {
-//
-//        [_service_scanQRCoce SetOidsToFactory:_order.TMS_SHIPMENT_NO andAPI:API_SetOidsFactory];
-//    }
-    NSLog(@"点击了 %@ 选项",TITLES[index]);
-}
-
-
-- (void)viewDidLayoutSubviews {
-    
-    [super viewDidLayoutSubviews];
 }
 
 
@@ -214,31 +153,8 @@
     
     [super updateViewConstraints];
     
-    // 赠品Table高度
-    CGFloat allHeight = 0;
-    if(_arrGitfs.count > 0) {
-        
-        for (OrderDetailModel *m in _arrGitfs) {
-            
-            allHeight += m.cellHeight;
-        }
-        _giftsTableViewHeight.constant = allHeight;
-    } else {
-        
-        // 如果没有赠品，留30的高度给Label （提示无赠品）
-        _giftsTableViewHeight.constant = 30;
-    }
-    
-    // 产品高度
-    allHeight = 0;
-    for (OrderDetailModel *m in _arrGoods) {
-        
-        allHeight += m.cellHeight;
-    }
-    _orderTableViewHeight.constant = allHeight;
-    
     // 总高度
-    _scrollViewHeight.constant = _headViewHeight.constant + 40 + _orderTableViewHeight.constant + 50 + _giftsTableViewHeight.constant + _tailViewHeight.constant;
+    _scrollContentViewHeight.constant = _orderInfoViewHeight.constant + _orderNrViewHeight.constant + _orderGfViewHeight.constant + _tailViewHeight.constant + _timePointViewHeight.constant;
 }
 
 
@@ -254,12 +170,18 @@
     
         [_tailBtn setTitle:@"查看物流信息" forState:UIControlStateNormal];
 //    }
+    
+    [_timePointPromptBtn setImage:[UIImage imageNamed:@"recyclingView"] forState:UIControlStateSelected];
+    _timePointViewHeight.constant = _timePointPromptViewHeight.constant;
+    [_timePointInfoView setHidden:YES];
+    
 }
 
 
 // 处理数据
 - (void)dealWithData {
     
+    // 分类，正常产品、赠品
     for(int i = 0; i < _order.OrderDetails.count; i++) {
         
         OrderDetailModel *m = _order.OrderDetails[i];
@@ -271,16 +193,6 @@
             
             [_arrGitfs addObject:m];
         }
-    }
-
-    if(_arrGitfs.count > 0) {
-        
-        _giftTableView.hidden = NO;
-        _giftsPromptLabel.hidden = YES;
-    } else {
-        
-        _giftTableView.hidden = NO;
-        _giftsPromptLabel.hidden = NO;
     }
     
     // Cell高度
@@ -303,6 +215,56 @@
             m.cellHeight = kCellHeight;
         }
     }
+    
+    // 客户名称换行
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_customerNameLabel.text fontSize:_customerNameLabel.font.pointSize andWidth:(ScreenWidth - 10 - 66.5 - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _orderInfoViewHeight.constant += (mulLine - oneLine);
+    
+    // 客户地址换行
+    mulLine = [Tools getHeightOfString:_customerAddressLabel.text fontSize:_customerAddressLabel.font.pointSize andWidth:(ScreenWidth - 10 - 66.5 - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _orderInfoViewHeight.constant += (mulLine - oneLine);
+    
+    // 起始地址换行
+    mulLine = [Tools getHeightOfString:_beginAddressLabel.text fontSize:_beginAddressLabel.font.pointSize andWidth:(ScreenWidth - 10 - 66.5 - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _orderInfoViewHeight.constant += (mulLine - oneLine);
+    
+    // 产品高度
+    CGFloat tableViewHeight = 0;
+    for (OrderDetailModel *m in _arrGoods) {
+        
+        tableViewHeight += m.cellHeight;
+    }
+    _orderNrViewHeight.constant = tableViewHeight + 30;
+    
+    // 赠品高度
+    tableViewHeight = 0;
+    if(_arrGitfs.count > 0) {
+        
+        for (OrderDetailModel *m in _arrGitfs) {
+            
+            tableViewHeight += m.cellHeight;
+        }
+        _giftTableView.hidden = NO;
+        _giftsPromptLabel.hidden = YES;
+        _orderGfViewHeight.constant = 30 + tableViewHeight;
+    } else {
+        
+        // 如果没有赠品,提示无赠品
+        _giftTableView.hidden = YES;
+        _giftsPromptLabel.hidden = NO;
+        _orderGfViewHeight.constant = 30 + 50;
+    }
+    
+    // 汇总信息高度
+    mulLine = [Tools getHeightOfString:_reMarkLabel.text fontSize:_reMarkLabel.font.pointSize andWidth:(ScreenWidth - 10 - 65 - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _tailViewHeight.constant += (mulLine - oneLine);
+    
+    [self updateViewConstraints];
 }
 
 
@@ -341,29 +303,6 @@
     
     [_giftTableView registerNib:[UINib nibWithNibName:@"OrderDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"OrderDetailTableViewCell"];
     _giftTableView.separatorStyle = NO;
-}
-
-
-// Label换行
-- (void)addAnimationForLabel {
-    
-    // 客户名称换行
-    [_customerNameLabel sizeToFit];
-    CGFloat overflowWidth = _customerNameLabel.frame.size.width - (ScreenWidth - (15 + 70));
-    if(overflowWidth > 0) {
-        
-        _customerNameLabel_bottom.constant = 20;
-        _headViewHeight.constant = _headViewHeight.constant + _customerNameLabel_bottom.constant - 5;
-    }
-    
-    // 客户地址换行
-    [_customerAddressLabel sizeToFit];
-    overflowWidth = _customerAddressLabel.frame.size.width - (ScreenWidth - (15 + 70));
-    if(overflowWidth > 0) {
-        
-        _customerAddressLabel_bottom.constant = 20;
-        _headViewHeight.constant = _headViewHeight.constant + _customerAddressLabel_bottom.constant - 5;
-    }
 }
 
 
@@ -422,6 +361,49 @@
     return m.cellHeight;
 }
 
+
+#pragma mark - 手势
+
+- (IBAction)timePointOnclick:(UIButton *)sender {
+    
+    [Tools showAlert:self.view andTitle:@"功能建设中..."];
+    return;
+    
+    if(sender.selected) {
+        
+        _timePointViewHeight.constant = _timePointPromptViewHeight.constant;
+    } else {
+        
+        _timePointViewHeight.constant = 260;
+        [_timePointInfoView setHidden:NO];
+        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            usleep(200);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CGFloat offset =  _scrollContentViewHeight.constant - _myScrollView.bounds.size.height;
+                if (offset > 0) {
+                    
+                    [_myScrollView setContentOffset:CGPointMake(0, offset) animated:YES];
+                }
+            });
+        });
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        [self updateViewConstraints];
+        
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+        if(sender.selected) {
+            
+            [_timePointInfoView setHidden:YES];
+        }
+        sender.selected = !sender.selected;
+    }];
+}
 
 #pragma mark - 事件
 

@@ -24,6 +24,6 @@
 
 @property (weak, nonatomic, nullable)id <SetPartyBottleQTYServiceDelegate> delegate;
 
-- (void)SetPartyBottleQTY:(nullable NSString *)strIdx andStrQty:(nullable NSString *)StrQty;
+- (void)SetPartyBottleQTY:(nullable NSString *)strIdx andQTY_DELIVERY:(nullable NSString *)QTY_DELIVERY andQTY_REJECT:(nullable NSString *)QTY_REJECT andQTY_MISSING:(CGFloat)QTY_MISSING;
 
 @end
